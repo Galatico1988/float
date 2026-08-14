@@ -1,0 +1,71 @@
+O que fazer no Float
+
+Corrigir:
+
+
+404: Erros de localização de arquivos estão dando 404, quero que analise o Base_path para que ele funcione no wemp e no xampp perfeitamente, sem erros;
+erros de semântica: O Projeto não está semâniico e com isso esta prejudicando o entendimento do código com a manutenção do código. Quero que deixe semântico;
+
+Erros como "Uncaught (in promise) Error: Access to storage is not allowed from this context.
+6jogotemplate.php:1 Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received " são frequentes. Quero que resolva-os com a maestria de um cantor siciliano;
+
+As imagens e as suas descrições da página jogo_templete estão hardcoded. Quero que retire as imagens e deixe as descrições genéricas para mexer depois;
+
+Correções que precisam ser aplicadas:
+
+1. Erros 404 / Base Path
+
+Achado principal — inconsistência entre variável $basePath e caminhos absolutos hardcoded:
+
+O projeto já tem um sistema de $basePath relativo (correto, portátil) usado em quase todas as páginas:
+
+index.php → $basePath = './'
+comunidade.php, noticias.php, perfil.php → $basePath = '../'
+
+Porém, dentro de includes/header.php e includes/footer.php, o logo e o link da marca ignoram essa variável e usam caminho absoluto fixo:
+
+php
+<a href="/float/public/index.php" ...>
+<img src="/float/public/assets/img/global/logo.png" ...>
+
+Isso só funciona se o projeto estiver exatamente na pasta htdocs/float (XAMPP) ou www/float (WampServer) com esse nome exato. Qualquer variação (nome de pasta diferente, deploy em subpasta, ambiente de produção) quebra em 404. Inclusive há comentários no próprio código (<!-- Mexa nessa linha depois -->) indicando que quem escreveu já sabia que isso era provisório.
+
+Bug específico e concreto — jogotemplate.php:
+
+php
+$basePath = '../../';   // errado
+
+Todas as outras páginas dentro de public/pages/ (mesma profundidade) usam $basePath = '../'. Como o header usa $basePath para montar o avatar do usuário ($avatarSrc = $basePath . 'assets/img/user/avatars/avatar.png'), essa página especificamente gera um caminho de imagem incorreto (sobe um nível a mais que o necessário) → 404 no avatar, só nessa página.
+
+Outros pontos de caminho a corrigir:
+
+login.php mistura ../assets/... (CSS) com ./assets/img/favicon/... (favicon) — inconsistente, o favicon provavelmente 404 nessa página.
+global.css usa url(../../img/global/background.png) — caminho relativo ao próprio CSS; funciona hoje pela estrutura de pastas atual, mas é frágil e depende de nunca mover o CSS de lugar.
+Não existe nenhuma constante central (define('BASE_URL', ...)) nem .htaccess/config de ambiente — cada arquivo resolve o caminho "na mão", o que é a raiz de todos esses problemas.
+
+Solução que vou propor (sem aplicar ainda): centralizar em um único ponto (ex.: config.php com define('BASE_URL', ...) calculado dinamicamente via $_SERVER['SCRIPT_NAME'] ou constante ajustável), eliminando os caminhos absolutos /float/... e corrigindo o $basePath divergente do jogotemplate.php. Isso funciona tanto em XAMPP quanto em WampServer, independentemente do nome da pasta.
+
+2. Falta de semântica HTML
+includes/header.php começa direto em <nav class="nav-wrapper">, sem um <header> envolvendo a navegação — o arquivo se chama "header" mas não usa a tag <header>.
+index.php tem 85 ocorrências de <div> contra apenas ~9 tags semânticas (section, article, nav, aside, main). Estruturas como a lista de slides (hero-side-list), os cards da vitrine (cf-card) e os itens de menu deveriam usar <ul>/<li> ou <article> em vez de <div> genérico — hoje é tudo div com classes, o que dificulta leitura, manutenção e acessibilidade (leitores de tela não identificam nada como lista).
+footer.php já está correto (<footer role="contentinfo">).
+Textos importantes usam style inline (ex.: <p style="color:#666;font-size:.8rem;"> no footer) em vez de classes CSS — mistura estrutura com apresentação.
+3. Erros de console (Access to storage is not allowed / message channel closed)
+
+Aqui preciso ser honesto para não te dar um diagnóstico errado: fiz uma varredura completa em todo o JS do projeto (global.js, jogotemplate.js, comunidade.js, perfil.js, cadastro.js, login.js, noticias.js, index.js) e não existe nenhuma chamada a localStorage, sessionStorage, chrome.storage ou chrome.runtime.onMessage no código do projeto.
+
+Essas duas mensagens são a assinatura clássica de:
+
+Extensões do navegador (bloqueadores de anúncio, gerenciadores de senha, tradutores) injetando scripts na página — "Access to storage is not allowed from this context" é erro de extensão tentando acessar storage num iframe/contexto de terceiro.
+O widget VLibras (https://vlibras.gov.br/app/vlibras-plugin.js), carregado em index.php e jogotemplate.php, que cria um iframe cross-origin próprio e se comunica via postMessage/storage — forte candidato para o "message channel closed before a response was received", que é típico de comunicação assíncrona entre abas/iframes/extensões que não recebe resposta a tempo.
+
+Ou seja: não é (pelo que encontrei) um bug do código PHP/JS da Float em si, e sim efeito colateral de script de terceiro + possivelmente extensões instaladas no navegador de quem testa. Antes de "consertar" isso no código, o ideal é confirmar testando em aba anônima sem extensões. Posso, ainda assim, propor mitigação (ex.: carregar o VLibras de forma mais isolada/defensiva, com tratamento de erro), mas não vou fingir que existe uma causa no seu JS que não encontrei.
+
+4. Conteúdo hardcoded em jogotemplate.php
+
+Confirmado e é o ponto mais grave dos quatro em termos de manutenção: a página inteira roda em cima de um único array PHP fixo ($jogo = [...]) com dados de "Hades II" cravados no código — título, imagens (../assets/img/pages/index/cards/card_hadesII.png etc.), descrição, requisitos de sistema, preço, screenshots e até os "jogos relacionados" ($relacionados). Não há $_GET['slug'], não há busca no banco — é sempre o mesmo jogo, sempre as mesmas imagens do projeto index, para qualquer acesso à página. O próprio comentário no código já reconhece isso ("Troque este bloco por dados vindos do banco").
+
+Achados extras (fora dos 4 pontos, mas relevantes)
+public/pages/projetos.php está vazio (0 bytes) e é referenciado em perfil.php (projetos.php?acao=novo) — vai gerar página em branco.
+api/auth.php também está vazio e não é referenciado por nada — arquivo morto.
+api/user/seguir.php e api/user/follow.php fazem praticamente a mesma coisa (seguir/deixar de seguir usuário) com nomes de campo e mensagens diferentes — duplicação que deveria ser unificada.
