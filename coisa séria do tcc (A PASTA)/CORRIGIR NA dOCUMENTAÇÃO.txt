@@ -1,0 +1,5 @@
+Aumentar a quantidade de texto nas ferramentas para ocupar 1 página inteira
+
+Imagens sem quebras de conteúdo
+Adicionar numeração de página
+dar um jeito nas 3/4 listas
