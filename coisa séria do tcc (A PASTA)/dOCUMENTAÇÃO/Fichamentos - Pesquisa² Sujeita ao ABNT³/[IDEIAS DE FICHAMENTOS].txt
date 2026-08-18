@@ -1,0 +1,25 @@
+o que estudar sobre desenvolvimento de jogos
+cenário do mercado de jogos
+Cadeia produtiva de jogos eletrônicos no Brasil: desafios e oportunidades
+como está a publicação e divulgação dos jogos independentes
+como publicar um jogo
+desafios dos desenvolvedores independentes
+como é o mercado de trabalho
+(pessoas indies como Zanzlanz)
+(engines como Roblox)
+[cenários no Brasil]
+[o papel das empresas publicadoras]
+{como os jogos indie estão ganhando relevância, por exemplo por meio dos YouTubers}
+
+https://catracalivre.com.br/jogos/a-ascensao-dos-jogos-indie-como-pequenos-estudios-estao-transformando-a-industria/
+https://sebraepr.com.br/comunidade/artigo/mercado-de-jogos-indies-um-guia-para-desenvolvedores-e-empreendedores-no-brasil?srsltid=AfmBOopEVBDgIGBd4Br77csr_Jr6dF47F4_fWLYqlsoNidqIdaT80LqP
+https://guiadoestudante.abril.com.br/orientacao-profissional/veja-6-habilidades-da-vida-profissional-que-o-videogame-ensina/
+
+https://gamemaker-io.translate.goog/en/blog/stages-of-game-development?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=sge
+https://www-incredibuild-com.translate.goog/blog/top-gaming-engines-you-should-consider?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=sge
+https://www-juegostudio-com.translate.goog/blog/best-game-engines?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=sge
+
+
+
+chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://repositorio.pgsscogna.com.br/bitstream/123456789/41895/1/GABRIELA_SOUZA.pdf
+{outro TCC, então provavelmente não será usado}
