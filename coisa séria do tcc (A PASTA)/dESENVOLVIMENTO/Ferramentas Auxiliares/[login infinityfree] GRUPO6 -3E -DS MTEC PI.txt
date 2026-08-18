@@ -1,0 +1,18 @@
+GRUPO6 -3E -DS MTEC PI
+
+HOST ftp.tcc3eetecgrupo6.tecnologia.ws
+
+USUARIO FTP tcc3eetecgrupo6t1
+PORTA 21
+SENHA FTP Tcc3eetecgrupo6t1#123#
+
+ENDERECO URL
+tcc3eetecgrupo6t1.hospedagemdesites.ws
+https://tcc3eetecgrupo6t1.websiteseguro.com
+
+SERVIDOR BANCO
+
+tcc_bd20.mysql.dbaas.com.br  
+USUARIO O BANCO tcc_bd20     
+NOME DO  BANCO tcc_bd20 
+SENHA  ROSA123456a#

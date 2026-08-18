@@ -1,0 +1,11 @@
+1. Instalar em seu Powershell (ou Terminal em um Linux): irm "https://raw.githubusercontent.com/Alishahryar1/free-claude-code/main/scripts/install.ps1" | iex
+
+2. Após isso, faça uma conta em opencode auth e pegue sua chave de API
+
+3. Após, no powershell, de o comando "fcc-server", ele ira redireciona-lo para um servidor local unicorn. Vá em "OpenCodeAPI Key" e cole sua chave de API
+
+4. Depois, vá em "Models" e cole em "Default Model" o modelo "opencode/deepseek-v4-flash-free"
+
+5. Valide e aplique 
+
+6. Depois, abra o powershell de novo (ambos, tanto o fcc-server e o fcc-claude/códex usam o powershell com root) e digite fcc-cluade para usar o claude code ou fcc-codex para usar o codex
