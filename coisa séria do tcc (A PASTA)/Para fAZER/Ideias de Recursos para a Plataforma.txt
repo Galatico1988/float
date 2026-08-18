@@ -1,0 +1,29 @@
+- A acessibilidade do Cleiton de QTS
+;mais recursos de acessibilidade além dos pedidos, se possível
+
+- Sistema de avaliação dos jogos baseado em estrelas
+
+- Menu lateral contendo cada seção do site (se o menu do topo não funcionar/existir)
+
+- Filtro de categorias de jogos
+
+- Denunciar jogo
+
+- Denunciar usuário
+
+- Menu próprio pra lista de desejos pra adicionar os jogos
+
+
+
+REVISAR RECURSOS PARA IDENTIFICAR POSSÍVEIS AJUSTES
+- olhar a página de denúncias
+- acessar a página de compra de um jogo
+- testar a comunidade
+- a página inicial
+- perfil do usuário
+
+
+
+
+
+E NÃO ESQUECER: terminar de colocar esses recursos no site, e depois colocar no app - não esqueçam da PARIDADE!
