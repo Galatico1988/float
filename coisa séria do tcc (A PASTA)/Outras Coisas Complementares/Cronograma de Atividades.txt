@@ -1,0 +1,19 @@
+A: Escolha do grupo - 09/02 a 13/02
+B: Escolha do tema e do nome do projeto - 09/02 a 20/02
+C: Alteração do tema - 23/02 a 27/02
+D: Desenvolvimento do site - 02/03 a 27/11
+E: Desenvolvimento do app - 09/03 a 27/11
+F: Criação do banco de dados - 13/04 a 24/04
+G: Desenvolvimento do banco - 27/04 a 27/11
+H: Primeira pesquisa de campo - 20/04 a 24/04
+I: Segunda pesquisa de campo - 10/08 a 28/08
+J: iniciar o processo de documentação - 30/03 a 03/04 
+K: Documentação do projeto - 06/04 a 27/11
+L: Criação da logo e do design - 30/03 a 03/04
+M: Design do site - 06/04 a 10/04
+N: Design do app - 13/04 a 17/04
+O: Pesquisas bibliográficas - 16/03 a 30/06
+P: Pesquisas de engenharia de prompt e Git - 27/07 a 10/08
+Q: Inteligência artificial dentro do projeto - 01/09 a 31/09
+R: Ensaios para apresentação - 10/08 a 30/10
+S: Preparação para apresentação - 02/11 a 27/11

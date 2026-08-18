@@ -1,0 +1,26 @@
+CEO: Luiz Felipe
+Gestor de Software: Arthur Miguel
+Desenvolvedor Full-Stack: Ivan e Arthur Pereira
+Desenvolvedor Mobile: Brenno
+Analista QA: Guilherme Dalla
+Analista de Sistemas: Otávio Albuquerque
+
+Explicação geral de cada um :
+CEO: Centralizar a ideia para que todos do grupo a compreendam de modo que nada afete o trabalho
+Gestor de Software: Coordenar a equipe de trabalho para garantir a entrega dos prazos e auxiliar a equipe em termos específicos do projeto
+Desenvolvedor Full-Stack: trabalha na parte Front e Back do site, garantindo integração visual e interação com o servidor
+Desenvolvedor Mobile: Desenvolve e mantém a aplicação para dispositivos móveis, implementando interfaces intuitivas, integrações com serviços do sistema e comunicação com o servidor
+Analista QA: garante a qualidade do software em questão, para garantir que os requisitos funcionais sejam feitos durante o prazo
+Analista de Sistemas: Desenvolve a arquitetura do projeto além de trabalhar com a lógica de programação e documentação do projeto
+
+
+
+40H de trabalho semanais = 168H úteis por mês de trabalho
+
+Salário mensal de cada um:
+CEO: 30.000 MENSAL E R$178,50 POR HORA
+GESTOR DE SOFTWARE: 20.900 MENSAL E R$124,40 POR HORA
+DESENVOLVEDOR FULL-STACK: 6.050 MENSAL E R$36,00 POR HORA
+DESENVOLVEDOR MOBILE: 6.050 MENSAL E R$36,00 POR HORA
+ANALISTA QA: 5.900 MENSAL E R$35,10 POR HORA
+ANALISTA DE SISTEMAS:4.000 MENSAL E R$23,80 POR HORA

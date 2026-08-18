@@ -1,0 +1,46 @@
+CONCEITO GERAL - TCC
+- Um Aplicativo / Site Para Aprendizado de Matérias Escolares, Gameficado no Estilo Duolingo.
+- Uso de Informações e Dados do Domínio Publico Para Compor o Projeto
+- Uso do Gemini (IA Do Google) Para Assistência no Aprendizado
+
+ODS Preenchidas
+ODS 4 - Educação de Qualidade
+O Projeto Provem Uma Forma de Educação Na Utilização de Um App / Site Do Estilo Duolingo,
+Trazendo Uma Forma Melhorada para Aprendizado e Estudo
+ODS 9 - Infraestrutura
+O Projeto Provem uma Nova Forma de Aprendizado com uma Infraestrutura Moderna na Utilização
+De Tecnologias Atuais.
+ODS 10 - Acessibilidade
+O Projeto Provem uma Forma Acessível por Vários de Acessar Este App / Site, Possibilitando
+O Aprendizado Para Regiões Menos Desenvolvidas.
+
+ANALISE SWOT / FOFA DO PROJETO
+
+Forças
+
+- O Projeto Traz uma Nova Forma de Aprendizado Virtual, Permitindo que Crianças não só
+Aprendam mas se Adaptem a Tecnologias.
+- O Projeto é Acessível para a Maioria da População, Incluindo pessoas mais pobres
+- Utilização da IA Gemini para Cooperação dos Estudantes.
+
+Oportunidades
+
+- Adição de Varias Línguas para o Projeto (Inglês ou/e Espanhol)
+- Sistema de Perfil
+- Sistema de Integração na Educação Publica
+
+Fraquezas
+
+- 
+- Mesmo Estando Avançando, o Gemini ainda pode Cometer Erros que Podem
+Prejudicar o Estudante.
+
+Ameaças
+
+-A IA Do Gemini pode ser Possivelmente Cara, Difícil de Implementar e Possivelmente Desnecessário
+Para o Projeto.
+-Um Projeto Desta Escala Precisa Armazenar Vários Dados De Varias Matérias, Isto Precisaria de Servidores
+Grandes e Caros, O Que Não Esta em Acessibilidade (Podemos Diminuir o Escopo de Matérias que o App / Site Utiliza,
+Porem Ainda esta em Discussão)
+-A Ideia do Projeto, Enquanto Boa, Tem um Escopo Gigante, Como Somos apenas Estudantes, Nossa Experiencia, Habilidade, Recursos e Conhecimento
+De Programação Ainda e Limitado, Portanto, Isso Pode Resultar em Vários Problemas que podem Deixar o Desenvolvimento do Projeto Lento.
