@@ -1,0 +1,3 @@
+O intuito desta pasta é única e exclusivamente para que todos do grupo consigam compreender a ideia geral do projeto.
+
+A missão desta pasta é fazer com que todos os integrantes do grupo, a partir do dia 30 de Outubro, se preparem para a apresentação do projeto - compreendendo a sua função, objetivo, arquitetura geral e modelagem do software.
