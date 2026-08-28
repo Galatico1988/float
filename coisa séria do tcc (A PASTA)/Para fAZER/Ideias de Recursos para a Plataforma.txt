@@ -1,0 +1,69 @@
+- A acessibilidade do Cleiton de QTS
+;mais recursos de acessibilidade além dos pedidos, se possível
+
+- Sistema de avaliação dos jogos baseado em estrelas
+
+- Menu lateral contendo cada seção do site (se o menu do topo não funcionar/existir)
+
+- Filtro de categorias de jogos
+
+- Denunciar jogo
+
+- Denunciar usuário
+
+- Menu próprio pra lista de desejos pra adicionar os jogos
+
+
+
+REVISAR RECURSOS PARA IDENTIFICAR POSSÍVEIS AJUSTES
+- olhar a página de denúncias
+- acessar a página de compra de um jogo
+- testar a comunidade
+- a página inicial
+- perfil do usuário
+
+
+
+E NÃO ESQUECER: terminar de colocar esses recursos no site, e depois colocar no app - não esqueçam da PARIDADE!
+
+
+
+
+
++-AINDAMAISCOISAS-+
+Atualizar a logo
+Colocar a nova logo em cima do slider + o slogan "Conectando ideias, elevando o jogo."
+
+PÁGINA INICIAL
+programar o slider de jogos para que ele sempre exiba jogos novos a cada vez que o site é aberto
+"Descubra Algo Novo" também pode ter mais opções aleatórias
+"Em Destaque" precisa conter o jogo que tem algo a mais em comparação com os outros - tipo, com mais avaliações positivas, ou o mais vendido etc.
+"Últimas Notícias" precisa ser reformulado. Mas como?
+
+PÁGINA DE COMPRA DO JOGO
+Arrumar as fotos de cada jogo
+Aumentar as descrições - se possível copiar as descrições oficiais e colocá-las aqui
+Redimensionar as imagens da seção "Mais como este" embaixo
+Configurar a "Mais como este" para que ela só mostre jogos com pelo menos 2 categorias que coincidam com a categoria do jogo cuja página está aberta
+
+DESCUBRA
+Colocar mais categorias
+Mudar as descrições das categorias
+Cada um dos menus leva pra página inicial. Criar páginas próprias para cada um
+
+BIBLIOTECA
+Cada um dos menus leva pra página inicial. Criar páginas próprias para cada um
+Mudar o nome do "Meu Acervo"
+
+COMUNIDADE
+O menu "Comunidade" não funciona. Criar página da comunidade
+Os outros dois só levam pra página inicial
+
+PROJETOS
+Cada um dos menus leva pra página inicial. Criar páginas próprias para cada um
+
+LOGIN
+Aumentar o tamanho dos elementos, do texto "Conecte-se ao universo indie" e do texto "Voltar para a página inicial" (trocar o texto atual para esse)
+Os botões "Entrar" e "Criar conta" levam para páginas falhas. Consertar e integrar efetivamente a funcionalidade de login
+Integrar possibilidade de entrar com as contas dos botões abaixo - Google
+Deveria ser apenas "vincular" conta do Discord e da Steam, não "fazer login com essas contas"

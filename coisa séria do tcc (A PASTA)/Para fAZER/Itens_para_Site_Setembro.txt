@@ -1,0 +1,18 @@
+Seção de vídeo do jogo na página template 	|
+
+Fazer o alinhamento dos itens 			|
+
+Aprimorar a pagina da comunidade		|
+
+Começar a projetar a página do desenvolvedor	|
+
+Tela de carregamento para o site 		|
+
+logo do site 					|
+
+Construção do sistema de insígnias >prototipação|
+
+estatísticas do jogo na aba do desenvolvedor    |
+
+login com o GitHub e google			|
+---------------------------------------------
