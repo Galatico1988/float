@@ -1,0 +1,9 @@
+desenvolvimento = colocar o código inteiro de cada coisa que fizemos. Mas pra esse tópico precisa do site e app 100% PRONTOS
+horas trabalhadas = "e se cada um fosse renumerado pelos seus serviços". O cronograma de atividades do projeto + o quê e como cada membro fez
+
+O QUE TALVEZ FIQUE PRA DEPOIS
+manuais = explicar cada página de forma que um usuário comum consiga entender como usá-las. MAS PRIMEIRO precisa COMPLETAR o site e o app...
+conclusão
+
+poderia ser interessante colocar:
+os requisitos de QTS

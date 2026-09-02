@@ -1,0 +1,27 @@
+;aumentar textos anteriores para que 2.2 não abra tanto espaço vazio - se necessário expandir mais o 2.2
+;arrumar as colunas das tabelas para que as palavras não cortem
+;verificar se não tem citações em excesso
+;formatar as tabelas para o padrão na orientação
+
+anotar cada:
+ilustração
+tabela
+abreviatura
+sigla
+acrônimo
+{e depois pesquisar como faz o sumário desse tipo de coisa}
+
+ver o estado das figuras:
+https://www.sitemaps.org/schemas/sitemap/0.9/
+- mapa front end do site
+- mapa back end do site
+- mapa front end do app
+- mapa back end do app
+- diagrama de caso de uso do app
+
+pesquisar quais manuais seria interessante colocar na seção devida
+
+
+
+e por fim: comparar essa versão finalizada da documentação com o padrão abnt DE VERDADE (sem ser o modelo de formatação passado pela professora)
+e pesquisar o que mais tira ponto em tcc de verdade
