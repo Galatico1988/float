@@ -1,11 +1,11 @@
-;aumentar textos anteriores para que 2.2 não abra tanto espaço vazio - se necessário expandir mais o 2.2
-;arrumar as colunas das tabelas para que as palavras não cortem
+;aumentar textos anteriores para que 2.2 não abra tanto espaço vazio (como 2 e talvez reestruturar 2.1) - se necessário expandir mais o 2.2
+;expandir 1.4 e 1.4.1 - e verificar se 1.4.2 encaixa mais objetivos
+;talvez expandir 1.2
+;reescrever os desafios de 1.3 e dar descrição mais concisa a eles
+;arrumar as colunas das tabelas para que as palavras não fiquem cortadas
 ;verificar se não tem citações em excesso
-;formatar as tabelas para o padrão na orientação
 
 anotar cada:
-ilustração
-tabela
 abreviatura
 sigla
 acrônimo
