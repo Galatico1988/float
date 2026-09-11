@@ -1,0 +1,48 @@
+@import url("login.css");
+
+.back-home {
+  left: 40px;
+  right: auto;
+}
+
+@media (max-width: 1200px) {
+  .auth-form-box {
+    max-width: 340px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .auth-container {
+    flex-direction: column;
+  }
+
+  .auth-form-side {
+    padding: 20px;
+  }
+
+  .auth-form-box {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .back-home {
+    top: 20px;
+    left: 20px;
+  }
+}
+
+.auth-form-side {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes contentLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

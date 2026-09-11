@@ -1,0 +1,454 @@
+.sticky-download-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sticky-download-bar.show {
+  transform: translateY(0);
+}
+.sdb-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 12px 4%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.sdb-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.sdb-title {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  color: var(--nav-text);
+  font-size: 0.95rem;
+}
+.sdb-price {
+  color: var(--zzz-yellow);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-left: auto;
+}
+.sdb-btn {
+  color: white;
+  background-color: rgb(95, 22, 190);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 27px;
+  font-size: 0.9rem;
+  border-radius: 16px;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+.sdb
+/* ---------- Hero ---------- */
+.game-hero-section {
+  position: relative;
+  min-height: 480px;
+  padding: 160px 4% 60px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.game-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: var(--game-backdrop);
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px) brightness(0.4) saturate(0.85);
+  transform: scale(1.05);
+  z-index: -2;
+}
+.game-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, var(--black) 5%, transparent 60%),
+    linear-gradient(120deg, rgba(2, 1, 10, 0.85) 20%, rgba(34, 0, 124, 0.35) 100%);
+  z-index: -1;
+}
+
+.game-hero-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 45px;
+  align-items: end;
+}
+
+.game-hero-cover {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 50px var(--glow-purple);
+  animation: slideInLeft 0.7s cubic-bezier(0.25, 1, 0.35, 1);
+}
+.game-hero-cover img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+.game-hero-info {
+  padding-bottom: 10px;
+  animation: fadeInUp 0.7s cubic-bezier(0.25, 1, 0.35, 1) 0.1s both;
+}
+.game-hero-tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.game-hero-title {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--nav-text);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.game-hero-dev {
+  color: var(--nav-text-muted);
+  font-size: 0.9rem;
+  margin: 10px 0 0;
+}
+.game-hero-tagline {
+  color: rgba(248, 249, 250, 0.75);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 16px 0 30px;
+}
+.game-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.game-download-btn {
+  color: white;
+  background-color: #22007cff;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 38px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+.game-download-btn.full-width {
+  width: 100%;
+  justify-content: center;
+  animation: none;
+}
+.game-platforms {
+  display: flex;
+  gap: 14px;
+  margin-left: 8px;
+  color: var(--nav-text-muted);
+  font-size: 1.3rem;
+}
+
+/* ---------- Layout principal ---------- */
+.game-body-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 4% 20px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---------- Galeria ---------- */
+.game-gallery-section {
+  margin-bottom: 60px;
+}
+.game-gallery-main {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  aspect-ratio: 16/9;
+  background: var(--prussian-blue);
+  margin-bottom: 14px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+.game-gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.25s ease;
+}
+.game-gallery-thumbs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.gallery-thumb {
+  flex: 0 0 130px;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.55;
+  transition: all 0.25s ease;
+}
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery-thumb:hover {
+  opacity: 0.85;
+}
+.gallery-thumb.active {
+  opacity: 1;
+  border-color: var(--color-primary-purple);
+  box-shadow: 0 0 14px var(--glow-purple);
+}
+
+/* ---------- Sobre ---------- */
+.game-about-section {
+  margin-bottom: 60px;
+}
+.game-about-text {
+  color: var(--nav-text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  max-width: 760px;
+  margin: 20px 0 28px;
+}
+.game-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.game-highlights li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--nav-text);
+  font-size: 0.85rem;
+}
+.game-highlights li i {
+  color: var(--zzz-yellow);
+  font-size: 1.1rem;
+  width: 22px;
+  text-align: center;
+}
+
+/* ---------- Requisitos / Painel de compatibilidade ---------- */
+.game-requirements-section {
+  margin-bottom: 40px;
+}
+.req-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 24px;
+}
+.req-col {
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 26px;
+}
+.req-col-label {
+  display: inline-block;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: white;
+  background: rgba(166, 74, 255, 0.1);
+  border: 1px solid rgba(166, 74, 255, 0.3);
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 18px;
+}
+.req-spec-list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+}
+.req-spec-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.82rem;
+}
+.req-spec-list li:last-child {
+  border-bottom: none;
+}
+.req-spec-list li span {
+  color: var(--nav-text-muted);
+  flex-shrink: 0;
+}
+.req-spec-list li strong {
+  color: var(--nav-text);
+  font-weight: 600;
+  text-align: right;
+}
+
+.req-meters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.req-meter {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: center;
+  gap: 12px;
+}
+.req-meter span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--nav-text-muted);
+  letter-spacing: 0.5px;
+}
+.req-meter-track {
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.req-meter-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--color-primary-purple), #b86bff);
+  box-shadow: 0 0 10px var(--glow-purple);
+  transition: width 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Sidebar ---------- */
+.game-side-col {
+  position: sticky;
+  top: 110px;
+}
+.game-info-card {
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+.btn-wishlist.full-width {
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.8rem;
+}
+.game-info-divider {
+  height: 1px;
+  background: var(--glass-border);
+  margin: 8px 0;
+}
+.game-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.game-info-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.82rem;
+}
+.game-info-list li span {
+  color: var(--nav-text-muted);
+}
+.game-info-list li strong {
+  color: var(--nav-text);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1024px) {
+  .game-body-grid {
+    grid-template-columns: 1fr;
+  }
+  .game-side-col {
+    position: static;
+    order: -1;
+  }
+  .req-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-hero-section {
+    padding-top: 120px;
+  }
+  .game-hero-content {
+    grid-template-columns: 160px 1fr;
+    gap: 20px;
+  }
+  .game-hero-title {
+    font-size: 1.9rem;
+  }
+  .game-hero-tagline {
+    display: none;
+  }
+  .game-highlights {
+    grid-template-columns: 1fr;
+  }
+  .sdb-title {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-hero-content {
+    grid-template-columns: 1fr;
+  }
+  .game-hero-cover {
+    max-width: 160px;
+  }
+  .game-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .game-platforms {
+    margin: 0;
+    justify-content: center;
+  }
+}
