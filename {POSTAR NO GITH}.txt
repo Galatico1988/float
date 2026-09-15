@@ -3,7 +3,7 @@ Bahia: programa as partes principais do site, como DESCUBRA, BOBLIOTECA, COMUNID
 Prota: coloca as outras "Ideias de Recursos para a Plataforma", as mais simples que você conseguir - se precisa, veja o TXT de mesmo nome na pasta "Para fAZER" do "coisa séria do TCC (A PASTA)" no GitHub
 Brenno: essas partes do site já foram integradas, agora coloque no app:
 Miguel: essas partes do site já foram integradas, agora coloque no app:
-Dalla: coloca mais tópicos na APRESENTAÇÃO FINAL 
+Dalla: coloca mais tópicos na APRESENTAÇÃO FINAL e escreve como se fosse um roteiro mesmo - para cada integrante saber como falar no dia da apresentação final de dezembro
 Otávio: copie e cole uma página de jogo qualquer - para fazer uma página sobre cada jogo no catálogo. E também fica de olho nas imagens necessárias para as páginas de cada jogo
 
 
@@ -17,10 +17,10 @@ Bahia & Prota: coloquem os recursos faltantes no site, pra já adiantarmos o app
 Brenno e Miguel: vejam o design do site e tentem estilizar o app para que ele se pareça mais com o site, já que ele é o mais importante. Se necessário vejam o .txt de "Ideias de Recursos para a Plataforma", na pasta "Para fAZER", na pasta "coisa séria do TCC (A PASTA)" - tudo isso no GitHub
 
 
-Dalla: equilibra entre a programação do site e a documentação. Quando der, ajuda na Apresentação Final com o Otávio e pesquisa mais jogos indie para abastecermos o nosso catálogo - use o Word "MAIS JOGOS INDIE" em Outras Coisas Complementares como apoio
+Dalla: faz a programação do site em casa e a Apresentação Final (de preferência com o Otávio) na escola. Quando der, pesquisa mais jogos indie para abastecermos o nosso catálogo - use o Word "MAIS JOGOS INDIE" em "Outras Coisas Complementares" como apoio
 
 
-Otávio: termine as revisões de texto na documentação, depois tente ajudar as outras tarefas acima onde você puder - seja ao sugerir adaptações de paridade entre o site e o app ou esboçar os recursos no site. Quando der, faça os Manuais e a Apresentação Final [ela já está em progresso]
+Otávio: tente ajudar as outras tarefas acima onde você puder - seja ao sugerir adaptações de paridade entre o site e o app ou esboçar os recursos no site. Quando der, faça os Manuais e a Apresentação Final [ela já está em progresso]
 
 
 
