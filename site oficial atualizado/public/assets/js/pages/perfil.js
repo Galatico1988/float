@@ -664,6 +664,57 @@ async function enviarImagem(file) {
 }
 
 
+function initEditarJogo() {
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.jogo-edit-btn');
+        if (!btn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const jogoId = btn.dataset.jogoId;
+        window.location.href = `projetos.php?id=${jogoId}`;
+    });
+}
+
+function initDeletarJogo() {
+    if (!ehDono) return;
+
+    document.addEventListener('click', async (e) => {
+        const btn = e.target.closest('.jogo-delete-btn');
+        if (!btn) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        const jogoId = btn.dataset.jogoId;
+        const titulo = btn.dataset.jogoTitulo;
+
+        if (!confirm(`Tem certeza que deseja excluir "${titulo}"?\n\nEsta ação não pode ser desfeita.`)) return;
+
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+
+        const fd = new FormData();
+        fd.append('jogo_id', jogoId);
+
+        const data = await postForm('../../api/jogos/deletar.php', fd);
+
+        if (data.ok) {
+            const card = btn.closest('.jogo-card');
+            if (card) {
+                card.style.transition = 'opacity 0.3s, transform 0.3s';
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.9)';
+                setTimeout(() => card.remove(), 300);
+            }
+            showToast('Jogo excluído com sucesso.', 'success');
+        } else {
+            showToast(data.mensagem ?? 'Erro ao excluir.', 'error');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initModalCloseButtons();
     initTabs();
@@ -672,4 +723,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initAjuda();
     initEdicaoTexto();
     initUploads();
+    initEditarJogo();
+    initDeletarJogo();
 });

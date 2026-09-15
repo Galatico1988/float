@@ -41,18 +41,35 @@
   font-size: 0.85rem;
   margin-left: auto;
 }
-.sdb-btn {
-  color: white;
-  background-color: rgb(95, 22, 190);
+/* ---------- Botões compartilhados ---------- */
+.btn-buy,
+.btn-wishlist {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 27px;
-  font-size: 0.9rem;
-  border-radius: 16px;
-  animation: glowPulse 3s ease-in-out infinite;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-surface);
+  color: var(--nav-text);
 }
-.sdb
+.btn-buy:hover,
+.btn-wishlist:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--color-primary-purple);
+  color: var(--nav-text);
+}
+.sdb-btn {
+  padding: 10px 22px;
+  font-size: 0.75rem;
+}
+
 /* ---------- Hero ---------- */
 .game-hero-section {
   position: relative;
@@ -141,20 +158,30 @@
   flex-wrap: wrap;
 }
 .game-download-btn {
-  color: white;
-  background-color: #22007cff;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 18px 38px;
-  font-size: 0.9rem;
+  padding: 14px 32px;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: var(--color-black);
+  background-color: var(--color-primary-purple);
   border-radius: 10px;
-  animation: glowPulse 3s ease-in-out infinite;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.game-download-btn:hover {
+  background-color: var(--color-primary-purple);
+  filter: brightness(1.2);
+  box-shadow: 0 0 20px rgba(166, 74, 255, 0.5);
+  transform: scale(1.05);
+  color: var(--color-black);
 }
 .game-download-btn.full-width {
   width: 100%;
   justify-content: center;
-  animation: none;
+  padding: 14px 20px;
+  font-size: 0.82rem;
 }
 .game-platforms {
   display: flex;
@@ -286,7 +313,7 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: white;
+  color: var(--color-primary-purple);
   background: rgba(166, 74, 255, 0.1);
   border: 1px solid rgba(166, 74, 255, 0.3);
   padding: 5px 14px;

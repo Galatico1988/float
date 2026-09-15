@@ -269,7 +269,7 @@ $activePage = 'home';
                             <span class="promo-tag"><i class="fa-solid fa-users"></i> Single Player</span>
                         </div>
                         <div class="promo-actions">
-                            <a href="../public/pages/jogotemplate.php"><button class="btn-promo-primary"><i class="fa-solid fa-play"></i> Jogar Agora</button></a>
+                            <a href="jogos/hades-ii/"><button class="btn-promo-primary"><i class="fa-solid fa-play"></i> Jogar Agora</button></a>
                             <button class="btn-promo-secondary"><i class="fa-regular fa-bookmark"></i> Lista de Desejos</button>
                         </div>
                     </div>

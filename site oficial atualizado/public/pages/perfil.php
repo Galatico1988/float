@@ -49,7 +49,7 @@ if ($sessaoId && !$ehDono) {
 }
 
 $stmtJogos = $pdo->prepare('
-    SELECT   j.id, j.titulo, j.descricao, j.thumbnail, j.genero,
+    SELECT   j.id, j.titulo, j.slug, j.descricao, j.thumbnail, j.genero,
              j.criado_em, j.atualizado_em,
              COALESCE(AVG(a.nota), 0)  AS media_nota,
              COUNT(a.id)               AS total_aval
@@ -112,18 +112,18 @@ if ($diffConta->y > 0) {
 }
 
 
-$avatarDefault = '../assets/img/user/avatars/avatar.png';
-$bannerDefault = '';   
+$avatarDefault = '/float/public/assets/img/user/avatars/avatar.png';
+$bannerDefault = '';
 $avatarSrc     = $usuario['avatar_path']
-                    ? '../assets/img/user/avatars/' . htmlspecialchars($usuario['avatar_path'])
+                    ? '/float/public/assets/img/user/avatars/' . htmlspecialchars($usuario['avatar_path'])
                     : $avatarDefault;
 $bannerSrc     = $usuario['banner_path']
-                    ? '../assets/img/user/banners/' . htmlspecialchars($usuario['banner_path'])
+                    ? '/float/public/assets/img/user/banners/' . htmlspecialchars($usuario['banner_path'])
                     : '';
 
 $navbarAvatar = $sessaoId && $usuario['avatar_path']
-    ? '../assets/img/user/avatars/' . htmlspecialchars($usuario['avatar_path'])
-    : '../assets/img/user/avatars/avatar.png';
+    ? '/float/public/assets/img/user/avatars/' . htmlspecialchars($usuario['avatar_path'])
+    : '/float/public/assets/img/user/avatars/avatar.png';
 
 $nomeSanitizado = htmlspecialchars($usuario['nome']);
 $bioSanitizada  = htmlspecialchars($usuario['bio'] ?? '');
@@ -153,9 +153,9 @@ $activePage = 'perfil';
     <meta name="description" content="Perfil de <?= $nomeSanitizado ?> na Float.">
     <title>Float | <?= $nomeSanitizado ?></title>
 
-    <link rel="stylesheet" href="../assets/css/global/global.css" />
-    <link rel="stylesheet" href="../assets/css/pages/perfil.css" />
-    <link rel="icon" href="../assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/float/public/assets/css/global/global.css" />
+    <link rel="stylesheet" href="/float/public/assets/css/pages/perfil.css" />
+    <link rel="icon" href="/float/public/assets/img/favicon/icone.ico" type="image/x-icon" />
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -369,11 +369,12 @@ $activePage = 'perfil';
         <div class="jogos-grid">
             <?php foreach ($jogos as $jogo):
                 $thumbSrc = $jogo['thumbnail']
-                    ? '../assets/img/user/thumbs/' . htmlspecialchars($jogo['thumbnail'])
-                    : '../assets/img/pages/index/cards/card_undertale.png';
+                    ? '/float/public/assets/img/jogos/' . $jogo['id'] . '/' . htmlspecialchars($jogo['thumbnail'])
+                    : '/float/public/assets/img/pages/index/cards/card_undertale.png';
                 $estrelas = round($jogo['media_nota']);
+                $jogoSlug = $jogo['slug'] ?? $jogo['id'];
             ?>
-            <article class="jogo-card" data-id="<?= $jogo['id'] ?>">
+            <a href="/float/public/jogos/<?= htmlspecialchars($jogoSlug) ?>/" class="jogo-card" data-id="<?= $jogo['id'] ?>">
                 <div class="jogo-card-thumb">
                     <img src="<?= $thumbSrc ?>"
                          alt="Capa de <?= htmlspecialchars($jogo['titulo']) ?>"
@@ -388,6 +389,21 @@ $activePage = 'perfil';
                             aria-label="Reportar jogo"
                             title="Reportar jogo">
                         <i class="fa-solid fa-flag" aria-hidden="true"></i>
+                    </button>
+                    <?php endif; ?>
+                    <?php if ($ehDono): ?>
+                    <button class="jogo-edit-btn"
+                            data-jogo-id="<?= $jogo['id'] ?>"
+                            aria-label="Editar jogo"
+                            title="Editar jogo">
+                        <i class="fa-solid fa-pen" aria-hidden="true"></i>
+                    </button>
+                    <button class="jogo-delete-btn"
+                            data-jogo-id="<?= $jogo['id'] ?>"
+                            data-jogo-titulo="<?= htmlspecialchars($jogo['titulo']) ?>"
+                            aria-label="Excluir jogo"
+                            title="Excluir jogo">
+                        <i class="fa-solid fa-trash" aria-hidden="true"></i>
                     </button>
                     <?php endif; ?>
                 </div>
@@ -410,7 +426,7 @@ $activePage = 'perfil';
                         </time>
                     </div>
                 </div>
-            </article>
+            </a>
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
@@ -770,7 +786,7 @@ $activePage = 'perfil';
     <?php require_once '../includes/footer.php'; ?>
 
 
-<script src="../assets/js/global/global.js"></script>
+<script src="/float/public/assets/js/global/global.js"></script>
 <?php if ($ehDono): ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
 <?php endif; ?>
@@ -782,7 +798,7 @@ $activePage = 'perfil';
         sessaoId:<?= $sessaoId ?? 'null' ?>
     };
 </script>
-<script src="../assets/js/pages/perfil.js"></script>
+<script src="/float/public/assets/js/pages/perfil.js"></script>
 
 </body>
 </html>
