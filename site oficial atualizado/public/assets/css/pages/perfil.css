@@ -421,10 +421,13 @@
 }
 
 .jogo-card {
+  display: block;
   background: var(--glass-surface);
   border: 1px solid var(--glass-border);
   border-radius: 14px;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
   transition:
     transform 0.25s,
     border-color 0.25s,
@@ -498,6 +501,65 @@
 }
 
 .jogo-report-btn:hover {
+  background: rgba(255, 78, 78, 0.2);
+  border-color: var(--Fogo);
+  color: var(--Fogo);
+}
+
+/* Botão de editar jogo (só dono) */
+.jogo-edit-btn {
+  position: absolute;
+  top: 10px;
+  left: 46px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s, background 0.2s;
+}
+.jogo-card:hover .jogo-edit-btn { opacity: 1; }
+.jogo-edit-btn:hover {
+  background: rgba(166, 74, 255, 0.2);
+  border-color: var(--color-primary-purple);
+  color: var(--color-primary-purple);
+}
+
+/* Botão de deletar jogo (só dono) */
+.jogo-delete-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.2s,
+    color 0.2s,
+    background 0.2s;
+}
+.jogo-card:hover .jogo-delete-btn {
+  opacity: 1;
+}
+.jogo-delete-btn:hover {
   background: rgba(255, 78, 78, 0.2);
   border-color: var(--Fogo);
   color: var(--Fogo);

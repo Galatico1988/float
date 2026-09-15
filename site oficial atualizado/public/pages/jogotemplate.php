@@ -4,74 +4,32 @@ if (!isset($_SESSION)) {
 }
 
 /* =========================================================
-   Ajuste este caminho conforme a profundidade real do arquivo
-   (ex: se ficar em /public/pages/, use '../../')
+   Este template é incluído por jogo.php (via /jogos/{slug}/)
+   ou pode ser acessado diretamente para desenvolvimento.
+   As variáveis $jogo e $relacionados devem estar definidas
+   antes deste include.
    ========================================================= */
 $basePath   = '../../';
 $activePage = 'jogos';
 
-/* =========================================================
-   DADOS DO JOGO
-   Troque este bloco por dados vindos do banco (ex: via $_GET['slug']).
-   Os valores abaixo são de exemplo, reaproveitando os assets
-   que já existem no projeto.
-   ========================================================= */
-$jogo = [
-    'titulo'      => 'Hades II',
-    'desenvolvedor' => 'Supergiant Games',
-    'tagline'     => 'A sequência do premiado roguelite da Supergiant Games chega em Early Access. Mais profundo, mais sombrio e mais viciante do que jamais foi.',
-    'descricao'   => 'Empunhe magia e armas duplas na pele de Melinoë, a Princesa do Submundo imortal, em sua missão para derrotar o Titã do Tempo. Explore um Submundo em constante mudança, forje alianças com deuses do Olimpo e enfrente investidas cada vez mais desafiadoras rumo à superfície.',
-    'capa'        => '../assets/img/pages/index/cards/card_hadesII.png',
-    'backdrop'    => '../assets/img/pages/index/slides/slide_03.png',
-    'preco'       => 'R$ 59,99',
-    'gratis'      => false,
-    'versao'      => 'v1.0.4 (Early Access)',
-    'tamanho'     => '4.8 GB',
-    'atualizado'  => '10 de maio de 2026',
-    'idiomas'     => 'Português, Inglês, Espanhol, Japonês',
-    'classificacao' => '14 anos',
-    'tags'        => ['Roguelite', 'Early Access', 'Single Player'],
-    'plataformas' => ['windows', 'apple'],
-    'download_url' => '#',
-
-    'destaques' => [
-        ['icone' => 'fa-wand-magic-sparkles', 'texto' => 'Novo sistema de magia com Melinoë'],
-        ['icone' => 'fa-users',               'texto' => 'Novos deuses e aliados do Olimpo'],
-        ['icone' => 'fa-map',                 'texto' => 'Submundo com layout dinâmico'],
-        ['icone' => 'fa-arrows-rotate',       'texto' => 'Atualizações frequentes em Early Access'],
-    ],
-
-    'screenshots' => [
-        '../assets/img/pages/index/slides/slide_03.png',
-        '../assets/img/pages/index/cards/card_hadesII.png',
-        '../assets/img/pages/index/slides/slide_02.png',
-        '../assets/img/pages/index/slides/slide_01.png',
-        '../assets/img/pages/index/slides/slide_05.png',
-    ],
-
-    'requisitos' => [
-        'minimo' => [
-            'os' => 'Windows 10 (64-bit)', 'proc' => 'Intel i3-4160 / AMD FX-6300',
-            'mem' => '4 GB RAM', 'gpu' => 'GTX 660 2GB / Radeon HD 7850 2GB',
-            'store' => '5 GB disponíveis', 'dx' => 'Versão 11',
-            'carga_cpu' => 30, 'carga_gpu' => 35, 'carga_ram' => 25,
+/* Se acessado diretamente (debug), usa dados de exemplo */
+if (!isset($jogo)) {
+    $jogo = [
+        'titulo' => 'Jogo não encontrado', 'slug' => '', 'desenvolvedor' => '',
+        'tagline' => '', 'descricao' => '', 'capa' => '', 'backdrop' => '',
+        'preco' => 'Gratis', 'gratis' => true, 'versao' => '', 'tamanho' => '',
+        'atualizado' => '', 'idiomas' => '', 'classificacao' => 'Livre',
+        'tags' => [], 'plataformas' => [], 'download_url' => '#',
+        'destaques' => [], 'screenshots' => [], 'videos' => [],
+        'requisitos' => [
+            'minimo' => ['os'=>'','processador'=>'','memoria'=>'','video'=>'','armazenamento'=>'','directx'=>'','carga_cpu'=>0,'carga_gpu'=>0,'carga_ram'=>0],
+            'recomendado' => ['os'=>'','processador'=>'','memoria'=>'','video'=>'','armazenamento'=>'','directx'=>'','carga_cpu'=>0,'carga_gpu'=>0,'carga_ram'=>0],
         ],
-        'recomendado' => [
-            'os' => 'Windows 10/11 (64-bit)', 'proc' => 'Intel i5-8400 / AMD Ryzen 5 2600',
-            'mem' => '8 GB RAM', 'gpu' => 'GTX 1060 6GB / RX 580 8GB',
-            'store' => '5 GB disponíveis (SSD recomendado)', 'dx' => 'Versão 12',
-            'carga_cpu' => 60, 'carga_gpu' => 65, 'carga_ram' => 55,
-        ],
-    ],
-];
-
-/* Jogos relacionados (reaproveita o padrão .cf-card do index.css) */
-$relacionados = [
-    ['titulo' => 'Hollow Knight: Silksong', 'tipo' => 'Jogo Base', 'preco' => 'Grátis', 'img' => '../assets/img/pages/index/cards/card_silksong.png'],
-    ['titulo' => 'Dead Cells',              'tipo' => 'Roguelike', 'preco' => 'R$ 49,99', 'img' => '../assets/img/pages/index/cards/card_dead_cells.png'],
-    ['titulo' => 'Undertale',               'tipo' => 'RPG',       'preco' => 'R$ 19,99', 'img' => '../assets/img/pages/index/cards/card_undertale.png'],
-    ['titulo' => 'Cuphead',                 'tipo' => 'Run & Gun', 'preco' => 'R$ 44,99', 'img' => '../assets/img/pages/index/cards/card_cuphead.png'],
-];
+    ];
+}
+if (!isset($relacionados)) {
+    $relacionados = [];
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -82,12 +40,12 @@ $relacionados = [
     <meta name="description" content="<?= htmlspecialchars($jogo['titulo']) ?> - Baixe agora na Float." />
     <title>Float | <?= htmlspecialchars($jogo['titulo']) ?></title>
 
-    <link rel="stylesheet" href="../assets/css/global/global.css" />
-    <link rel="stylesheet" href="../assets/css/pages/jogotemplate.css">
+    <link rel="stylesheet" href="/float/public/assets/css/global/global.css" />
+    <link rel="stylesheet" href="/float/public/assets/css/pages/jogotemplate.css">
 
-    <link rel="icon" href="../assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="icon" href="/float/public/assets/img/favicon/icone.ico" type="image/x-icon" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />]
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
@@ -165,6 +123,7 @@ $relacionados = [
             <div class="game-main-col">
 
                 <!-- Galeria -->
+                <?php if (!empty($jogo['screenshots'])): ?>
                 <section class="game-gallery-section reveal-hidden">
                     <div class="game-gallery-main">
                         <img src="<?= $jogo['screenshots'][0] ?>" alt="Screenshot principal" id="galleryMain">
@@ -177,12 +136,14 @@ $relacionados = [
                         <?php endforeach; ?>
                     </div>
                 </section>
+                <?php endif; ?>
 
                 <!-- Sobre -->
                 <section class="game-about-section reveal-hidden">
                     <h2 class="store-title">Sobre o Jogo <i class="fa-solid fa-arrow-right"></i></h2>
                     <p class="game-about-text"><?= htmlspecialchars($jogo['descricao']) ?></p>
 
+                    <?php if (!empty($jogo['destaques'])): ?>
                     <ul class="game-highlights">
                         <?php foreach ($jogo['destaques'] as $item): ?>
                             <li>
@@ -191,7 +152,62 @@ $relacionados = [
                             </li>
                         <?php endforeach; ?>
                     </ul>
+                    <?php endif; ?>
                 </section>
+
+                <!-- Vídeos / Trailers -->
+                <?php if (!empty($jogo['videos'])): ?>
+                <section class="game-videos-section reveal-hidden">
+                    <h2 class="store-title">Vídeos <i class="fa-solid fa-play"></i></h2>
+                    <div class="game-videos-grid">
+                        <?php foreach ($jogo['videos'] as $vid): ?>
+                            <div class="game-video-card">
+                                <?php if ($vid['tipo'] === 'youtube'):
+                                    preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $vid['url'], $m);
+                                    $ytId = $m[1] ?? '';
+                                ?>
+                                    <div class="video-embed">
+                                        <iframe src="https://www.youtube.com/embed/<?= $ytId ?>"
+                                                title="<?= htmlspecialchars($vid['titulo'] ?? 'Vídeo') ?>"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                <?php elseif ($vid['tipo'] === 'link'):
+                                    preg_match('/vimeo\.com\/(\d+)/', $vid['url'], $m);
+                                    $vimeoId = $m[1] ?? '';
+                                ?>
+                                    <?php if ($vimeoId): ?>
+                                    <div class="video-embed">
+                                        <iframe src="https://player.vimeo.com/video/<?= $vimeoId ?>"
+                                                title="<?= htmlspecialchars($vid['titulo'] ?? 'Vídeo') ?>"
+                                                frameborder="0"
+                                                allow="autoplay; fullscreen; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                    <?php else: ?>
+                                    <a href="<?= htmlspecialchars($vid['url']) ?>" target="_blank" rel="noopener" class="video-link-externo">
+                                        <i class="fa-solid fa-up-right-from-square"></i>
+                                        <?= htmlspecialchars($vid['titulo'] ?? 'Ver vídeo') ?>
+                                    </a>
+                                    <?php endif; ?>
+                                <?php elseif ($vid['tipo'] === 'arquivo'): ?>
+                                    <div class="video-embed">
+                                        <video controls preload="metadata"
+                                               poster="<?= !empty($jogo['screenshots'][0]) ? $jogo['screenshots'][0] : '' ?>">
+                                            <source src="<?= htmlspecialchars($vid['url']) ?>" type="video/mp4">
+                                            Seu navegador não suporta vídeo.
+                                        </video>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if (!empty($vid['titulo'])): ?>
+                                    <p class="game-video-title"><?= htmlspecialchars($vid['titulo']) ?></p>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </section>
+                <?php endif; ?>
 
                 <!-- Requisitos / Painel de compatibilidade -->
                 <section class="game-requirements-section reveal-hidden">
@@ -204,11 +220,11 @@ $relacionados = [
 
                                 <ul class="req-spec-list">
                                     <li><span>Sistema</span><strong><?= htmlspecialchars($r['os']) ?></strong></li>
-                                    <li><span>Processador</span><strong><?= htmlspecialchars($r['proc']) ?></strong></li>
-                                    <li><span>Memória</span><strong><?= htmlspecialchars($r['mem']) ?></strong></li>
-                                    <li><span>Vídeo</span><strong><?= htmlspecialchars($r['gpu']) ?></strong></li>
-                                    <li><span>Armazenamento</span><strong><?= htmlspecialchars($r['store']) ?></strong></li>
-                                    <li><span>DirectX</span><strong><?= htmlspecialchars($r['dx']) ?></strong></li>
+                                    <li><span>Processador</span><strong><?= htmlspecialchars($r['processador']) ?></strong></li>
+                                    <li><span>Memória</span><strong><?= htmlspecialchars($r['memoria']) ?></strong></li>
+                                    <li><span>Vídeo</span><strong><?= htmlspecialchars($r['video']) ?></strong></li>
+                                    <li><span>Armazenamento</span><strong><?= htmlspecialchars($r['armazenamento']) ?></strong></li>
+                                    <li><span>DirectX</span><strong><?= htmlspecialchars($r['directx']) ?></strong></li>
                                 </ul>
 
                                 <div class="req-meters">
@@ -284,4 +300,9 @@ $relacionados = [
     </main>
 
     <?php require_once __DIR__ . '/../includes/footer.php'; ?>
+
+    <script src="/float/public/assets/js/global/global.js"></script>
+    <script src="/float/public/assets/js/pages/jogotemplate.js"></script>
+
+</body>
 </html>
