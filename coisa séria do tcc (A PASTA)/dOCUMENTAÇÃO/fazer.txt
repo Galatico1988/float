@@ -1,27 +1,35 @@
-;aumentar textos anteriores para que 2.2 não abra tanto espaço vazio (como 2 e talvez reestruturar 2.1) - se necessário expandir mais o 2.2
-;expandir 1.4 e 1.4.1 - e verificar se 1.4.2 encaixa mais objetivos
-;talvez expandir 1.2
-;reescrever os desafios de 1.3 e dar descrição mais concisa a eles
-;arrumar as colunas das tabelas para que as palavras não fiquem cortadas
-;verificar se não tem citações em excesso
+;mudar as coisas que exigem pagamento para que não exijam mais
+[
+requisitos funcionais e não funcionais
+detalhamento de requisitos
+plano de teste de requisitos
+diagrama de caso de uso do site
+]
 
-anotar cada:
-abreviatura
-sigla
-acrônimo
-{e depois pesquisar como faz o sumário desse tipo de coisa}
+;colocar as figuras faltantes
 
 ver o estado das figuras:
-https://www.sitemaps.org/schemas/sitemap/0.9/
+https://www.sitemaps.org/schemas/sitemap/0.9/ se precisar [mapa do site]
 - mapa front end do site
 - mapa back end do site
-- mapa front end do app
 - mapa back end do app
 - diagrama de caso de uso do app
+
+;colocar quaisquer fichamentos usados na seção de anexos
+{fichamentos para colocar: }
+- colocar as citações de cada fichamento, em formato de texto, nas respectivas páginas - e depois argumentar como elas agregam no propósito da plataforma
+24
+19
+15
+10
+8
+7
+
+
 
 pesquisar quais manuais seria interessante colocar na seção devida
 
 
 
-e por fim: comparar essa versão finalizada da documentação com o padrão abnt DE VERDADE (sem ser o modelo de formatação passado pela professora)
-e pesquisar o que mais tira ponto em tcc de verdade
+e por fim: comparar essa versão finalizada da documentação com o padrão ABNT DE VERDADE (sem ser o modelo de formatação passado pela professora)
+e pesquisar o que mais tira ponto em TCC de verdade
