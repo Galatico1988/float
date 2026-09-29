@@ -1,6 +1,38 @@
 - A acessibilidade do Cleiton de QTS
 ;mais recursos de acessibilidade além dos pedidos, se possível
 
+;daltonismo
+O daltonismo é uma dificuldade na percepção ou distinção de certas cores que afeta cerca de 5% a 8% das pessoas, exigindo cuidados específicos de acessibilidade em páginas web para evitar barreiras de navegação.
+
+Diretrizes e Boas Práticas
+• Não use apenas cores: Nunca transmita informações importantes, alertas ou status usando somente a cor (como campos obrigatórios em vermelho ou status verde/vermelho). Adicione ícones, textos descritivos ou padrões visuais.
+• Contraste adequado: Garanta um contraste mínimo entre o texto e o fundo conforme as diretrizes WCAG (Critério 1.4.3) para assegurar a legibilidade.
+• Textos e links: Sublinhe links em textos ou adicione indicadores visuais que não dependam exclusivamente de o usuário enxergar uma tonalidade diferente.
+• Escolha segura de tons: Evite combinar cores problemáticas com a mesma luminosidade, como verde e vermelho, ou azul e roxo. Tons de azul costumam ser mais seguros em contrastes gerais.
+
+Ferramentas de Apoio
+• Simuladores de visão: Utilize extensões ou ferramentas como o ColorBlind para testar como o site se comporta sob diferentes tipos de daltonismo (protanopia, deuteranopia, tritanopia).
+• Validadores de contraste: Ferramentas como o CheckMyColours ajudam a conferir se a relação entre plano de fundo e fonte está adequada para todos os públicos.
+
+https://www.daltonicos.com.br/index.html
+https://www.handtalk.me/br/blog/acessibilidade-daltonicos/
+https://www.levelaccess.com/blog/color-blindness-accessibility-what-designers-need-to-know/
+https://www.pertodigital.com.br/blog/como-fazer-designs-acessiveis-para-daltonismo
+https://portal.ifrn.edu.br/institucional/tecnologia-da-informacao/tutoriais/informativos-suap/modo-daltonismo/
+https://brasil.uxdesign.cc/ilustracoes-acessiveis-melhorando-experiencias-digitais-para-usuarios-com-daltonismo-8f73e749c09e
+https://www.audioeye.com/post/8-ways-to-design-a-color-blind-friendly-website/
+https://equalweb.com.br/public/blog/o-impacto-das-cores-em-um-site-e-a-importancia-de-contar-com-uma-ferramenta-de-acessibilidade-automatizada
+https://www.a11y-collective.com/blog/color-blind-accessibility-guidelines/
+
+
+
+
+
+
+
+
+
+
 - Sistema de avaliação dos jogos baseado em estrelas
 
 - Menu lateral contendo cada seção do site (se o menu do topo não funcionar/existir)
