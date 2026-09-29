@@ -53,7 +53,7 @@ Cada um dos menus leva pra página inicial. Criar páginas próprias para cada u
 
 BIBLIOTECA
 Cada um dos menus leva pra página inicial. Criar páginas próprias para cada um
-Mudar o nome do "Meu Acervo"
+Mudar o nome do "Meu Acervo" para "Minha Biblioteca"
 
 COMUNIDADE
 O menu "Comunidade" não funciona. Criar página da comunidade
@@ -67,3 +67,18 @@ Aumentar o tamanho dos elementos, do texto "Conecte-se ao universo indie" e do t
 Os botões "Entrar" e "Criar conta" levam para páginas falhas. Consertar e integrar efetivamente a funcionalidade de login
 Integrar possibilidade de entrar com as contas dos botões abaixo - Google
 Deveria ser apenas "vincular" conta do Discord e da Steam, não "fazer login com essas contas"
+
+
+
+ÚLTIMAS NOTÍCIAS
+Colocar mais matérias novas
+- Lançamento de Endacopia
+Arrumar o tamanho da matéria de Celeste para que a foto tenha o mesmo tamanho das outras matérias
+Remover a matéria da game jam
+Colocar a categoria de reviews de jogos
+Fazer páginas para cada notícia
+
+FOOTER
+- Trocar "Plataforma Float" para "Float Games"
+Criar páginas para os links: Sobre a Float, Explorar Jogos, Categorias, Desenvolvedores, Central de Ajuda, Diretrizes, Contato, Termos de Uso, Privacidade
+Remover: Blog Oficial, Carreiras
