@@ -1,13 +1,31 @@
+verificar quais elementos faltam entre o TRABALHO DEFINITIVO e o MODELO DE FORMATAÇÃO {agora é colocar cada um}
+-estudo de viabilidade
+-requisitos funcionais
+	lista de requisitos funcionais
+	detalhamento dos requisitos funcionais
+	teste dos requisitos funcionais
+-requisitos não funcionais
+-fluxograma front-end
+-fluxograma back-end
+	dicionário de dados front-end (é uma seção do "Dicionário de Dados")
+-diagrama de classe
+-cronograma de atividades
+	gráfico de gantt
+	gráfico de pert
+
+
+
+
+
 ;mudar as coisas que exigem pagamento para que não exijam mais
 [
 requisitos funcionais e não funcionais
 detalhamento de requisitos
 plano de teste de requisitos
-diagrama de caso de uso do site
 ]
 
+;colocar um parágrafo inicial em 1.1 para que introduza sobre o mercado em geral e como ele não reconhece jogos indie
 ;colocar as figuras faltantes
-
 ver o estado das figuras:
 https://www.sitemaps.org/schemas/sitemap/0.9/ se precisar [mapa do site]
 - mapa front end do site
@@ -17,13 +35,6 @@ https://www.sitemaps.org/schemas/sitemap/0.9/ se precisar [mapa do site]
 
 ;colocar quaisquer fichamentos usados na seção de anexos
 {fichamentos para colocar: }
-- colocar as citações de cada fichamento, em formato de texto, nas respectivas páginas - e depois argumentar como elas agregam no propósito da plataforma
-24
-19
-15
-10
-8
-7
 
 
 

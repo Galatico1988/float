@@ -1,0 +1,76 @@
+Colocar um parágrafo com título de estudo de viabilidade onde será analisada a viabilidade econômica e social além do impacto que nosso projeto terá na sociedade ele deve ficar entre entre a pesquisa de campo e a metodologia de pesquisa (2 referencial teórico)
+
+No ciclo de vida do software fazer um gráfico de recursos no Project junto com o ciclo de vida do software  na parte (3 ANÁLISE DE SISTEMAS).
+
+INTEGRAR OS REQUISITOS FUNCIONAIS NA PARTE (3 ANÁLISE DO SISTEMA) Separar em requisito do site e do app e não funcionais  
+
+IMPORTANTE DESTACAR : PARA CADA AÇÃO FEITA VOCÊ DIVIDE 1 BACKEND EM VÁRIOS MÓDULOS
+
+Mapa Front-end  do Site(ESTRUTURA DO SITE) Mapa Back-end do Site (ESTRUTURA DE ARQUIVOS[Caminho que o sistema faz para acompanhar o que o usuário quer fazer])
+
+Mapa Front-end do App:(ESTRUTURA DO APP) Mapa Back-End do app (ESTRUTURA DE ARQUIVOS [Caminho que o sistema faz para acompanhar o que o usuário quer fazer)
+
+ESTRUTURA DO SITE : ORDEM DE ARQUIVOS QUE O SOFTWARE SEGUE  + TODO O TIPO DE TECNOLOGIA UTILIZADA DENTRO DO SITE + ORDEM AO QUAL ELES SE CONECTAM
+Se for externo coloca o link de onde pegou
+Se for framework link de onde pegou
+se for biblioteca link mais arquivo
+FLUXOGRAMA : Ações feitas pelo usuário e decisões feitas pelo sistema
+Front-end: e Back-end do site e do app
+
+Fluxograma -> Diagrama de caso de uso ->Dicionário de dados-> Diagrama entidade Relacionamento-> Diagrama de classe->Gráfico de grantt ->Grafico de Pert
+Separar o desenvolvimento por arquivo
+
+NO DESENVOLVIMENTO FAZER OS COMENTÁRIOS NO CÓDIGO
+
+PLANO DE NEGÓCIOS
+
+DECLARAÇÃO DE MISSÃO:
+RESUMO DE MERCADO: 
+CONCEITO DE NEGÓCIOS:
+SEGMENTO DE CLIENTES:
+PROPOSTA DE VALOR:
+CANAIS:
+RELACIONAMENTO DO CLIENTE:
+FONTE DE RECEITA:
+ATIVIDADES PRINCIPAIS:
+PARCERIAS PRINCIPAIS:
+ESTRUTURA DE CUSTOS:
+RISCOS
+RECOMPENSA
+PRINCIPAIS PROBLEMAS
+
+DEPOIS DE TERMINAR TUDO FAZER O MANUAL DE USUÁRIO E INCLUIR IMAGENS
+
+TABELA DE CUSTO PARA DESENVOLVIMENTO DO SOFTWARE
+TABELA DE CUSTOS DO SOFTWARE
+RELATÓRIO DE CUSTOS
+
+CONCLUSÃO REFERÊNCIAS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Novas Exigências : Diagrama de Classe,Gráfico de recurso /Uso de recurso,Plano de Teste e resultado, FLUXOGRAMA
+
