@@ -1,3 +1,21 @@
+PWE
+texte
+teste2
+
+DSS
+Win_atv01
+wab_porjeto21-825(WEB_bdprod012)
+wab_porjetoTESTE14-825
+Win_exemplo5TabControl
+Win_ativ1
+Win_ativ2
+
+Web_Exemplo222
+
+
+
+
+
 - A acessibilidade do Cleiton de QTS
 ;mais recursos de acessibilidade além dos pedidos, se possível
 
