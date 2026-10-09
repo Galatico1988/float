@@ -1,17 +1,33 @@
-verificar quais elementos faltam entre o TRABALHO DEFINITIVO e o MODELO DE FORMATAÇÃO {agora é colocar cada um}
--estudo de viabilidade
--requisitos funcionais
-	lista de requisitos funcionais
-	detalhamento dos requisitos funcionais
-	teste dos requisitos funcionais
--requisitos não funcionais
+desenvolvimento = colocar o código inteiro de cada coisa que fizemos. Mas pra esse tópico precisa do site e app 100% PRONTOS
+horas trabalhadas = "e se cada um fosse renumerado pelos seus serviços". O cronograma de atividades do projeto + o quê e como cada membro fez
+
+O QUE TALVEZ FIQUE PRA DEPOIS
+manuais = explicar cada página de forma que um usuário comum consiga entender como usá-las. MAS PRIMEIRO precisa COMPLETAR o site e o app...
+conclusão
+
+poderia ser interessante colocar:
+os requisitos de QTS
+
+
+
+
+
+
+
+
+
+verificar quais elementos faltam entre o TRABALHO DEFINITIVO e o MODELO DE FORMATAÇÃO
+-estudo de viabilidade {agora é colocar conteúdo}
+-requisitos funcionais{agora é colocar conteúdo}
+	detalhamento dos requisitos funcionais{agora é colocar conteúdo}
+	plano de teste dos requisitos funcionais{agora é colocar conteúdo}
 -fluxograma front-end
 -fluxograma back-end
-	dicionário de dados front-end (é uma seção do "Dicionário de Dados")
--diagrama de classe
--cronograma de atividades
-	gráfico de gantt
-	gráfico de pert
+	dicionário de dados front-end (colocar conteúdo)
+-diagrama de classe {colocar conteúdo}
+-cronograma de atividades {colocar conteúdo}
+	gráfico de gantt {colocar conteúdo}
+	gráfico de pert {colocar conteúdo}
 
 
 
@@ -19,12 +35,9 @@ verificar quais elementos faltam entre o TRABALHO DEFINITIVO e o MODELO DE FORMA
 
 ;mudar as coisas que exigem pagamento para que não exijam mais
 [
-requisitos funcionais e não funcionais
-detalhamento de requisitos
-plano de teste de requisitos
+certos detalhes do site/app
 ]
 
-;colocar um parágrafo inicial em 1.1 para que introduza sobre o mercado em geral e como ele não reconhece jogos indie
 ;colocar as figuras faltantes
 ver o estado das figuras:
 https://www.sitemaps.org/schemas/sitemap/0.9/ se precisar [mapa do site]
@@ -44,3 +57,60 @@ pesquisar quais manuais seria interessante colocar na seção devida
 
 e por fim: comparar essa versão finalizada da documentação com o padrão ABNT DE VERDADE (sem ser o modelo de formatação passado pela professora)
 e pesquisar o que mais tira ponto em TCC de verdade
+
+
+
+
+
+
+
+
+
+
+No ciclo de vida do software fazer um gráfico de recursos no Project junto com o ciclo de vida do software  na parte (3 ANÁLISE DE SISTEMAS).
+
+IMPORTANTE DESTACAR : PARA CADA AÇÃO FEITA VOCÊ DIVIDE 1 BACKEND EM VÁRIOS MÓDULOS
+
+Mapa Front-end  do Site(ESTRUTURA DO SITE) Mapa Back-end do Site (ESTRUTURA DE ARQUIVOS[Caminho que o sistema faz para acompanhar o que o usuário quer fazer])
+
+Mapa Front-end do App:(ESTRUTURA DO APP) Mapa Back-End do app (ESTRUTURA DE ARQUIVOS [Caminho que o sistema faz para acompanhar o que o usuário quer fazer)
+
+ESTRUTURA DO SITE : ORDEM DE ARQUIVOS QUE O SOFTWARE SEGUE  + TODO O TIPO DE TECNOLOGIA UTILIZADA DENTRO DO SITE + ORDEM AO QUAL ELES SE CONECTAM
+Se for externo coloca o link de onde pegou
+Se for framework link de onde pegou
+se for biblioteca link mais arquivo
+FLUXOGRAMA : Ações feitas pelo usuário e decisões feitas pelo sistema
+Front-end: e Back-end do site e do app
+
+Fluxograma -> Diagrama de caso de uso do app ->Dicionário de dados front-end-> Diagrama de classe->Gráfico de grantt ->Grafico de Pert
+Separar o desenvolvimento por arquivo
+
+NO DESENVOLVIMENTO FAZER OS COMENTÁRIOS NO CÓDIGO
+
+PLANO DE NEGÓCIOS
+DECLARAÇÃO DE MISSÃO:
+RESUMO DE MERCADO: 
+CONCEITO DE NEGÓCIOS:
+SEGMENTO DE CLIENTES:
+PROPOSTA DE VALOR:
+CANAIS:
+RELACIONAMENTO DO CLIENTE:
+FONTE DE RECEITA:
+ATIVIDADES PRINCIPAIS:
+PARCERIAS PRINCIPAIS:
+ESTRUTURA DE CUSTOS:
+RISCOS
+RECOMPENSA
+PRINCIPAIS PROBLEMAS
+
+DEPOIS DE TERMINAR TUDO FAZER O MANUAL DE USUÁRIO E INCLUIR IMAGENS
+
+TABELA DE CUSTO PARA DESENVOLVIMENTO DO SOFTWARE
+TABELA DE CUSTOS DO SOFTWARE
+RELATÓRIO DE CUSTOS
+
+CONCLUSÃO
+
+
+
+Novas Exigências : Diagrama de Classe, Gráfico de recurso/Uso de recurso, Plano de Teste e resultado
