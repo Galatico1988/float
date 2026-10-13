@@ -19,6 +19,17 @@ if ($usuarioId) {
     $stmt = $pdo->prepare('SELECT id, titulo, slug, thumbnail, genero, preco, eh_gratis, tagline FROM jogo WHERE usuario_id = ? AND visibilidade = ? ORDER BY criado_em DESC');
     $stmt->execute([$usuarioId, 'publico']);
     $jogosBaixados = $stmt->fetchAll();
+
+    // Buscar jogos salvos na lista de desejos
+    $stmtSalvos = $pdo->prepare('
+        SELECT j.id, j.titulo, j.slug, j.thumbnail, j.genero, j.preco, j.eh_gratis
+        FROM jogo_salvo s
+        INNER JOIN jogo j ON j.id = s.jogo_id
+        WHERE s.usuario_id = ? AND j.visibilidade = ?
+        ORDER BY s.criado_em DESC
+    ');
+    $stmtSalvos->execute([$usuarioId, 'publico']);
+    $jogosSalvos = $stmtSalvos->fetchAll();
 }
 ?>
 <!DOCTYPE html>
@@ -122,16 +133,62 @@ if ($usuarioId) {
 
         <!-- CONTEÚDO: SALVOS -->
         <section class="mj-content" id="tab-salvos">
-            <div class="mj-empty-state">
-                <div class="mj-empty-icon">
-                    <i class="fa-regular fa-bookmark"></i>
+            <?php if (empty($jogosSalvos)): ?>
+                <div class="mj-empty-state">
+                    <div class="mj-empty-icon">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </div>
+                    <h2>Nenhum jogo salvo</h2>
+                    <p>Adicione jogos à sua lista de desejos para acessá-los facilmente depois.</p>
+                    <a href="/float/public/index.php" class="mj-btn-explore">
+                        <i class="fa-solid fa-compass"></i> Explorar Jogos
+                    </a>
                 </div>
-                <h2>Nenhum jogo salvo</h2>
-                <p>Adicione jogos à sua lista de desejos para acessá-los facilmente depois.</p>
-                <a href="/float/public/index.php" class="mj-btn-explore">
-                    <i class="fa-solid fa-compass"></i> Explorar Jogos
-                </a>
-            </div>
+            <?php else: ?>
+                <div class="mj-games-grid" id="savedGrid">
+                    <?php foreach ($jogosSalvos as $jogo): ?>
+                        <div class="mj-game-card-wrap">
+                            <a href="/float/public/jogos/<?= htmlspecialchars($jogo['slug']) ?>/" class="mj-game-card">
+                                <div class="mj-game-cover">
+                                    <?php if ($jogo['thumbnail']): ?>
+                                        <img src="/float/public/assets/img/jogos/<?= $jogo['id'] ?>/<?= htmlspecialchars($jogo['thumbnail']) ?>" alt="<?= htmlspecialchars($jogo['titulo']) ?>" loading="lazy">
+                                    <?php else: ?>
+                                        <img src="/float/public/assets/img/pages/index/cards/card_undertale.png" alt="<?= htmlspecialchars($jogo['titulo']) ?>" loading="lazy">
+                                    <?php endif; ?>
+                                    <div class="mj-game-overlay">
+                                        <i class="fa-solid fa-play"></i>
+                                    </div>
+                                </div>
+                                <div class="mj-game-info">
+                                    <h3><?= htmlspecialchars($jogo['titulo']) ?></h3>
+                                    <div class="mj-game-meta">
+                                        <?php if ($jogo['genero']): ?>
+                                            <span class="mj-game-genre"><?= htmlspecialchars($jogo['genero']) ?></span>
+                                        <?php endif; ?>
+                                        <span class="mj-game-price"><?= $jogo['eh_gratis'] ? 'Grátis' : htmlspecialchars($jogo['preco']) ?></span>
+                                    </div>
+                                </div>
+                            </a>
+                            <button class="mj-remove-saved" data-jogo-id="<?= $jogo['id'] ?>" title="Remover da lista de desejos">
+                                <i class="fa-solid fa-bookmark"></i>
+                            </button>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+            <template id="savedEmptyTemplate">
+                <div class="mj-empty-state">
+                    <div class="mj-empty-icon">
+                        <i class="fa-regular fa-bookmark"></i>
+                    </div>
+                    <h2>Nenhum jogo salvo</h2>
+                    <p>Adicione jogos à sua lista de desejos para acessá-los facilmente depois.</p>
+                    <a href="/float/public/index.php" class="mj-btn-explore">
+                        <i class="fa-solid fa-compass"></i> Explorar Jogos
+                    </a>
+                </div>
+            </template>
         </section>
 
     </main>

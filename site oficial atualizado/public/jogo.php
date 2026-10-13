@@ -33,6 +33,16 @@ if (!$jogoRow) {
 $jogoId = (int) $jogoRow['id'];
 
 /* =========================================================
+   Verificar se o jogo está na lista de desejos do usuário
+   ========================================================= */
+$jogoSalvo = false;
+if (!empty($_SESSION['id'])) {
+    $stmtSalvo = $pdo->prepare('SELECT 1 FROM jogo_salvo WHERE usuario_id = ? AND jogo_id = ? LIMIT 1');
+    $stmtSalvo->execute([(int) $_SESSION['id'], $jogoId]);
+    $jogoSalvo = (bool) $stmtSalvo->fetch();
+}
+
+/* =========================================================
    Buscar tags
    ========================================================= */
 $stmtTags = $pdo->prepare('SELECT tag FROM jogo_tags WHERE jogo_id = ?');
@@ -74,6 +84,7 @@ $devNome = $stmtDev->fetchColumn() ?: 'Desconhecido';
    Montar array $jogo no formato que o template espera
    ========================================================= */
 $jogo = [
+    'id'            => $jogoId,
     'titulo'        => $jogoRow['titulo'],
     'slug'          => $jogoRow['slug'],
     'desenvolvedor' => $devNome,
@@ -111,7 +122,7 @@ $jogo = [
    ========================================================= */
 if (!empty($jogoRow['genero'])) {
     $stmtRel = $pdo->prepare('
-        SELECT j.titulo, j.genero, j.preco, j.thumbnail, j.slug
+        SELECT j.id, j.titulo, j.genero, j.preco, j.thumbnail, j.slug
         FROM jogo j
         WHERE j.genero = ? AND j.id != ? AND j.visibilidade = ?
         ORDER BY RAND() LIMIT 4

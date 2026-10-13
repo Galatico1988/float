@@ -96,6 +96,12 @@
   transform: translateY(-2px);
   filter: brightness(0.9);
 }
+a.btn-buy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
 .btn-wishlist {
   background: var(--glass-reflection);
   backdrop-filter: blur(8px);
@@ -112,6 +118,16 @@
 .btn-wishlist:hover {
   background: rgba(255, 255, 255, 0.18);
   border-color: rgba(255, 255, 255, 0.3);
+}
+.btn-wishlist.active {
+  background: rgba(255, 237, 78, 0.12);
+  border-color: var(--zzz-yellow);
+}
+.btn-wishlist.active i {
+  color: #ffffff;
+}
+.btn-wishlist:not(.active) i {
+  color: var(--nav-text-muted);
 }
 
 .hero-side-list {
@@ -545,6 +561,16 @@
 .btn-promo-secondary:hover {
   background: var(--glass-reflection);
   border-color: rgba(255, 255, 255, 0.3);
+}
+.btn-promo-secondary.active {
+  background: rgba(255, 237, 78, 0.12);
+  border-color: var(--zzz-yellow);
+}
+.btn-promo-secondary.active i {
+  color: #ffffff;
+}
+.btn-promo-secondary:not(.active) i {
+  color: var(--nav-text-muted);
 }
 .promo-cover-side {
   display: flex;

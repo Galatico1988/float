@@ -65,6 +65,26 @@
   border-color: var(--color-primary-purple);
   color: var(--nav-text);
 }
+.btn-wishlist.active {
+  background: rgba(255, 237, 78, 0.12);
+  border-color: var(--zzz-yellow);
+  color: var(--zzz-yellow);
+}
+.btn-wishlist.active i {
+  color: #ffffff;
+}
+.btn-wishlist:not(.active) i {
+  color: var(--nav-text-muted);
+}
+.btn-wishlist.active:hover {
+  background: rgba(255, 237, 78, 0.2);
+  border-color: var(--zzz-yellow);
+  color: var(--zzz-yellow);
+}
+.btn-wishlist:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
 .sdb-btn {
   padding: 10px 22px;
   font-size: 0.75rem;

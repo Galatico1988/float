@@ -33,11 +33,11 @@ if (!empty($_SESSION['avatar_path'])) {
                         <div class="area-conteudo">
                             <div class="menu-column">
                                 <h3><i class="fa-solid fa-fire header-icon"></i> Tendências do Float</h3>
-                                <a href="#" class="rich-link-item">
+                                <a href="/float/public/pages/maisjogados.php" class="rich-link-item">
                                     <span class="item-title"><i class="fa-solid fa-bolt mini-icon-left"></i> Mais Jogados</span>
                                     <span class="item-desc">Os títulos indie que estão dominando a comunidade nesta semana.</span>
                                 </a>
-                                <a href="#" class="rich-link-item">
+                                <a href="/float/public/pages/recempostados.php" class="rich-link-item">
                                     <span class="item-title"><i class="fa-solid fa-calendar-days mini-icon-left"></i> Recém Postados</span>
                                     <span class="item-desc">Descubra novos talentos e seja o primeiro a comentar nos projetos.</span>
                                 </a>
@@ -137,7 +137,7 @@ if (!empty($_SESSION['avatar_path'])) {
                                 <span class="item-title"><i class="fa-solid fa-upload mini-icon-left"></i> Publicar Jogo</span>
                                 <span class="item-desc">Envie seu projeto e comece a construir sua audiência.</span>
                             </a>
-                               <a href="#" class="rich-link-item">
+                               <a href="/float/public/pages/estatisticas.php" class="rich-link-item">
                                 <span class="item-title"><i class="fa-solid fa-chart-line mini-icon-left"></i> Estatísticas</span>
                                 <span class="item-desc">Veja quantos downloads e visitas seu jogo recebeu.</span>
                             </a>

@@ -52,6 +52,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
   meterFills.forEach(fill => meterObserver.observe(fill));
 
+  /* ---------- Lista de Desejos (salvar jogo) ---------- */
+  const wishlistBtns = document.querySelectorAll('.btn-wishlist[data-jogo-id]');
+
+  wishlistBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const jogoId = btn.dataset.jogoId;
+      if (!jogoId || jogoId === '0') return;
+
+      btn.disabled = true;
+
+      try {
+        const resp = await fetch('/float/api/user/salvar_jogo.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'jogo_id=' + encodeURIComponent(jogoId)
+        });
+
+        if (resp.status === 401) {
+          window.location.href = '/float/public/pages/login.php';
+          return;
+        }
+
+        const data = await resp.json();
+        if (!data.ok) throw new Error(data.mensagem || 'Erro ao salvar.');
+
+        const salvo = data.acao === 'salvo';
+
+        document.querySelectorAll('.btn-wishlist[data-jogo-id="' + jogoId + '"]').forEach(b => {
+          b.classList.toggle('active', salvo);
+
+          const icon = b.querySelector('i');
+          if (icon) {
+            icon.classList.toggle('fa-solid', salvo);
+            icon.classList.toggle('fa-regular', !salvo);
+          }
+
+          const label = b.querySelector('.btn-wishlist-label');
+          if (label) {
+            label.textContent = salvo ? 'Salvo na Lista de Desejos' : 'Adicionar à Lista de Desejos';
+          }
+        });
+      } catch (err) {
+        alert('Não foi possível atualizar a lista de desejos. Tente novamente.');
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  });
+
   /* ---------- Reveal genérico (caso global.js não cubra esta página) ---------- */
   const revealEls = document.querySelectorAll('.reveal-hidden');
   const revealObserver = new IntersectionObserver((entries) => {

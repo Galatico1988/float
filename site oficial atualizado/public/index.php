@@ -55,8 +55,8 @@ $activePage = 'home';
                         <h2 class="hero-game-name">Deltarune</h2>
                         <p class="hero-description">Mergulhe em um novo capítulo do multiverso de Toby Fox. Uma narrativa emocionante e subversiva que redefine os limites do RPG indie com carisma e mistério.</p>
                         <div class="hero-actions">
-                            <button class="btn-buy">Jogue Agora</button>
-                            <button class="btn-wishlist" title="Lista de Desejos">
+                            <a href="/float/public/jogos/deltarune/" class="btn-buy" id="heroPlayBtn">Jogue Agora</a>
+                            <button class="btn-wishlist" id="heroWishlistBtn" title="Lista de Desejos">
                                 <i class="fa-regular fa-bookmark"></i>
                             </button>
                         </div>
@@ -269,8 +269,8 @@ $activePage = 'home';
                             <span class="promo-tag"><i class="fa-solid fa-users"></i> Single Player</span>
                         </div>
                         <div class="promo-actions">
-                            <a href="jogos/hades-ii/"><button class="btn-promo-primary"><i class="fa-solid fa-play"></i> Jogar Agora</button></a>
-                            <button class="btn-promo-secondary"><i class="fa-regular fa-bookmark"></i> Lista de Desejos</button>
+                            <a href="/float/public/jogos/hades-ii/" class="btn-promo-primary"><i class="fa-solid fa-play"></i> Jogar Agora</a>
+                            <button class="btn-promo-secondary" id="promoWishlistBtn" data-jogo-id="4"><i class="fa-regular fa-bookmark"></i> <span class="btn-wishlist-label">Lista de Desejos</span></button>
                         </div>
                     </div>
                     <div class="promo-cover-side">

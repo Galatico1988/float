@@ -332,15 +332,12 @@ $activePage = 'perfil';
                 <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
                 Jogos
             </button>
-            <button class="tab-btn"
-                    role="tab"
-                    aria-selected="false"
-                    aria-controls="panel-stats"
-                    id="tab-stats"
-                    data-tab="stats">
+            <a class="tab-btn tab-btn--link"
+               href="estatisticas.php?id=<?= $alvoId ?>"
+               id="tab-stats">
                 <i class="fa-solid fa-chart-bar" aria-hidden="true"></i>
                 Estatísticas
-            </button>
+            </a>
         </div>
     </div>
 
@@ -432,99 +429,6 @@ $activePage = 'perfil';
         <?php endif; ?>
     </section>
 
-    
-    <section class="perfil-panel"
-             id="panel-stats"
-             role="tabpanel"
-             aria-labelledby="tab-stats"
-             hidden>
-
-        <?php if ($stats['total_jogos'] === 0): ?>
-        <div class="estado-vazio">
-            <i class="fa-solid fa-chart-bar fa-3x" aria-hidden="true"></i>
-            <p>Sem jogos publicados ainda. As estatísticas aparecem aqui quando o perfil tiver projetos.</p>
-        </div>
-        <?php else: ?>
-        <div class="stats-grid">
-
-            <div class="stat-card">
-                <i class="fa-solid fa-trophy stat-icon icon-gold" aria-hidden="true"></i>
-                <div class="stat-body">
-                    <span class="stat-label">Mais bem avaliado</span>
-                    <strong class="stat-value">
-                        <?= $stats['mais_avaliado']
-                            ? htmlspecialchars($stats['mais_avaliado']['titulo'])
-                            : '—' ?>
-                    </strong>
-                    <?php if ($stats['mais_avaliado']): ?>
-                    <span class="stat-sub">
-                        ★ <?= number_format($stats['mais_avaliado']['media_nota'], 1) ?>
-                        (<?= $stats['mais_avaliado']['total_aval'] ?> avaliações)
-                    </span>
-                    <?php endif; ?>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <i class="fa-solid fa-arrow-trend-down stat-icon icon-red" aria-hidden="true"></i>
-                <div class="stat-body">
-                    <span class="stat-label">Menos avaliado</span>
-                    <strong class="stat-value">
-                        <?= $stats['menos_avaliado']
-                            ? htmlspecialchars($stats['menos_avaliado']['titulo'])
-                            : '—' ?>
-                    </strong>
-                    <?php if ($stats['menos_avaliado'] && $stats['total_jogos'] > 1): ?>
-                    <span class="stat-sub">
-                        ★ <?= number_format($stats['menos_avaliado']['media_nota'], 1) ?>
-                        (<?= $stats['menos_avaliado']['total_aval'] ?> avaliações)
-                    </span>
-                    <?php endif; ?>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <i class="fa-solid fa-clock stat-icon icon-blue" aria-hidden="true"></i>
-                <div class="stat-body">
-                    <span class="stat-label">Tempo de conta ativa</span>
-                    <strong class="stat-value"><?= $tempoContaStr ?></strong>
-                    <span class="stat-sub">Desde <?= date('d/m/Y', strtotime($usuario['criado_em'])) ?></span>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <i class="fa-solid fa-gamepad stat-icon icon-purple" aria-hidden="true"></i>
-                <div class="stat-body">
-                    <span class="stat-label">Total de jogos publicados</span>
-                    <strong class="stat-value"><?= $stats['total_jogos'] ?></strong>
-                    <span class="stat-sub"><?= $stats['total_avaliacoes'] ?> avaliações recebidas</span>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <i class="fa-solid fa-star stat-icon icon-yellow" aria-hidden="true"></i>
-                <div class="stat-body">
-                    <span class="stat-label">Média geral</span>
-                    <strong class="stat-value"><?= number_format($stats['media_geral'], 1) ?> / 5</strong>
-                    <span class="stat-sub">Entre todos os jogos com avaliação</span>
-                </div>
-            </div>
-
-            <?php if ($stats['jogo_mais_antigo']): ?>
-            <div class="stat-card">
-                <i class="fa-solid fa-calendar-days stat-icon icon-green" aria-hidden="true"></i>
-                <div class="stat-body">
-                    <span class="stat-label">Primeiro projeto postado</span>
-                    <strong class="stat-value">
-                        <?= date('d/m/Y', strtotime($stats['jogo_mais_antigo'])) ?>
-                    </strong>
-                    <span class="stat-sub">Há <?= $tempoContaStr ?></span>
-                </div>
-            </div>
-            <?php endif; ?>
-
-        </div>
-        <?php endif; ?>
         </div>
     </div>
 

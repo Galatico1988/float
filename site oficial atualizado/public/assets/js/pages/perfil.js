@@ -116,7 +116,7 @@ function initModalCloseButtons() {
 
 
 function initTabs() {
-    const btns = document.querySelectorAll('.tab-btn');
+    const btns = document.querySelectorAll('.tab-btn[data-tab]');
     const panels = document.querySelectorAll('.perfil-panel');
 
     btns.forEach((btn) => {
