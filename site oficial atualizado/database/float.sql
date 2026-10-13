@@ -199,6 +199,23 @@ INSERT INTO `jogo_screenshots` (`id`, `jogo_id`, `caminho`, `ordem`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `jogo_salvo`
+--
+
+DROP TABLE IF EXISTS `jogo_salvo`;
+CREATE TABLE IF NOT EXISTS `jogo_salvo` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `usuario_id` int UNSIGNED NOT NULL,
+  `jogo_id` int UNSIGNED NOT NULL,
+  `criado_em` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_jogo_salvo` (`usuario_id`,`jogo_id`),
+  KEY `idx_jogo_salvo_jogo` (`jogo_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `jogo_tags`
 --
 
@@ -236,6 +253,24 @@ CREATE TABLE IF NOT EXISTS `jogo_videos` (
   `ordem` tinyint UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fk_videos_jogo` (`jogo_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `estatistica_jogo`
+--
+
+DROP TABLE IF EXISTS `estatistica_jogo`;
+CREATE TABLE IF NOT EXISTS `estatistica_jogo` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `jogo_id` int UNSIGNED NOT NULL,
+  `data` date NOT NULL,
+  `instalacoes` int UNSIGNED NOT NULL DEFAULT '0',
+  `jogadores_ativos` int UNSIGNED NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_jogo_data` (`jogo_id`,`data`),
+  KEY `idx_estat_jogo` (`jogo_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -342,6 +377,12 @@ ALTER TABLE `jogo_tags`
 --
 ALTER TABLE `jogo_videos`
   ADD CONSTRAINT `fk_videos_jogo` FOREIGN KEY (`jogo_id`) REFERENCES `jogo` (`id`) ON DELETE CASCADE;
+
+--
+-- Restrições para tabelas `estatistica_jogo`
+--
+ALTER TABLE `estatistica_jogo`
+  ADD CONSTRAINT `fk_estat_jogo` FOREIGN KEY (`jogo_id`) REFERENCES `jogo` (`id`) ON DELETE CASCADE;
 
 --
 -- Restrições para tabelas `seguidor`
