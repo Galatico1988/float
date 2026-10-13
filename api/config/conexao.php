@@ -2,10 +2,10 @@
 
 require_once dirname(__DIR__, 2) . '/bootstrap.php';
 
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'float');
+define('DB_HOST', 'mysql.railway.internal');
+define('DB_NAME', 'railway');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'IsicwluLdiyCKjGQQyVJfDqXTdpApnOF');
 define('DB_CHARSET', 'utf8mb4');
 
 $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
