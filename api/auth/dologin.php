@@ -1,5 +1,10 @@
 <?php
+/**
+ * Form de login do site (POST com redirect HTML).
+ * Usa a mesma regra de negócio do app: api/_core/usuario.php.
+ */
 
+require_once __DIR__ . '/../_core/usuario.php';
 require_once __DIR__ . '/../config/conexao.php';
 
 session_start();
@@ -28,24 +33,15 @@ if (!empty($erros)) {
     exit;
 }
 
+$usuario = usuario_autenticar($pdo, $email, $senha);
 
-$stmt = $pdo->prepare('SELECT id, nome, senha, avatar_path FROM usuario WHERE email = ? LIMIT 1');
-$stmt->execute([$email]);
-$usuario = $stmt->fetch();
-
-if (!$usuario || !password_verify($senha, $usuario['senha'])) {
+if ($usuario === null) {
     $query = http_build_query(['erro' => 'E-mail ou senha incorretos.']);
     header('Location: ../../public/pages/login.php?' . $query);
     exit;
 }
 
-
-session_regenerate_id(true);
-
-$_SESSION['id']          = (int) $usuario['id'];
-$_SESSION['nome']        = $usuario['nome'];
-$_SESSION['avatar_path'] = $usuario['avatar_path'];
-
+usuario_iniciar_sessao($usuario);
 
 header('Location: ../../public/index.php?login=sucesso');
 exit;

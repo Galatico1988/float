@@ -1,9 +1,13 @@
 <?php
+/**
+ * Form de cadastro do site (POST com redirect HTML).
+ * Usa a mesma regra de negócio do app: api/_core/usuario.php.
+ */
 
+require_once __DIR__ . '/../_core/usuario.php';
 require_once __DIR__ . '/../config/conexao.php';
 
 session_start();
-
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -14,20 +18,7 @@ $nome  = trim($_POST['nome']  ?? '');
 $email = trim($_POST['email'] ?? '');
 $senha = $_POST['password']   ?? '';
 
-
-$erros = [];
-
-if (mb_strlen($nome) < 3 || mb_strlen($nome) > 50) {
-    $erros[] = 'O nome de usuário deve ter entre 3 e 50 caracteres.';
-}
-
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $erros[] = 'E-mail inválido.';
-}
-
-if (mb_strlen($senha) < 8) {
-    $erros[] = 'A senha deve ter no mínimo 8 caracteres.';
-}
+$erros = usuario_validar_cadastro($nome, $email, $senha);
 
 if (!empty($erros)) {
     $query = http_build_query(['erro' => implode(' | ', $erros)]);
@@ -35,23 +26,20 @@ if (!empty($erros)) {
     exit;
 }
 
-
-$stmt = $pdo->prepare('SELECT id FROM usuario WHERE email = ? LIMIT 1');
-$stmt->execute([$email]);
-
-if ($stmt->fetch()) {
+try {
+    $novoId = usuario_criar($pdo, $nome, $email, $senha);
+} catch (RuntimeException $e) {
     $query = http_build_query(['erro' => 'Este e-mail já está cadastrado.']);
     header('Location: ../../public/pages/cadastro.php?' . $query);
     exit;
 }
 
-
-$hash = password_hash($senha, PASSWORD_BCRYPT);
-$stmt = $pdo->prepare('INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)');
-$stmt->execute([$nome, $email, $hash]);
-
-$_SESSION['usuario_id'] = (int) $pdo->lastInsertId();
-$_SESSION['usuario_nome'] = $nome;
+/* Mesmo comportamento do cadastro do app: já entra logado. */
+usuario_iniciar_sessao([
+    'id'    => $novoId,
+    'nome'  => $nome,
+    'email' => $email,
+]);
 
 header('Location: ../../public/pages/login.php?cadastro=sucesso');
 exit;

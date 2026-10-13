@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(__DIR__, 2) . '/bootstrap.php';
+
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'float');
 define('DB_USER', 'root');
