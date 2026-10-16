@@ -53,23 +53,15 @@ https://www.a11y-collective.com/blog/color-blind-accessibility-guidelines/
 
 - Sistema de avaliação dos jogos baseado em estrelas
 
-- Menu lateral contendo cada seção do site (se o menu do topo não funcionar/existir)
-
-- Filtro de categorias de jogos
-
-- Denunciar jogo
-
 - Denunciar usuário
-
-- Menu próprio pra lista de desejos pra adicionar os jogos
 
 
 
 REVISAR RECURSOS PARA IDENTIFICAR POSSÍVEIS AJUSTES
 - olhar a página de denúncias
-- acessar a página de compra de um jogo
+- acessar a página de aquisição de um jogo
 - testar a comunidade
-- a página inicial
+- a aparência da página inicial
 - perfil do usuário
 
 
@@ -87,23 +79,18 @@ Colocar a nova logo em cima do slider + o slogan "Conectando ideias, elevando o 
 PÁGINA INICIAL
 programar o slider de jogos para que ele sempre exiba jogos novos a cada vez que o site é aberto
 "Descubra Algo Novo" também pode ter mais opções aleatórias
-"Em Destaque" precisa conter o jogo que tem algo a mais em comparação com os outros - tipo, com mais avaliações positivas, ou o mais vendido etc.
-"Últimas Notícias" precisa ser reformulado. Mas como?
 
-PÁGINA DE COMPRA DO JOGO
+PÁGINA DE AQUISIÇÃO DO JOGO
 Arrumar as fotos de cada jogo
 Aumentar as descrições - se possível copiar as descrições oficiais e colocá-las aqui
 Redimensionar as imagens da seção "Mais como este" embaixo
 Configurar a "Mais como este" para que ela só mostre jogos com pelo menos 2 categorias que coincidam com a categoria do jogo cuja página está aberta
 
 DESCUBRA
-Colocar mais categorias
-Mudar as descrições das categorias
 Cada um dos menus leva pra página inicial. Criar páginas próprias para cada um
 
 BIBLIOTECA
 Cada um dos menus leva pra página inicial. Criar páginas próprias para cada um
-Mudar o nome do "Meu Acervo" para "Minha Biblioteca"
 
 COMUNIDADE
 O menu "Comunidade" não funciona. Criar página da comunidade
@@ -114,7 +101,6 @@ Cada um dos menus leva pra página inicial. Criar páginas próprias para cada u
 
 LOGIN
 Aumentar o tamanho dos elementos, do texto "Conecte-se ao universo indie" e do texto "Voltar para a página inicial" (trocar o texto atual para esse)
-Os botões "Entrar" e "Criar conta" levam para páginas falhas. Consertar e integrar efetivamente a funcionalidade de login
 Integrar possibilidade de entrar com as contas dos botões abaixo - Google
 Deveria ser apenas "vincular" conta do Discord e da Steam, não "fazer login com essas contas"
 
@@ -124,11 +110,9 @@ Deveria ser apenas "vincular" conta do Discord e da Steam, não "fazer login com
 Colocar mais matérias novas
 - Lançamento de Endacopia
 Arrumar o tamanho da matéria de Celeste para que a foto tenha o mesmo tamanho das outras matérias
-Remover a matéria da game jam
 Colocar a categoria de reviews de jogos
 Fazer páginas para cada notícia
 
 FOOTER
 - Trocar "Plataforma Float" para "Float Games"
 Criar páginas para os links: Sobre a Float, Explorar Jogos, Categorias, Desenvolvedores, Central de Ajuda, Diretrizes, Contato, Termos de Uso, Privacidade
-Remover: Blog Oficial, Carreiras
