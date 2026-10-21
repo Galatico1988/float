@@ -2,6 +2,45 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+require_once __DIR__ . '/../api/config/conexao.php';
+
+$stmtJogos = $pdo->query("
+    SELECT j.id, j.titulo, j.slug, j.tagline, j.descricao, j.thumbnail, j.backdrop,
+           j.genero, u.nome AS desenvolvedor
+    FROM jogo j
+    LEFT JOIN usuario u ON u.id = j.usuario_id
+    WHERE j.visibilidade = 'publico'
+    ORDER BY RAND()
+    LIMIT 10
+");
+$jogos = $stmtJogos->fetchAll();
+$jogosSlider = array_slice($jogos, 0, 5);
+
+$imagemJogo = static function (array $jogo, bool $usarBackdrop = false): string {
+    $arquivos = $usarBackdrop
+        ? [$jogo['backdrop'], $jogo['thumbnail']]
+        : [$jogo['thumbnail']];
+
+    foreach ($arquivos as $arquivo) {
+        if (!$arquivo) {
+            continue;
+        }
+
+        $arquivo = basename($arquivo);
+        $caminho = __DIR__ . '/assets/img/jogos/' . (int) $jogo['id'] . '/' . $arquivo;
+        if (is_file($caminho)) {
+            return './assets/img/jogos/' . (int) $jogo['id'] . '/' . rawurlencode($arquivo);
+        }
+    }
+
+    return './assets/img/pages/index/cards/card_undertale.png';
+};
+
+$descricaoJogo = static function (array $jogo): string {
+    $descricao = trim((string) ($jogo['tagline'] ?: strip_tags((string) $jogo['descricao'])));
+    return mb_substr($descricao ?: 'Conheça este jogo indie publicado pela comunidade Float.', 0, 220);
+};
+
 $basePath   = './';
 $activePage = 'home';
 ?>
@@ -39,36 +78,41 @@ $activePage = 'home';
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
 
-          <main>    
+          <main>
+             <section class="home-brand-intro" aria-label="Float">
+                <img src="./assets/img/global/logo.png" alt="Float" class="home-brand-logo">
+                <p>Conectando ideias, elevando o jogo.</p>
+             </section>
+             <?php if ($jogosSlider): ?>
+             <?php $jogoPrincipal = $jogosSlider[0]; ?>
+             <?php $descricaoPrincipal = $descricaoJogo($jogoPrincipal); ?>
              <section class="epic-hero-section">
-            <div class="epic-hero-container">
+                 <div class="epic-hero-container">
 
-                <div class="hero-main-display">
-                    <img src="./assets/img/pages/index/slides/slide_01.png"
-                         alt="Deltarune"
-                         class="hero-main-img">
+                     <div class="hero-main-display">
+                         <img src="<?= htmlspecialchars($imagemJogo($jogoPrincipal, true), ENT_QUOTES, 'UTF-8') ?>"
+                              alt="<?= htmlspecialchars($jogoPrincipal['titulo'], ENT_QUOTES, 'UTF-8') ?>"
+                              class="hero-main-img">
 
-                    <div class="hero-gradient-overlay"></div>
+                         <div class="hero-gradient-overlay"></div>
 
-                    <div class="hero-overlay-content">
-                        <span class="hero-status">Última Atualização</span>
-                        <h2 class="hero-game-name">Deltarune</h2>
-                        <p class="hero-description">Mergulhe em um novo capítulo do multiverso de Toby Fox. Uma narrativa emocionante e subversiva que redefine os limites do RPG indie com carisma e mistério.</p>
-                        <div class="hero-actions">
-                            <button class="btn-buy">Jogue Agora</button>
-                            <button class="btn-wishlist" title="Lista de Desejos">
-                                <i class="fa-regular fa-bookmark"></i>
-                            </button>
-                        </div>
-                    </div>
+                         <div class="hero-overlay-content">
+                             <span class="hero-status"><?= htmlspecialchars($jogoPrincipal['genero'] ?: 'Jogo em destaque', ENT_QUOTES, 'UTF-8') ?></span>
+                             <h2 class="hero-game-name"><?= htmlspecialchars($jogoPrincipal['titulo'], ENT_QUOTES, 'UTF-8') ?></h2>
+                             <p class="hero-description"><?= htmlspecialchars($descricaoPrincipal, ENT_QUOTES, 'UTF-8') ?></p>
+                             <div class="hero-actions">
+                                 <a href="/float/public/jogos/<?= rawurlencode($jogoPrincipal['slug']) ?>/" class="btn-buy" id="heroPlayBtn">Jogue Agora</a>
+                                 <button class="btn-wishlist" id="heroWishlistBtn" data-jogo-id="<?= (int) $jogoPrincipal['id'] ?>" title="Lista de Desejos">
+                                     <i class="fa-regular fa-bookmark"></i>
+                                 </button>
+                             </div>
+                         </div>
 
-                    <div class="hero-dots">
-                        <span class="hero-dot active"></span>
-                        <span class="hero-dot"></span>
-                        <span class="hero-dot"></span>
-                         <span class="hero-dot"></span>
-                          <span class="hero-dot"></span>
-                    </div>
+                         <div class="hero-dots">
+                             <?php foreach ($jogosSlider as $indice => $jogo): ?>
+                             <span class="hero-dot <?= $indice === 0 ? 'active' : '' ?>"></span>
+                             <?php endforeach; ?>
+                         </div>
 
                     <div class="hero-progress-bar">
                         <div class="hero-progress-bar-fill"></div>
@@ -76,49 +120,31 @@ $activePage = 'home';
                 </div>
 
                 <aside class="hero-side-list">
-                    <div class="side-item active">
-                        <img src="./assets/img/pages/index/slides/slide_01.png" alt="Deltarune">
+                    <?php foreach ($jogosSlider as $indice => $jogo): ?>
+                    <div class="side-item <?= $indice === 0 ? 'active' : '' ?>"
+                         data-image="<?= htmlspecialchars($imagemJogo($jogo, true), ENT_QUOTES, 'UTF-8') ?>"
+                         data-title="<?= htmlspecialchars($jogo['titulo'], ENT_QUOTES, 'UTF-8') ?>"
+                         data-description="<?= htmlspecialchars($descricaoJogo($jogo), ENT_QUOTES, 'UTF-8') ?>"
+                         data-status="<?= htmlspecialchars($jogo['genero'] ?: 'Jogo em destaque', ENT_QUOTES, 'UTF-8') ?>"
+                         data-jogo-id="<?= (int) $jogo['id'] ?>"
+                         data-slug="<?= htmlspecialchars($jogo['slug'], ENT_QUOTES, 'UTF-8') ?>">
+                        <img src="<?= htmlspecialchars($imagemJogo($jogo), ENT_QUOTES, 'UTF-8') ?>"
+                             alt="<?= htmlspecialchars($jogo['titulo'], ENT_QUOTES, 'UTF-8') ?>">
                         <div class="side-item-info">
-                            <span class="side-item-name">Deltarune</span>
-                            <span class="side-item-tag"></span>
+                            <span class="side-item-name"><?= htmlspecialchars($jogo['titulo'], ENT_QUOTES, 'UTF-8') ?></span>
+                            <span class="side-item-tag"><?= htmlspecialchars($jogo['genero'] ?: '', ENT_QUOTES, 'UTF-8') ?></span>
                         </div>
                     </div>
-                    <div class="side-item">
-                        <img src="./assets/img/pages/index/slides/slide_02.png" alt="Celeste">
-                        <div class="side-item-info">
-                            <span class="side-item-name">Celeste</span>
-                            <span class="side-item-tag"></span>
-                        </div>
-                    </div>
-                    <div class="side-item">
-                        <img src="./assets/img/pages/index/slides/slide_03.png" alt="Hades II">
-                        <div class="side-item-info">
-                            <span class="side-item-name">Hades II</span>
-                            <span class="side-item-tag"></span>
-                        </div>
-                    </div>
-                    <div class="side-item">
-                        <img src="./assets/img/pages/index/slides/slide_04.png" alt="Journey">
-                        <div class="side-item-info">
-                            <span class="side-item-name">Journey</span>
-                            <span class="side-item-tag"></span>
-                        </div>
-                    </div>
-                    <div class="side-item">
-                        <img src="./assets/img/pages/index/slides/slide_05.png" alt="Stardew Valley">
-                        <div class="side-item-info">
-                            <span class="side-item-name">Stardew Valley</span>
-                            <span class="side-item-tag"></span>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </aside>
 
             </div>
         </section>
+        <?php endif; ?>
 
         <section class="store-section">
             <div class="store-header">
-                <h2 class="store-title">Descubra algo novo  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></h2>
+                <h2 class="store-title">Descubra Algo Novo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></h2>
                 <div class="store-nav">
                     <button class="nav-arrow" id="coverflow-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
                     <button class="nav-arrow" id="coverflow-next" aria-label="Próximo"><i class="fa-solid fa-chevron-right"></i></button>
@@ -126,129 +152,27 @@ $activePage = 'home';
             </div>
 
             <div class="coverflow-track-wrapper">
+                <?php if ($jogos): ?>
                 <div class="coverflow-track" id="coverflowTrack">
-
-                    <div class="cf-card" data-title="Hollow Knight: Silksong" data-type="Jogo Base" data-price="Grátis">
+                    <?php foreach ($jogos as $jogo): ?>
+                    <div class="cf-card">
                         <div class="cf-card-cover">
-                            <img src="./assets/img/pages/index/cards/card_silksong.png" alt="Hollow Knight: Silksong" loading="lazy">
+                            <img src="<?= htmlspecialchars($imagemJogo($jogo), ENT_QUOTES, 'UTF-8') ?>"
+                                 alt="<?= htmlspecialchars('Capa de ' . $jogo['titulo'], ENT_QUOTES, 'UTF-8') ?>"
+                                 loading="lazy">
                             <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
                         </div>
                         <div class="cf-card-info">
-                            <span class="cf-game-type">Jogo Base</span>
-                            <h3 class="cf-game-title">Hollow Knight: Silksong</h3>
-                            <p class="cf-game-price">Grátis</p>
+                            <span class="cf-game-type"><?= htmlspecialchars($jogo['genero'] ?: 'Jogo indie', ENT_QUOTES, 'UTF-8') ?></span>
+                            <h3 class="cf-game-title"><?= htmlspecialchars($jogo['titulo'], ENT_QUOTES, 'UTF-8') ?></h3>
+                            <p class="cf-game-developer">Desenvolvido por <?= htmlspecialchars($jogo['desenvolvedor'] ?: 'Desenvolvedor independente', ENT_QUOTES, 'UTF-8') ?></p>
                         </div>
                     </div>
-
-                    <div class="cf-card" data-title="Celeste" data-type="Indie" data-price="R$ 36,99">
-                        <div class="cf-card-cover">
-                            <img src="./assets/img/pages/index/cards/card_celeste.png" alt="Celeste" loading="lazy">
-                            <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="cf-card-info">
-                            <span class="cf-game-type">Indie</span>
-                            <h3 class="cf-game-title">Celeste</h3>
-                            <p class="cf-game-price">R$ 36,99</p>
-                        </div>
-                    </div>
-
-                    <div class="cf-card" data-title="Deltarune" data-type="RPG" data-price="Grátis">
-                        <div class="cf-card-cover">
-                            <img src="./assets/img/pages/index/cards/card_deltarune.png" alt="Deltarune" loading="lazy">
-                            <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="cf-card-info">
-                            <span class="cf-game-type">RPG</span>
-                            <h3 class="cf-game-title">Deltarune</h3>
-                            <p class="cf-game-price">Grátis</p>
-                        </div>
-                    </div>
-
-                    <div class="cf-card" data-title="Hades II" data-type="Roguelite" data-price="R$ 59,99">
-                        <div class="cf-card-cover">
-                            <img src="./assets/img/pages/index/cards/card_hadesII.png" alt="Hades II" loading="lazy">
-                            <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="cf-card-info">
-                            <span class="cf-game-type">Roguelite</span>
-                            <h3 class="cf-game-title">Hades II</h3>
-                            <p class="cf-game-price">R$ 59,99</p>
-                        </div>
-                    </div>
-
-                    <div class="cf-card" data-title="Journey" data-type="Aventura" data-price="R$ 29,99">
-                        <div class="cf-card-cover">
-                            <img src="./assets/img/pages/index/cards/card_journey.png" alt="Journey" loading="lazy">
-                            <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="cf-card-info">
-                            <span class="cf-game-type">Aventura</span>
-                            <h3 class="cf-game-title">Journey</h3>
-                            <p class="cf-game-price">R$ 29,99</p>
-                        </div>
-                    </div>
-
-                    <div class="cf-card" data-title="Undertale" data-type="RPG" data-price="R$ 19,99">
-                        <div class="cf-card-cover">
-                            <img src="./assets/img/pages/index/cards/card_undertale.png" alt="Undertale" loading="lazy">
-                            <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="cf-card-info">
-                            <span class="cf-game-type">RPG</span>
-                            <h3 class="cf-game-title">Undertale</h3>
-                            <p class="cf-game-price">R$ 19,99</p>
-                        </div>
-                    </div>
-
-                    <div class="cf-card" data-title="Shovel Knight" data-type="Plataforma" data-price="R$ 39,99">
-                        <div class="cf-card-cover">
-                            <img src="./assets/img/pages/index/cards/card_shovel_knight.png" alt="Shovel Knight" loading="lazy">
-                            <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="cf-card-info">
-                            <span class="cf-game-type">Plataforma</span>
-                            <h3 class="cf-game-title">Shovel Knight</h3>
-                            <p class="cf-game-price">R$ 39,99</p>
-                        </div>
-                    </div>
-
-                    <div class="cf-card" data-title="Stardew Valley" data-type="Simulação" data-price="R$ 27,99">
-                        <div class="cf-card-cover">
-                            <img src="./assets/img/pages/index/cards/card_stardew_valley.png" alt="Stardew Valley" loading="lazy">
-                            <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="cf-card-info">
-                            <span class="cf-game-type">Simulação</span>
-                            <h3 class="cf-game-title">Stardew Valley</h3>
-                            <p class="cf-game-price">R$ 27,99</p>
-                        </div>
-                    </div>
-
-                    <div class="cf-card" data-title="Dead Cells" data-type="Roguelike" data-price="R$ 49,99">
-                        <div class="cf-card-cover">
-                            <img src="./assets/img/pages/index/cards/card_dead_cells.png" alt="Dead Cells" loading="lazy">
-                            <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="cf-card-info">
-                            <span class="cf-game-type">Roguelike</span>
-                            <h3 class="cf-game-title">Dead Cells</h3>
-                            <p class="cf-game-price">R$ 49,99</p>
-                        </div>
-                    </div>
-
-                    <div class="cf-card" data-title="Cuphead" data-type="Run &amp; Gun" data-price="R$ 44,99">
-                        <div class="cf-card-cover">
-                            <img src="./assets/img/pages/index/cards/card_cuphead.png" alt="Cuphead" loading="lazy">
-                            <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                        <div class="cf-card-info">
-                            <span class="cf-game-type">Run &amp; Gun</span>
-                            <h3 class="cf-game-title">Cuphead</h3>
-                            <p class="cf-game-price">R$ 44,99</p>
-                        </div>
-                    </div>
-
+                    <?php endforeach; ?>
                 </div>
+                <?php else: ?>
+                <p class="coverflow-empty">Ainda não há jogos publicados para descobrir. Volte em breve!</p>
+                <?php endif; ?>
             </div>
         </section>
 
@@ -265,12 +189,12 @@ $activePage = 'home';
                         <p class="promo-desc">A sequência do premiado roguelite da Supergiant Games chega em Early Access. Mais profundo, mais sombrio e mais viciante do que jamais foi.</p>
                         <div class="promo-meta">
                             <span class="promo-tag"><i class="fa-solid fa-layer-group"></i> Roguelite</span>
-                            <span class="promo-tag"><i class="fa-solid fa-bolt"></i> Early Access</span>
+                            <span class="promo-tag"><i class="fa-solid fa-bolt"></i> Acesso Antecipado</span>
                             <span class="promo-tag"><i class="fa-solid fa-users"></i> Single Player</span>
                         </div>
                         <div class="promo-actions">
-                            <a href="jogos/hades-ii/"><button class="btn-promo-primary"><i class="fa-solid fa-play"></i> Jogar Agora</button></a>
-                            <button class="btn-promo-secondary"><i class="fa-regular fa-bookmark"></i> Lista de Desejos</button>
+                            <a href="/float/public/jogos/hades-ii/" class="btn-promo-primary"><i class="fa-solid fa-play"></i> Jogar Agora</a>
+                            <button class="btn-promo-secondary" id="promoWishlistBtn" data-jogo-id="4"><i class="fa-regular fa-bookmark"></i> <span class="btn-wishlist-label">Lista de Desejos</span></button>
                         </div>
                     </div>
                     <div class="promo-cover-side">
@@ -332,6 +256,58 @@ $activePage = 'home';
                     </div>
                 </article>
 
+                <article class="news-card">
+                    <div class="news-card-cover">
+                        <img src="./assets/img/pages/index/cards/card_hadesII.png" alt="Hades II atualização" loading="lazy">
+                        <span class="news-category">Atualização</span>
+                    </div>
+                    <div class="news-card-body">
+                        <time class="news-date"><i class="fa-regular fa-clock"></i> 20 abr 2026</time>
+                        <h3 class="news-title">Hades II recebe grande atualização de Early Access com novo bioma e chefão</h3>
+                        <p class="news-excerpt">A Supergiant lançou a segunda grande atualização de conteúdo, expandindo a progressão com uma área inédita nas profundezas do submundo.</p>
+                        <a href="./pages/noticias.php" class="news-read-more">Ler mais <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-card-cover">
+                        <img src="./assets/img/pages/index/cards/card_silksong.png" alt="Hollow Knight Silksong" loading="lazy">
+                        <span class="news-category">Lançamento</span>
+                    </div>
+                    <div class="news-card-body">
+                        <time class="news-date"><i class="fa-regular fa-clock"></i> 15 abr 2026</time>
+                        <h3 class="news-title">Hollow Knight: Silksong finalmente tem janela de lançamento revelada</h3>
+                        <p class="news-excerpt">A Team Cherry confirmou uma janela de lançamento durante um evento surpresa, encerrando anos de espera da comunidade.</p>
+                        <a href="./pages/noticias.php" class="news-read-more">Ler mais <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-card-cover">
+                        <img src="./assets/img/pages/index/cards/card_undertale.png" alt="Arte ilustrativa de jogo indie em pixel art" loading="lazy">
+                        <span class="news-category">Lançamento</span>
+                    </div>
+                    <div class="news-card-body">
+                        <time class="news-date"><i class="fa-regular fa-clock"></i> 27 julho 2026</time>
+                        <h3 class="news-title">Endacopia chega para quem busca uma nova aventura de terror indie</h3>
+                        <p class="news-excerpt">Explore um mundo inquietante, descubra seus mistérios e acompanhe o lançamento de Endacopia, uma experiência independente de terror e exploração.</p>
+                        <a href="./pages/noticias.php" class="news-read-more">Ler mais <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-card-cover">
+                        <img src="./assets/img/pages/index/cards/card_hadesII.png" alt="Hades II" loading="lazy">
+                        <span class="news-category">Reviews de Jogos</span>
+                    </div>
+                    <div class="news-card-body">
+                        <time class="news-date"><i class="fa-regular fa-clock"></i> 12 outubro 2026</time>
+                        <h3 class="news-title">Review: Hades II combina ação veloz e progressão envolvente</h3>
+                        <p class="news-excerpt">Analisamos o combate, a variedade de builds e a direção de arte da jornada de Melinoë pelo Submundo.</p>
+                        <a href="./pages/noticias.php" class="news-read-more">Ler mais <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
             </div>
         </section>
 
@@ -345,6 +321,3 @@ $activePage = 'home';
 </body>
 
 </html>
-
-
-

@@ -51,6 +51,7 @@ $activePage = 'noticias';
                     <button class="noticias-filter-btn" data-filter="lançamento">Lançamento</button>
                     <button class="noticias-filter-btn" data-filter="comunidade">Comunidade</button>
                     <button class="noticias-filter-btn" data-filter="plataforma">Plataforma</button>
+                    <button class="noticias-filter-btn" data-filter="review">Reviews</button>
                 </div>
             </div>
         </header>
@@ -68,6 +69,19 @@ $activePage = 'noticias';
                         <time class="noticias-date"><i class="fa-regular fa-clock"></i> 8 maio 2026</time>
                         <h2 class="noticias-title">Celeste recebe patch surpresa com novo modo de dificuldade após 3 anos</h2>
                         <p class="noticias-excerpt">Maddy Thorson anunciou uma atualização gratuita que adiciona o "Crystal Heart Mode", revisitando as fases mais icônicas com mecânicas inéditas e uma trilha sonora expandida por Lena Raine.</p>
+                        <a href="#" class="noticias-read-more">Ler matéria completa <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="noticias-card" data-category="lançamento">
+                    <div class="noticias-card-cover">
+                        <img src="../assets/img/pages/index/cards/card_undertale.png" alt="Arte ilustrativa de Endacopia" loading="lazy">
+                        <span class="noticias-badge">Lançamento</span>
+                    </div>
+                    <div class="noticias-card-body">
+                        <time class="noticias-date"><i class="fa-regular fa-clock"></i> 27 julho 2026</time>
+                        <h2 class="noticias-title">Endacopia chega para quem busca uma nova aventura de terror indie</h2>
+                        <p class="noticias-excerpt">Explore um mundo inquietante, descubra seus mistérios e acompanhe Endacopia, uma experiência independente de terror e exploração.</p>
                         <a href="#" class="noticias-read-more">Ler matéria completa <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </article>
@@ -111,6 +125,19 @@ $activePage = 'noticias';
                     </div>
                 </article>
 
+                <article class="noticias-card" data-category="review">
+                    <div class="noticias-card-cover">
+                        <img src="../assets/img/pages/index/cards/card_hadesII.png" alt="Hades II" loading="lazy">
+                        <span class="noticias-badge">Reviews de Jogos</span>
+                    </div>
+                    <div class="noticias-card-body">
+                        <time class="noticias-date"><i class="fa-regular fa-clock"></i> 12 outubro 2026</time>
+                        <h2 class="noticias-title">Review: Hades II combina ação veloz e progressão envolvente</h2>
+                        <p class="noticias-excerpt">Analisamos o combate, a variedade de builds e a direção de arte da jornada de Melinoë pelo Submundo.</p>
+                        <a href="#" class="noticias-read-more">Ler matéria completa <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
                 <article class="noticias-card" data-category="lançamento">
                     <div class="noticias-card-cover">
                         <img src="../assets/img/pages/index/cards/card_silksong.png" alt="Hollow Knight Silksong" loading="lazy">
@@ -142,5 +169,3 @@ $activePage = 'noticias';
 
 </body>
 </html>
-
-

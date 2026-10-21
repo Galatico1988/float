@@ -385,6 +385,14 @@
   color: white;
 }
 
+.tab-btn--link {
+  text-decoration: none;
+}
+
+.tab-btn--link:hover {
+  border-bottom-color: var(--glass-border);
+}
+
 .perfil-panel {
   animation: fadeInUp 0.3s ease both;
 }

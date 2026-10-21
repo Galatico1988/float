@@ -253,27 +253,41 @@ a {
 }
 
 .social-auth {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
 
 .social-auth a {
-  width: 42px;
-  height: 42px;
+  min-width: 0;
+  min-height: 42px;
   border: 1px solid var(--glass-border);
   border-radius: 8px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 7px;
+  padding: 8px;
   background: rgba(255, 255, 255, 0.02);
   color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
   transition: 0.3s;
+}
+
+.social-auth a i {
+  flex: 0 0 auto;
 }
 
 .social-auth a:hover {
   border-color: var(--navy);
   color: var(--navy);
+}
+
+@media (max-width: 480px) {
+  .social-auth {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .auth-switch {
@@ -297,7 +311,8 @@ a {
   top: 20px;
   left: 20px;
   color: var(--nav-text-muted);
-  font-size: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 @keyframes pageEntrance {

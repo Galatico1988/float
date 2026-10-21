@@ -30,28 +30,106 @@ if (!empty($_SESSION['avatar_path'])) {
                 </a>
                 <div class="mega-menu-wrapper">
                     <div class="mega-menu-inner layout-com-midia">
-                        <div class="area-conteudo">
+                        <div class="area-conteudo discover-menu-content">
                             <div class="menu-column">
                                 <h3><i class="fa-solid fa-fire header-icon"></i> Tendências do Float</h3>
-                                <a href="#" class="rich-link-item">
+                                <a href="/float/public/pages/maisjogados.php" class="rich-link-item">
                                     <span class="item-title"><i class="fa-solid fa-bolt mini-icon-left"></i> Mais Jogados</span>
                                     <span class="item-desc">Os títulos indie que estão dominando a comunidade nesta semana.</span>
                                 </a>
-                                <a href="#" class="rich-link-item">
+                                <a href="/float/public/pages/recempostados.php" class="rich-link-item">
                                     <span class="item-title"><i class="fa-solid fa-calendar-days mini-icon-left"></i> Recém Postados</span>
                                     <span class="item-desc">Descubra novos talentos e seja o primeiro a comentar nos projetos.</span>
                                 </a>
                             </div>
-                            <div class="menu-column">
+                            <div class="menu-column discover-categories-column">
                                 <h3><i class="fa-solid fa-layer-group header-icon"></i> Categorias</h3>
-                                <a href="#" class="rich-link-item">
-                                    <span class="item-title"><i class="fa-solid fa-ghost mini-icon-left"></i> Terror & Suspense</span>
-                                    <span class="item-desc">Experiências imersivas criadas por desenvolvedores solo.</span>
-                                </a>
-                                <a href="#" class="rich-link-item">
-                                    <span class="item-title"><i class="fa-solid fa-puzzle-piece mini-icon-left"></i> Quebra-cabeça</span>
-                                    <span class="item-desc">Jogos casuais para treinar sua mente entre uma partida e outra.</span>
-                                </a>
+                                <div class="discover-genres-grid">
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-bolt mini-icon-left"></i> Ação</span>
+                                        <span class="item-desc">Combates e desafios que exigem reflexos.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-compass mini-icon-left"></i> Aventura</span>
+                                        <span class="item-desc">Explore mundos e descubra novas histórias.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-hand-fist mini-icon-left"></i> Beat em' Up</span>
+                                        <span class="item-desc">Enfrente grupos de inimigos usando combos.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-clone mini-icon-left"></i> Cartas</span>
+                                        <span class="item-desc">Monte baralhos e combine cartas estrategicamente.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-face-smile mini-icon-left"></i> Casual</span>
+                                        <span class="item-desc">Partidas simples para jogar sem compromisso.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-flag-checkered mini-icon-left"></i> Corrida</span>
+                                        <span class="item-desc">Dispute velocidade em pistas e veículos.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-chess mini-icon-left"></i> Esportes</span>
+                                        <span class="item-desc">Competições inspiradas em esportes diversos.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-chess-knight mini-icon-left"></i> Estratégia</span>
+                                        <span class="item-desc">Planeje recursos e decisões para vencer.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-crosshairs mini-icon-left"></i> FPS (Tiro em Primeira Pessoa)</span>
+                                        <span class="item-desc">Combate com armas visto pelos olhos do personagem.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-arrow-trend-up mini-icon-left"></i> Incremental (Idle)</span>
+                                        <span class="item-desc">Acumule recursos e avance continuamente.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-hand-fist mini-icon-left"></i> Luta</span>
+                                        <span class="item-desc">Enfrente adversários em duelos e torneios.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-music mini-icon-left"></i> Musical</span>
+                                        <span class="item-desc">Interaja com música e acompanhe performances.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-shoe-prints mini-icon-left"></i> Plataforma</span>
+                                        <span class="item-desc">Salte obstáculos e atravesse fases.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-arrow-pointer mini-icon-left"></i> Point and Click</span>
+                                        <span class="item-desc">Investigue cenários e resolva desafios clicando.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-puzzle-piece mini-icon-left"></i> Quebra-Cabeça</span>
+                                        <span class="item-desc">Resolva enigmas com lógica e observação.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-drum mini-icon-left"></i> Ritmo</span>
+                                        <span class="item-desc">Acerte os comandos no tempo da música.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-dragon mini-icon-left"></i> RPG</span>
+                                        <span class="item-desc">Desenvolva personagens em jornadas narrativas.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-cubes mini-icon-left"></i> Sandbox</span>
+                                        <span class="item-desc">Crie, explore e jogue com liberdade.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-gears mini-icon-left"></i> Simulação</span>
+                                        <span class="item-desc">Experimente atividades e sistemas simulados.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-campground mini-icon-left"></i> Sobrevivência</span>
+                                        <span class="item-desc">Gerencie recursos e resista às ameaças.</span>
+                                    </a>
+                                    <a href="#" class="rich-link-item">
+                                        <span class="item-title"><i class="fa-solid fa-ghost mini-icon-left"></i> Terror</span>
+                                        <span class="item-desc">Encare mistérios e situações assustadoras.</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,7 +145,7 @@ if (!empty($_SESSION['avatar_path'])) {
                 <div class="mega-menu-wrapper">
                     <div class="mega-menu-inner layout-dividido">
                         <div class="menu-column column-relative">
-                            <h3><i class="fa-solid fa-box-open header-icon"></i> Meu Acervo</h3>
+                            <h3><i class="fa-solid fa-box-open header-icon"></i> Minha Biblioteca</h3>
                             <a href="/float/public/pages/meusjogos.php" class="rich-link-item">
                                 <span class="item-title"><i class="fa-solid fa-gamepad mini-icon-left"></i> Meus Jogos</span>
                                 <span class="item-desc">Acesse sua lista completa de títulos salvos e baixados.</span>
@@ -137,7 +215,7 @@ if (!empty($_SESSION['avatar_path'])) {
                                 <span class="item-title"><i class="fa-solid fa-upload mini-icon-left"></i> Publicar Jogo</span>
                                 <span class="item-desc">Envie seu projeto e comece a construir sua audiência.</span>
                             </a>
-                               <a href="#" class="rich-link-item">
+                               <a href="/float/public/pages/estatisticas.php" class="rich-link-item">
                                 <span class="item-title"><i class="fa-solid fa-chart-line mini-icon-left"></i> Estatísticas</span>
                                 <span class="item-desc">Veja quantos downloads e visitas seu jogo recebeu.</span>
                             </a>

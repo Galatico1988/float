@@ -96,6 +96,12 @@
   transform: translateY(-2px);
   filter: brightness(0.9);
 }
+a.btn-buy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
 .btn-wishlist {
   background: var(--glass-reflection);
   backdrop-filter: blur(8px);
@@ -112,6 +118,16 @@
 .btn-wishlist:hover {
   background: rgba(255, 255, 255, 0.18);
   border-color: rgba(255, 255, 255, 0.3);
+}
+.btn-wishlist.active {
+  background: rgba(255, 237, 78, 0.12);
+  border-color: var(--zzz-yellow);
+}
+.btn-wishlist.active i {
+  color: #ffffff;
+}
+.btn-wishlist:not(.active) i {
+  color: var(--nav-text-muted);
 }
 
 .hero-side-list {
@@ -285,6 +301,12 @@
   padding: 0 calc(50% - 120px);
 }
 
+.coverflow-empty {
+  color: var(--nav-text-muted);
+  text-align: center;
+  padding: 40px 20px;
+}
+
 .cf-card {
   flex: 0 0 220px;
   cursor: pointer;
@@ -391,11 +413,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.cf-game-price {
+.cf-game-developer {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--zzz-yellow);
+  color: var(--nav-text-muted);
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .promo-spotlight-section {
@@ -545,6 +570,16 @@
 .btn-promo-secondary:hover {
   background: var(--glass-reflection);
   border-color: rgba(255, 255, 255, 0.3);
+}
+.btn-promo-secondary.active {
+  background: rgba(255, 237, 78, 0.12);
+  border-color: var(--zzz-yellow);
+}
+.btn-promo-secondary.active i {
+  color: #ffffff;
+}
+.btn-promo-secondary:not(.active) i {
+  color: var(--nav-text-muted);
 }
 .promo-cover-side {
   display: flex;

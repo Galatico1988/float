@@ -15,6 +15,7 @@ $activePage = 'jogos';
 /* Se acessado diretamente (debug), usa dados de exemplo */
 if (!isset($jogo)) {
     $jogo = [
+        'id' => 0,
         'titulo' => 'Jogo não encontrado', 'slug' => '', 'desenvolvedor' => '',
         'tagline' => '', 'descricao' => '', 'capa' => '', 'backdrop' => '',
         'preco' => 'Gratis', 'gratis' => true, 'versao' => '', 'tamanho' => '',
@@ -29,6 +30,9 @@ if (!isset($jogo)) {
 }
 if (!isset($relacionados)) {
     $relacionados = [];
+}
+if (!isset($jogoSalvo)) {
+    $jogoSalvo = false;
 }
 ?>
 <!DOCTYPE html>
@@ -104,8 +108,8 @@ if (!isset($relacionados)) {
                             <i class="fa-solid fa-download"></i>
                             <?= $jogo['gratis'] ? 'Baixar Grátis' : 'Baixar Agora — ' . htmlspecialchars($jogo['preco']) ?>
                         </a>
-                        <button class="btn-wishlist" title="Lista de Desejos">
-                            <i class="fa-regular fa-bookmark"></i>
+                        <button class="btn-wishlist<?= $jogoSalvo ? ' active' : '' ?>" title="Lista de Desejos" data-jogo-id="<?= (int) $jogo['id'] ?>">
+                            <i class="<?= $jogoSalvo ? 'fa-solid' : 'fa-regular' ?> fa-bookmark"></i>
                         </button>
                         <div class="game-platforms">
                             <?php foreach ($jogo['plataformas'] as $plat): ?>
@@ -255,8 +259,8 @@ if (!isset($relacionados)) {
                         <i class="fa-solid fa-download"></i>
                         <?= $jogo['gratis'] ? 'Baixar Grátis' : 'Baixar — ' . htmlspecialchars($jogo['preco']) ?>
                     </a>
-                    <button class="btn-wishlist full-width">
-                        <i class="fa-regular fa-bookmark"></i> Adicionar à Lista de Desejos
+                    <button class="btn-wishlist full-width<?= $jogoSalvo ? ' active' : '' ?>" data-jogo-id="<?= (int) $jogo['id'] ?>">
+                        <i class="<?= $jogoSalvo ? 'fa-solid' : 'fa-regular' ?> fa-bookmark"></i> <span class="btn-wishlist-label"><?= $jogoSalvo ? 'Salvo na Lista de Desejos' : 'Adicionar à Lista de Desejos' ?></span>
                     </button>
 
                     <div class="game-info-divider"></div>
@@ -274,14 +278,14 @@ if (!isset($relacionados)) {
         </div>
 
         <!-- ===================== RELACIONADOS ===================== -->
-        <section class="store-section">
+        <section class="store-section game-related-section">
             <div class="store-header">
                 <h2 class="store-title">Mais como este <i class="fa-solid fa-arrow-right"></i></h2>
             </div>
             <div class="coverflow-track-wrapper">
                 <div class="coverflow-track cf-static">
                     <?php foreach ($relacionados as $rel): ?>
-                        <div class="cf-card cf-active">
+                        <a href="/float/public/jogos/<?= htmlspecialchars($rel['slug']) ?>/" class="cf-card cf-active">
                             <div class="cf-card-cover">
                                 <img src="<?= $rel['img'] ?>" alt="<?= htmlspecialchars($rel['titulo']) ?>" loading="lazy">
                                 <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
@@ -291,7 +295,7 @@ if (!isset($relacionados)) {
                                 <h3 class="cf-game-title"><?= htmlspecialchars($rel['titulo']) ?></h3>
                                 <p class="cf-game-price"><?= htmlspecialchars($rel['preco']) ?></p>
                             </div>
-                        </div>
+                        </a>
                     <?php endforeach; ?>
                 </div>
             </div>

@@ -2,40 +2,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     iniciarHeroSlider();
     initCoverFlow();
+    iniciarWishlist();
 });
 
-const HERO_DATA = [
-    {
-        img: './assets/img/pages/index/slides/slide_01.png',
-        title: 'Deltarune',
-        desc: 'Mergulhe em um novo capítulo do multiverso de Toby Fox. Uma narrativa emocionante e subversiva que redefine os limites do RPG indie com carisma e mistério.',
-        status: 'Última Atualização',
-    },
-    {
-        img: './assets/img/pages/index/slides/slide_02.png',
-        title: 'Celeste',
-        desc: 'Uma obra-prima de plataforma sobre autodescoberta. Supere montanhas físicas e metafóricas em uma jornada sensível, precisa e visualmente deslumbrante.',
-        status: 'Aclamado pela Crítica',
-    },
-    {
-        img: './assets/img/pages/index/slides/slide_03.png',
-        title: 'Hades II',
-        desc: 'A batalha além do Submundo continua. Domine feitiçarias ancestrais e enfrente o Titã do Tempo nesta sequência eletrizante do roguelite mais premiado da Supergiant.',
-        status: 'Early Access',
-    },
-    {
-        img: './assets/img/pages/index/slides/slide_04.png',
-        title: 'Journey',
-        desc: 'Uma odisseia visual e sonora pelas areias de um mundo ancestral. Descubra a beleza do silêncio e a conexão humana em uma das experiências mais artísticas dos games.',
-        status: 'Early Access',
-    },
-    {
-        img: './assets/img/pages/index/slides/slide_05.png',
-        title: 'Stardew Valley',
-        desc: 'Cultive muito mais que uma fazenda. Construa laços, explore segredos e encontre o seu refúgio ideal neste simulador de vida que transborda charme e profundidade.',
-        status: 'Disponível',
-    }
-];
+let HERO_DATA = [];
 
 let slideAtual = 0;
 let slideInterval;
@@ -48,15 +18,37 @@ function iniciarHeroSlider() {
 
     if (!mainImg || !heroContent || sideItems.length === 0) return;
 
-    comecarAutoPlay(sideItems, mainImg, heroContent, heroDots);
+    HERO_DATA = Array.from(sideItems, item => ({
+        img: item.dataset.image,
+        title: item.dataset.title,
+        desc: item.dataset.description,
+        status: item.dataset.status,
+        jogoId: item.dataset.jogoId,
+        slug: item.dataset.slug
+    }));
+    slideAtual = Math.max(0, Array.from(sideItems).findIndex(item => item.classList.contains('active')));
+    atualizarWishlist(HERO_DATA[slideAtual].jogoId);
+    atualizarPlayBtn(HERO_DATA[slideAtual].slug);
+
+    if (HERO_DATA.length > 1) {
+        comecarAutoPlay(sideItems, mainImg, heroContent, heroDots);
+    }
 
     sideItems.forEach((item, index) => {
         item.addEventListener('click', () => {
             resetarAutoPlay();
             trocarSlide(index, sideItems, mainImg, heroContent, heroDots);
-            comecarAutoPlay(sideItems, mainImg, heroContent, heroDots);
+            if (HERO_DATA.length > 1) {
+                comecarAutoPlay(sideItems, mainImg, heroContent, heroDots);
+            }
         });
     });
+}
+
+function atualizarPlayBtn(slug) {
+    const btn = document.getElementById('heroPlayBtn');
+    if (!btn || !slug) return;
+    btn.href = '/float/public/jogos/' + slug + '/';
 }
 
 function comecarAutoPlay(sideItems, mainImg, heroContent, heroDots) {
@@ -74,6 +66,9 @@ function trocarSlide(index, sideItems, mainImg, heroContent, heroDots) {
     slideAtual = index;
     const dado = HERO_DATA[index];
 
+    atualizarWishlist(dado.jogoId);
+    atualizarPlayBtn(dado.slug);
+
     sideItems.forEach(i => i.classList.remove('active'));
     if (sideItems[index]) sideItems[index].classList.add('active');
 
@@ -88,6 +83,7 @@ function trocarSlide(index, sideItems, mainImg, heroContent, heroDots) {
 
     setTimeout(() => {
         mainImg.src = dado.img;
+        mainImg.alt = dado.title;
         heroContent.querySelector('.hero-status').textContent = dado.status;
         heroContent.querySelector('.hero-game-name').textContent = dado.title;
         heroContent.querySelector('.hero-description').textContent = dado.desc;
@@ -157,4 +153,68 @@ function initCoverFlow() {
     window.addEventListener('resize', () => centerActiveCard(), { passive: true });
 
     applyStates();
+}
+
+/* ---------- Lista de Desejos (hero) ---------- */
+function atualizarWishlist(jogoId) {
+    const btn = document.getElementById('heroWishlistBtn');
+    if (!btn) return;
+
+    btn.dataset.jogoId = jogoId || '';
+    btn.classList.remove('active');
+
+    const icon = btn.querySelector('i');
+    if (icon) {
+        icon.classList.remove('fa-solid');
+        icon.classList.add('fa-regular');
+    }
+}
+
+function iniciarWishlist() {
+    const heroBtn = document.getElementById('heroWishlistBtn');
+    const promoBtn = document.getElementById('promoWishlistBtn');
+
+    [heroBtn, promoBtn].forEach(btn => {
+        if (btn) btn.addEventListener('click', () => tratarWishlist(btn));
+    });
+}
+
+async function tratarWishlist(btn) {
+    const jogoId = btn.dataset.jogoId;
+    if (!jogoId || jogoId === '0') return;
+
+    btn.disabled = true;
+
+    try {
+        const resp = await fetch('/float/api/user/salvar_jogo.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'jogo_id=' + encodeURIComponent(jogoId)
+        });
+
+        if (resp.status === 401) {
+            window.location.href = '/float/public/pages/login.php';
+            return;
+        }
+
+        const data = await resp.json();
+        if (!data.ok) throw new Error(data.mensagem || 'Erro ao salvar.');
+
+        const salvo = data.acao === 'salvo';
+
+        btn.classList.toggle('active', salvo);
+
+        const icon = btn.querySelector('i');
+        if (icon) {
+            icon.classList.toggle('fa-solid', salvo);
+            icon.classList.toggle('fa-regular', !salvo);
+        }
+
+        const label = btn.querySelector('.btn-wishlist-label');
+        if (label) label.textContent = salvo ? 'Salvo na Lista de Desejos' : 'Lista de Desejos';
+    } catch (err) {
+        alert('Não foi possível atualizar a lista de desejos. Tente novamente.');
+    } finally {
+        btn.disabled = false;
+    }
 }

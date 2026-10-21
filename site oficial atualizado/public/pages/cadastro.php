@@ -70,21 +70,30 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn-auth-primary">Criar Conta no Float</button>
+                        <button type="submit" class="btn-auth-primary">Criar conta na Float</button>
+                        <button type="submit" class="btn-auth-primary">É um desenvolvedor? <a href="#">Crie a sua conta por aqui!</a></button>
 
                         <div class="auth-divider"><span>ou registre-se com</span></div>
 
                         <div class="social-auth">
                             <a href="#" aria-label="Registrar com Google"><i class="fa-brands fa-google"
-                                    aria-hidden="true"></i></a>
-                            <a href="#" aria-label="Registrar com Apple"><i class="fa-brands fa-apple"
-                                    aria-hidden="true"></i></a>
+                                    aria-hidden="true"></i><span>Google</span></a>
+                            <a href="#" aria-label="Registrar com Microsoft"><i class="fa-brands fa-microsoft"
+                                    aria-hidden="true"></i><span>Microsoft</span></a>
+                            <a href="#" aria-label="Registrar com Steam"><i class="fa-brands fa-steam"
+                                    aria-hidden="true"></i><span>Steam</span></a>
+                            <a href="#" aria-label="Registrar com Itch"><i class="fa-brands fa-itch-io"
+                                    aria-hidden="true"></i><span>Itch</span></a>
                             <a href="#" aria-label="Registrar com Discord"><i class="fa-brands fa-discord"
-                                    aria-hidden="true"></i></a>
+                                    aria-hidden="true"></i><span>Discord</span></a>
+                            <a href="#" aria-label="Registrar com Unity"><i class="fa-brands fa-unity"
+                                    aria-hidden="true"></i><span>Unity</span></a>
+                            <a href="#" aria-label="Registrar com Unreal"><i class="fa-brands fa-unreal-engine"
+                                    aria-hidden="true"></i><span>Unreal</span></a>
                         </div>
 
                         <p class="auth-switch">
-                            Já tem uma conta? <a href="login.php">Fazer Login</a>
+                            Já tem uma conta? <a href="login.php">Faça o Login!</a>
                         </p>
                     </form>
                 </div>

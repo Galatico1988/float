@@ -356,6 +356,33 @@ i.fa-regular {
   width: 100%;
 }
 
+.discover-menu-content {
+  grid-template-columns: 1fr;
+}
+
+.discover-categories-column {
+  min-width: 0;
+}
+
+.discover-genres-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px 10px;
+}
+
+.discover-genres-grid .rich-link-item {
+  margin: 0;
+  padding: 8px;
+}
+
+.discover-genres-grid .item-title {
+  font-size: 0.85rem;
+}
+
+.discover-genres-grid .item-desc {
+  font-size: 0.7rem;
+}
+
 .item-desc {
   color: var(--nav-text-muted);
   font-size: 0.75rem;
@@ -433,6 +460,16 @@ i.fa-regular {
 
   .nav-list-center.active {
     display: flex;
+  }
+
+  .discover-genres-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .discover-genres-grid {
+    grid-template-columns: 1fr;
   }
 }
 

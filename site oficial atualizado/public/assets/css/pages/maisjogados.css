@@ -1,0 +1,338 @@
+/* ==========================================
+   MAIS JOGADOS - Página
+   ========================================== */
+
+.mjp-page {
+    min-height: 80vh;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 70px;
+}
+
+/* ======== HEADER ======== */
+
+.mjp-page-header {
+    padding: 50px 0 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 26px;
+}
+
+.mjp-header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.mjp-header-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--Fogo, #e74c3c), #ff9d2e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 8px 30px rgba(231, 76, 60, 0.4);
+}
+
+.mjp-header-text h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+.mjp-header-text p {
+    color: #999;
+    font-size: 0.95rem;
+    margin: 4px 0 0;
+    max-width: 620px;
+}
+
+/* ======== TABS ======== */
+
+.mjp-toolbar {
+    margin-bottom: 24px;
+}
+
+.mjp-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px;
+    border-radius: 12px;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.mjp-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #888;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+}
+
+.mjp-tab:hover {
+    color: #ccc;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.mjp-tab.active {
+    background: rgba(231, 76, 60, 0.25);
+    color: #fff;
+}
+
+/* ======== PANEL ======== */
+
+.mjp-panel {
+    display: none;
+}
+
+.mjp-panel.active {
+    display: block;
+    animation: mjpFade 0.3s ease;
+}
+
+@keyframes mjpFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.mjp-panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.mjp-panel-head h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mjp-panel-head h2 i {
+    color: var(--zzz-yellow, #f1c40f);
+}
+
+.mjp-panel-head span {
+    color: #8a90a5;
+    font-size: 0.82rem;
+}
+
+/* ======== RANKING ======== */
+
+.mjp-rank {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mjp-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 12px 18px;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.mjp-item:hover {
+    transform: translateX(4px);
+    border-color: rgba(166, 74, 255, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.mjp-pos {
+    width: 34px;
+    flex-shrink: 0;
+    text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #6a7089;
+}
+
+.mjp-top-1 { border-color: rgba(245, 197, 66, 0.5); }
+.mjp-top-1 .mjp-pos { color: #f5c542; }
+.mjp-top-2 { border-color: rgba(199, 205, 219, 0.4); }
+.mjp-top-2 .mjp-pos { color: #c7cddb; }
+.mjp-top-3 { border-color: rgba(205, 127, 50, 0.45); }
+.mjp-top-3 .mjp-pos { color: #cd7f32; }
+
+.mjp-game {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    flex: 1;
+    min-width: 0;
+}
+
+.mjp-game img {
+    width: 84px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mjp-game-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.mjp-game-info strong {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mjp-game:hover strong {
+    color: var(--zzz-yellow, #f1c40f);
+}
+
+.mjp-genre {
+    font-size: 0.76rem;
+    color: #8a90a5;
+}
+
+.mjp-metric {
+    flex-shrink: 0;
+    width: 160px;
+    text-align: right;
+}
+
+.mjp-metric strong {
+    display: block;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+}
+
+.mjp-metric > span {
+    display: block;
+    font-size: 0.72rem;
+    color: #8a90a5;
+    margin-bottom: 6px;
+}
+
+.mjp-bar {
+    height: 6px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.mjp-bar > span {
+    display: block;
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--navy, #22007c), var(--Fogo, #e74c3c));
+    transition: width 0.5s ease;
+}
+
+/* ======== EMPTY ======== */
+
+.mjp-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+    color: #555;
+}
+
+.mjp-empty h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    color: #ccc;
+    margin: 18px 0 6px;
+}
+
+.mjp-empty p {
+    color: #777;
+    margin: 0;
+}
+
+.mjp-vazio {
+    color: #777;
+    padding: 30px 0;
+}
+
+/* ======== RESPONSIVO ======== */
+
+@media (max-width: 640px) {
+    .mjp-page-header {
+        padding: 30px 0 20px;
+    }
+
+    .mjp-header-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .mjp-tabs {
+        width: 100%;
+    }
+
+    .mjp-tab {
+        padding: 9px 13px;
+        font-size: 0.8rem;
+    }
+
+    .mjp-item {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .mjp-game {
+        flex: 1;
+    }
+
+    .mjp-game img {
+        width: 64px;
+        height: 38px;
+    }
+
+    .mjp-metric {
+        width: 100%;
+        text-align: left;
+        margin-left: 0;
+    }
+}

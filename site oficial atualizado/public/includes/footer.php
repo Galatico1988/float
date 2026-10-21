@@ -4,8 +4,8 @@
             <div class="footer-brand-section">
                 <img src="/float/public/assets/img/global/logo.png" alt="Float Logo" class="logo-image-custom-footer">
                 <div class="footer-brand-text">
-                    <h3 style="color:#fff;">Plataforma Float</h3>
-                    <p style="color:#666;font-size:.8rem;">A casa do desenvolvimento independente. Versão Alpha - Promeia</p>
+                    <h3 style="color:#fff;">Float Games</h3>
+                    <p style="color:#666;font-size:.8rem;">A casa do desenvolvimento independente.</p>
                 </div>
             </div>
             <div class="footer-socials-modern">

@@ -259,6 +259,49 @@
     color: var(--zzz-yellow, #f1c40f);
 }
 
+/* ======== CARD SALVO ======== */
+
+.mj-game-card-wrap {
+    position: relative;
+}
+
+.mj-game-card-wrap .mj-game-card {
+    display: block;
+    height: 100%;
+}
+
+.mj-remove-saved {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--zzz-yellow, #f1c40f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    z-index: 2;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+}
+
+.mj-remove-saved:hover {
+    background: var(--Fogo, #e74c3c);
+    color: #fff;
+    border-color: transparent;
+    transform: scale(1.08);
+}
+
+.mj-remove-saved:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
 /* ======== RESPONSIVO ======== */
 
 @media (max-width: 600px) {

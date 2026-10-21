@@ -30,7 +30,7 @@
                 <div class="visual-overlay">
                     <div class="visual-content">
                         <i class="fas fa-gamepad auth-logo-icon" aria-hidden="true"></i>
-                        <h2>Conecte-se ao <br><span>Universo Indie</span></h2>
+                        <h1>Conecte-se ao <br><span>Universo Indie</span></h1>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     <header class="auth-header">
                         <img src="../assets/img/global/logo.png" alt="Float Logo" class="auth-logo-central">
                         <h1>Bem-vindo de volta</h1>
-                        <p>Entre com suas credenciais para acessar sua biblioteca.</p>
+                        <p>Entre com suas credenciais para acessar sua biblioteca e os dados do seu perfil.</p>
                     </header>
 
                     <form action="../../api/auth/dologin.php" method="POST" class="auth-form" novalidate>
@@ -71,23 +71,31 @@
                             <a href="#" class="forgot-link">Esqueceu a senha?</a>
                         </div>
 
-                        <button type="submit" class="btn-auth-primary">Entrar no Float</button>
+                        <button type="submit" class="btn-auth-primary">Entrar na Float</button>
 
                         <div class="auth-divider"><span>ou</span></div>
 
                         <p class="auth-switch">
-                            Não tem uma conta? <a href="cadastro.php">Crie uma agora</a>
+                            Não tem uma conta? <a href="cadastro.php">Crie uma agora!</a>
                         </p>
                     </form>
 
                     <footer class="auth-footer">
                         <div class="social-auth">
                             <a href="#" aria-label="Entrar com Google"><i class="fa-brands fa-google"
-                                    aria-hidden="true"></i></a>
-                            <a href="#" aria-label="Entrar com Apple"><i class="fa-brands fa-apple"
-                                    aria-hidden="true"></i></a>
+                                    aria-hidden="true"></i><span>Google</span></a>
+                            <a href="#" aria-label="Entrar com Microsoft"><i class="fa-brands fa-microsoft"
+                                    aria-hidden="true"></i><span>Microsoft</span></a>
+                            <a href="#" aria-label="Entrar com Steam"><i class="fa-brands fa-steam"
+                                    aria-hidden="true"></i><span>Steam</span></a>
+                            <a href="#" aria-label="Entrar com Itch"><i class="fa-brands fa-itch-io"
+                                    aria-hidden="true"></i><span>Itch</span></a>
                             <a href="#" aria-label="Entrar com Discord"><i class="fa-brands fa-discord"
-                                    aria-hidden="true"></i></a>
+                                    aria-hidden="true"></i><span>Discord</span></a>
+                            <a href="#" aria-label="Entrar com Unity"><i class="fa-brands fa-unity"
+                                    aria-hidden="true"></i><span>Unity</span></a>
+                            <a href="#" aria-label="Entrar com Unreal"><i class="fa-brands fa-unreal-engine"
+                                    aria-hidden="true"></i><span>Unreal</span></a>
                         </div>
                     </footer>
                 </div>
