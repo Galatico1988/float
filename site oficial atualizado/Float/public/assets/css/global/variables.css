@@ -1,0 +1,26 @@
+:root {
+  --black: #02010aff;
+  --prussian-blue: #04052eff;
+  --deep-twilight: #140152ff;
+  --navy: #22007cff;
+
+  --color-primary-purple: var(--navy);
+  --color-dark-grey: var(--prussian-blue);
+
+  --zzz-yellow: #ffed4e;
+  --Fogo: #ff4e4e;
+
+  --nav-text: #f8f9fa;
+  --nav-text-muted: rgba(248, 249, 250, 0.5);
+
+  --nav-bg: rgba(2, 1, 10, 0.85);
+
+  --glass-surface: rgba(255, 255, 255, 0.03);
+
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  --glass-reflection: rgba(255, 255, 255, 0.12);
+
+  --glow-purple: rgba(166, 74, 255, 0.3);
+  --glow-yellow: rgba(217, 244, 56, 0.4);
+}
