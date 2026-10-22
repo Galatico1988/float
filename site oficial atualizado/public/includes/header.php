@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../config/app.php';
 if (!isset($basePath)) {
     $basePath = './';
 }
@@ -10,15 +11,16 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 $sessionId = $_SESSION['id'] ?? null;
 $userName  = isset($_SESSION['nome']) ? htmlspecialchars($_SESSION['nome']) : 'Usuário';
-$avatarSrc = '/float/public/assets/img/user/avatars/avatar.png';
+$avatarSrc = float_asset('img/user/avatars/avatar.png');
 if (!empty($_SESSION['avatar_path'])) {
-    $avatarSrc = '/float/public/assets/img/user/avatars/' . htmlspecialchars($_SESSION['avatar_path']);
+    $avatarSrc = float_asset('img/user/avatars/') . htmlspecialchars($_SESSION['avatar_path']);
 }
 ?>
+<?= float_js_config() ?>
 <nav class="nav-wrapper">
     <div class="nav-content">
-        <a href="/float/public/index.php" class="brand-logo" aria-label="Página Inicial"> <!-- Mexa nessa linha depois -->
-            <img src="/float/public/assets/img/global/logo.png" alt="Float Logo" class="logo-image-custom">  <!-- Mexa nessa linha também-->
+        <a href="<?= float_url('index.php') ?>" class="brand-logo" aria-label="Página Inicial"> <!-- Mexa nessa linha depois -->
+            <img src="<?= float_asset('img/global/logo.png') ?>" alt="Float Logo" class="logo-image-custom">  <!-- Mexa nessa linha também-->
         </a>
 
         <ul class="nav-list-center" id="nav-menu">
@@ -33,11 +35,11 @@ if (!empty($_SESSION['avatar_path'])) {
                         <div class="area-conteudo discover-menu-content">
                             <div class="menu-column">
                                 <h3><i class="fa-solid fa-fire header-icon"></i> Tendências do Float</h3>
-                                <a href="/float/public/pages/maisjogados.php" class="rich-link-item">
+                                <a href="<?= float_url('pages/maisjogados.php') ?>" class="rich-link-item">
                                     <span class="item-title"><i class="fa-solid fa-bolt mini-icon-left"></i> Mais Jogados</span>
                                     <span class="item-desc">Os títulos indie que estão dominando a comunidade nesta semana.</span>
                                 </a>
-                                <a href="/float/public/pages/recempostados.php" class="rich-link-item">
+                                <a href="<?= float_url('pages/recempostados.php') ?>" class="rich-link-item">
                                     <span class="item-title"><i class="fa-solid fa-calendar-days mini-icon-left"></i> Recém Postados</span>
                                     <span class="item-desc">Descubra novos talentos e seja o primeiro a comentar nos projetos.</span>
                                 </a>
@@ -146,7 +148,7 @@ if (!empty($_SESSION['avatar_path'])) {
                     <div class="mega-menu-inner layout-dividido">
                         <div class="menu-column column-relative">
                             <h3><i class="fa-solid fa-box-open header-icon"></i> Minha Biblioteca</h3>
-                            <a href="/float/public/pages/meusjogos.php" class="rich-link-item">
+                            <a href="<?= float_url('pages/meusjogos.php') ?>" class="rich-link-item">
                                 <span class="item-title"><i class="fa-solid fa-gamepad mini-icon-left"></i> Meus Jogos</span>
                                 <span class="item-desc">Acesse sua lista completa de títulos salvos e baixados.</span>
                             </a>
@@ -184,7 +186,7 @@ if (!empty($_SESSION['avatar_path'])) {
                     <div class="mega-menu-inner layout-update-column">
                         <div class="menu-column">
                             <h3><i class="fa-solid fa-bullhorn header-icon"></i> Social</h3>
-                            <a href="/float/public/pages/comunidade.php" class="rich-link-item">
+                            <a href="<?= float_url('pages/comunidade.php') ?>" class="rich-link-item">
                                 <span class="item-title"><i class="fa-solid fa-users-line mini-icon-left"></i> Página da Comunidade</span>
                                 <span class="item-desc">Acompanhe as últimas notícias e discussões da Float.</span>
                             </a>
@@ -211,11 +213,11 @@ if (!empty($_SESSION['avatar_path'])) {
                     <div class="mega-menu-inner layout-update-column">
                         <div class="menu-column">
                             <h3><i class="fa-solid fa-laptop-code header-icon"></i> Dashboard Dev</h3>
-                            <a href="/float/public/pages/projetos.php" class="rich-link-item">
+                            <a href="<?= float_url('pages/projetos.php') ?>" class="rich-link-item">
                                 <span class="item-title"><i class="fa-solid fa-upload mini-icon-left"></i> Publicar Jogo</span>
                                 <span class="item-desc">Envie seu projeto e comece a construir sua audiência.</span>
                             </a>
-                               <a href="/float/public/pages/estatisticas.php" class="rich-link-item">
+                               <a href="<?= float_url('pages/estatisticas.php') ?>" class="rich-link-item">
                                 <span class="item-title"><i class="fa-solid fa-chart-line mini-icon-left"></i> Estatísticas</span>
                                 <span class="item-desc">Veja quantos downloads e visitas seu jogo recebeu.</span>
                             </a>
@@ -227,7 +229,7 @@ if (!empty($_SESSION['avatar_path'])) {
 
         <div class="nav-actions">
             <?php if (!$sessionId): ?>
-                <a href="/float/public/pages/login.php" class="btn-destaque">FAZER LOGIN</a>
+                <a href="<?= float_url('pages/login.php') ?>" class="btn-destaque">FAZER LOGIN</a>
             <?php else: ?>
                 <div class="nav-auth-profile">
                     <button class="profile-avatar-btn" id="profileTrigger">
@@ -240,8 +242,8 @@ if (!empty($_SESSION['avatar_path'])) {
                         </div>
                         <div class="menu-divider"></div>
                         <ul class="menu-list">
-                            <li><a href="/float/public/pages/perfil.php"><i class="fas fa-user-circle"></i> <span>Meu Perfil</span></a></li>
-                            <li><a href="/float/api/logout.php" class="logout-item"><i class="fas fa-sign-out-alt"></i> <span>Sair</span></a></li>
+                            <li><a href="<?= float_url('pages/perfil.php') ?>"><i class="fas fa-user-circle"></i> <span>Meu Perfil</span></a></li>
+                            <li><a href="<?= float_api('logout.php') ?>" class="logout-item"><i class="fas fa-sign-out-alt"></i> <span>Sair</span></a></li>
                         </ul>
                     </div>
                 </div>

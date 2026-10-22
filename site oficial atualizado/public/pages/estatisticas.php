@@ -8,7 +8,8 @@ if (empty($_SESSION['id'])) {
     exit;
 }
 
-require_once '../../api/config/conexao.php';
+require_once __DIR__ . '/../../config/app.php';
+require_once __DIR__ . '/../../api/config/conexao.php';
 
 $basePath   = '../';
 $activePage = 'estatisticas';
@@ -124,9 +125,9 @@ $payload = [
     <meta name="description" content="Estatísticas dos projetos de <?= htmlspecialchars($usuario['nome']) ?> na Float.">
     <title>Float | Estatísticas</title>
 
-    <link rel="stylesheet" href="/float/public/assets/css/global/global.css" />
-    <link rel="stylesheet" href="/float/public/assets/css/pages/estatisticas.css" />
-    <link rel="icon" href="/float/public/assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>" />
+    <link rel="stylesheet" href="<?= float_asset('css/pages/estatisticas.css') ?>" />
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
@@ -150,7 +151,7 @@ $payload = [
                             : 'Desempenho dos projetos de ' . htmlspecialchars($usuario['nome']) . '.' ?>
                     </p>
                 </div>
-                <a href="perfil.php?id=<?= $alvoId ?>" class="est-back-link">
+                <a href="<?= float_url('pages/perfil.php') ?>?id=<?= $alvoId ?>" class="est-back-link">
                     <i class="fa-solid fa-arrow-left"></i> Voltar ao perfil
                 </a>
             </div>
@@ -162,7 +163,7 @@ $payload = [
             <h2>Sem dados por enquanto</h2>
             <p>Publique um jogo para começar a acompanhar suas estatísticas.</p>
             <?php if ($ehDono): ?>
-            <a href="projetos.php?acao=novo" class="est-btn-primary">
+            <a href="<?= float_url('pages/projetos.php') ?>?acao=novo" class="est-btn-primary">
                 <i class="fa-solid fa-plus"></i> Publicar jogo
             </a>
             <?php endif; ?>
@@ -263,14 +264,14 @@ $payload = [
                     <tbody>
                         <?php foreach ($jogos as $i => $j):
                             $thumbSrc = $j['thumbnail']
-                                ? '/float/public/assets/img/jogos/' . $j['id'] . '/' . htmlspecialchars($j['thumbnail'])
-                                : '/float/public/assets/img/pages/index/cards/card_undertale.png';
+                                ? float_asset('img/jogos/') . $j['id'] . '/' . htmlspecialchars($j['thumbnail'])
+                                : float_asset('img/pages/index/cards/card_undertale.png');
                             $jogoSlug = $j['slug'] ?? $j['id'];
                         ?>
                         <tr>
                             <td class="est-rank"><?= $i + 1 ?></td>
                             <td>
-                                <a href="/float/public/jogos/<?= htmlspecialchars($jogoSlug) ?>/" class="est-game-cell">
+                                <a href="<?= float_game_url($jogoSlug) ?>" class="est-game-cell">
                                     <img src="<?= $thumbSrc ?>" alt="" loading="lazy">
                                     <span><?= htmlspecialchars($j['titulo']) ?></span>
                                 </a>
@@ -296,8 +297,8 @@ $payload = [
         window.ESTATISTICAS = <?= json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-    <script src="/float/public/assets/js/global/global.js"></script>
-    <script src="/float/public/assets/js/pages/estatisticas.js"></script>
+    <script src="<?= float_asset('js/global/global.js') ?>"></script>
+    <script src="<?= float_asset('js/pages/estatisticas.js') ?>"></script>
 
 </body>
 

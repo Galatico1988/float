@@ -8,7 +8,8 @@ if (empty($_SESSION['id'])) {
     exit;
 }
 
-require_once '../../api/config/conexao.php';
+require_once __DIR__ . '/../../config/app.php';
+require_once __DIR__ . '/../../api/config/conexao.php';
 
 $basePath   = '../';
 $activePage = 'projetos';
@@ -28,9 +29,9 @@ $tituloPagina = $modoEdicao ? 'Editar Jogo' : 'Publicar Jogo';
     <meta name="description" content="<?= $modoEdicao ? 'Edite seu jogo na Float.' : 'Publique seu jogo na Float.' ?>">
     <title>Float | <?= $tituloPagina ?></title>
 
-    <link rel="stylesheet" href="../assets/css/global/global.css" />
-    <link rel="stylesheet" href="../assets/css/pages/projetos.css" />
-    <link rel="icon" href="../assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>" />
+    <link rel="stylesheet" href="<?= float_asset('css/pages/projetos.css') ?>" />
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
@@ -497,7 +498,7 @@ $tituloPagina = $modoEdicao ? 'Editar Jogo' : 'Publicar Jogo';
                 <a href="" class="btn-pub btn-pub--success" id="linkJogoPublicado">
                     Ver página do jogo <i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <a href="perfil.php" class="btn-pub btn-pub--back" style="margin-top:10px">
+                <a href="<?= float_url('pages/perfil.php') ?>" class="btn-pub btn-pub--back" style="margin-top:10px">
                     Voltar ao perfil
                 </a>
             </div>
@@ -507,15 +508,15 @@ $tituloPagina = $modoEdicao ? 'Editar Jogo' : 'Publicar Jogo';
 
     <?php require_once '../includes/footer.php'; ?>
 
-    <script src="../assets/js/global/global.js"></script>
+    <script src="<?= float_asset('js/global/global.js') ?>"></script>
     <script>
         window.PUBLICAR = {
             usuarioId: <?= $usuarioId ?>,
-            apiBase: '/float/api/jogos/',
+            apiBase: <?= float_api('jogos/') ?>,
             jogoId: <?= $edicaoJogoId ?: 'null' ?>
         };
     </script>
-    <script src="../assets/js/pages/projetos.js"></script>
+    <script src="<?= float_asset('js/pages/projetos.js') ?>"></script>
 
 </body>
 </html>

@@ -1,8 +1,9 @@
+<?php require_once __DIR__ . '/../../config/app.php'; ?>
 <footer class="footer-modern" role="contentinfo">
     <div class="footer-container">
         <div class="footer-main">
             <div class="footer-brand-section">
-                <img src="/float/public/assets/img/global/logo.png" alt="Float Logo" class="logo-image-custom-footer">
+                <img src="<?= float_asset('img/global/logo.png') ?>" alt="Float Logo" class="logo-image-custom-footer">
                 <div class="footer-brand-text">
                     <h3 style="color:#fff;">Float Games</h3>
                     <p style="color:#666;font-size:.8rem;">A casa do desenvolvimento independente.</p>

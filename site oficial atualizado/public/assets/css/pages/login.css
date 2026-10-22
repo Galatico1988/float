@@ -46,6 +46,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   animation: imageReveal 1.2s ease forwards;
 }
 
@@ -99,8 +100,9 @@ a {
 
 .auth-logo-central {
   display: block;
-  margin: 0 auto 20px;
-  max-width: 120px;
+  margin: 0 auto 18px;
+  max-width: 72px;
+  height: auto;
 }
 
 .auth-header {

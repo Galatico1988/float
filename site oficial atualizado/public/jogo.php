@@ -3,6 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+require_once __DIR__ . '/../config/app.php';
 require_once __DIR__ . '/../api/config/conexao.php';
 
 /* =========================================================
@@ -90,8 +91,8 @@ $jogo = [
     'desenvolvedor' => $devNome,
     'tagline'       => $jogoRow['tagline'] ?? '',
     'descricao'     => $jogoRow['descricao'] ?? '',
-    'capa'          => $jogoRow['thumbnail'] ? '/float/public/assets/img/jogos/' . $jogoId . '/' . $jogoRow['thumbnail'] : '/float/public/assets/img/pages/index/cards/card_undertale.png',
-    'backdrop'      => $jogoRow['backdrop'] ? '/float/public/assets/img/jogos/' . $jogoId . '/' . $jogoRow['backdrop'] : '/float/public/assets/img/pages/index/slides/slide_03.png',
+    'capa'          => $jogoRow['thumbnail'] ? float_asset('img/jogos/') . $jogoId . '/' . $jogoRow['thumbnail'] : float_asset('img/pages/index/cards/card_undertale.png'),
+    'backdrop'      => $jogoRow['backdrop'] ? float_asset('img/jogos/') . $jogoId . '/' . $jogoRow['backdrop'] : float_asset('img/pages/index/slides/slide_03.png'),
     'preco'         => $jogoRow['preco'] ?? 'Gratis',
     'gratis'        => (bool) ($jogoRow['eh_gratis'] ?? 1),
     'versao'        => $jogoRow['versao'] ?? '',
@@ -103,7 +104,7 @@ $jogo = [
     'plataformas'   => json_decode($jogoRow['plataformas'] ?? '[]', true),
     'download_url'  => $jogoRow['download_url'] ?? '#',
     'destaques'     => json_decode($jogoRow['destaques'] ?? '[]', true),
-    'screenshots'   => array_map(fn($c) => '/float/public/assets/img/jogos/' . $jogoId . '/' . $c, $Screenshots),
+    'screenshots'   => array_map(fn($c) => float_asset('img/jogos/') . $jogoId . '/' . $c, $Screenshots),
     'videos'        => $jogoVideos,
     'requisitos'    => [
         'minimo'      => isset($Requisitos['minimo']) ? $Requisitos['minimo'] : [
@@ -134,7 +135,7 @@ if (!empty($jogoRow['genero'])) {
         'titulo' => $r['titulo'],
         'tipo'   => $r['genero'],
         'preco'  => $r['preco'] ?? 'Gratis',
-        'img'    => $r['thumbnail'] ? '/float/public/assets/img/jogos/' . $r['id'] . '/' . $r['thumbnail'] : '/float/public/assets/img/pages/index/cards/card_undertale.png',
+        'img'    => $r['thumbnail'] ? float_asset('img/jogos/') . $r['id'] . '/' . $r['thumbnail'] : float_asset('img/pages/index/cards/card_undertale.png'),
         'slug'   => $r['slug'],
     ], $relRows);
 } else {

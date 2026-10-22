@@ -3,7 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../../api/config/conexao.php';
+require_once __DIR__ . '/../../config/app.php';
+require_once __DIR__ . '/../../api/config/conexao.php';
 
 $basePath    = '../';
 $activePage  = 'comunidade';
@@ -60,7 +61,7 @@ try {
 }
 
 function avatarSrc(?string $path): string {
-    $base = '../assets/img/user/avatars/';
+    $base = float_asset('img/user/avatars/');
     return $path ? $base . htmlspecialchars($path, ENT_QUOTES, 'UTF-8') : $base . 'avatar.png';
 }
 
@@ -80,9 +81,9 @@ function dataRelativa(string $dataiso): string {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Comunidade Float — postagens, criadores e tendências do universo indie." />
     <title>Float | Comunidade</title>
-    <link rel="stylesheet" href="../assets/css/global/global.css" />
-    <link rel="stylesheet" href="../assets/css/pages/comunidade.css" />
-    <link rel="icon" href="../assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>" />
+    <link rel="stylesheet" href="<?= float_asset('css/pages/comunidade.css') ?>" />
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
@@ -94,7 +95,7 @@ function dataRelativa(string $dataiso): string {
         
         <div class="comunidade-page-header">
             <div class="comunidade-page-header-inner">
-                <a href="../index.php" class="back-home">
+                <a href="<?= float_url('index.php') ?>" class="back-home">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                     Voltar ao início
                 </a>
@@ -285,7 +286,7 @@ function dataRelativa(string $dataiso): string {
                     <?php if ($sessaoId): ?>
                     <p class="feed-vazio-sub">Seja o primeiro a publicar algo!</p>
                     <?php else: ?>
-                    <a href="login.php" class="btn-destaque">
+                    <a href="<?= float_url('pages/login.php') ?>" class="btn-destaque">
                         <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
                         Entrar para participar
                     </a>
@@ -410,7 +411,7 @@ function dataRelativa(string $dataiso): string {
                 <input type="hidden" id="modalSeguirAlvoId" value="">
                 <div class="modal-seguir-perfil">
                     <img id="modalSeguirAvatar"
-                         src="../assets/img/user/avatars/avatar.png"
+                         src="<?= float_asset('img/user/avatars/avatar.png') ?>"
                          alt="Avatar"
                          class="modal-seguir-avatar">
                     <div class="modal-seguir-info">
@@ -445,7 +446,7 @@ function dataRelativa(string $dataiso): string {
             usuarioNome: <?= json_encode($usuarioNome, JSON_UNESCAPED_UNICODE) ?>
         };
     </script>
-    <script src="../assets/js/global/global.js"></script>
-    <script src="../assets/js/pages/comunidade.js"></script>
+    <script src="<?= float_asset('js/global/global.js') ?>"></script>
+    <script src="<?= float_asset('js/pages/comunidade.js') ?>"></script>
 </body>
 </html>

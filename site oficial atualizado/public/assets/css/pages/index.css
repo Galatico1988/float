@@ -1,5 +1,32 @@
+/* Vitrine da marca: logo reduzida e centralizada */
+.home-brand-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 4% 0;
+  text-align: center;
+}
+
+.home-brand-logo {
+  display: block;
+  width: auto;
+  max-width: 220px;
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 8px 28px rgba(166, 74, 255, 0.25));
+}
+
+.home-brand-intro p {
+  margin: 0;
+  color: var(--nav-text-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+}
+
 .epic-hero-section {
-  padding: 120px 4% 40px;
+  padding: 60px 4% 40px;
   max-width: 1600px;
   margin: 0 auto;
 }
@@ -788,8 +815,14 @@ a.btn-buy {
   }
 }
 @media (max-width: 768px) {
+  .home-brand-intro {
+    padding: 32px 4% 0;
+  }
+  .home-brand-logo {
+    max-width: 150px;
+  }
   .epic-hero-section {
-    padding-top: 100px;
+    padding-top: 90px;
   }
   .epic-hero-container {
     grid-template-columns: 1fr;

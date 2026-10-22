@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const API = window.PUBLICAR?.apiBase || '/float/api/jogos/';
+  const API = window.PUBLICAR?.apiBase || window.FLOAT.apiUrl('jogos/');
   const jogoId = window.PUBLICAR?.jogoId || null;
   let currentStep = 1;
   const totalSteps = 5;
@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
       reader.onload = e => cpCapa.src = e.target.result;
       reader.readAsDataURL(capaInput.files[0]);
     } else if (cpCapa && !cpCapa.src) {
-      cpCapa.src = '../assets/img/pages/index/cards/card_undertale.png';
+      cpCapa.src = window.FLOAT.asset('img/pages/index/cards/card_undertale.png');
     }
 
     /* Backdrop */
@@ -665,7 +665,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const previewCapa = document.getElementById('previewCapa');
           const uploadCapa = document.getElementById('uploadCapa');
           if (previewCapa && uploadCapa) {
-            previewCapa.querySelector('img').src = '/float/public/assets/img/jogos/' + j.id + '/' + j.thumbnail;
+            previewCapa.querySelector('img').src = window.FLOAT.gameImage(j.id, j.thumbnail);
             previewCapa.style.display = '';
             uploadCapa.style.display = 'none';
           }
@@ -674,7 +674,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const previewBd = document.getElementById('previewBackdrop');
           const uploadBd = document.getElementById('uploadBackdrop');
           if (previewBd && uploadBd) {
-            previewBd.querySelector('img').src = '/float/public/assets/img/jogos/' + j.id + '/' + j.backdrop;
+            previewBd.querySelector('img').src = window.FLOAT.gameImage(j.id, j.backdrop);
             previewBd.style.display = '';
             uploadBd.style.display = 'none';
           }
@@ -683,7 +683,7 @@ document.addEventListener('DOMContentLoaded', () => {
         /* Step 2 — Screenshots existentes */
         if (data.screenshots && data.screenshots.length) {
           data.screenshots.forEach(s => {
-            screenshotsFiles.push({ _existing: true, src: '/float/public/assets/img/jogos/' + j.id + '/' + s.caminho, id: s.id });
+            screenshotsFiles.push({ _existing: true, src: window.FLOAT.gameImage(j.id, s.caminho), id: s.id });
           });
           renderScreenshots();
         }

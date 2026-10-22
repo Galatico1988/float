@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../../config/app.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,12 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Float - Acesse sua conta e explore jogos indies.">
     <title>Float | Login</title>
+    <?= float_js_config() ?>
 
-    <link rel="stylesheet" href="../assets/css/global/global.css">
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>">
 
-    <link rel="stylesheet" href="../assets/css/pages/login.css">
+    <link rel="stylesheet" href="<?= float_asset('css/pages/login.css') ?>">
 
-    <link rel="icon" href="./assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -26,7 +30,7 @@
         <div class="auth-container">
 
             <div class="auth-visual-side">
-                <img src="../assets/img/pages/login/login.png" alt="Float Visuals">
+                <img src="<?= float_asset('img/pages/login/login.png') ?>" alt="Float Visuals">
                 <div class="visual-overlay">
                     <div class="visual-content">
                         <i class="fas fa-gamepad auth-logo-icon" aria-hidden="true"></i>
@@ -36,18 +40,18 @@
             </div>
 
             <div class="auth-form-side">
-                <a href="../index.php" class="back-home">
+                <a href="<?= float_url('index.php') ?>" class="back-home">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Voltar à Página Inicial
                 </a>
 
                 <div class="auth-form-box">
                     <header class="auth-header">
-                        <img src="../assets/img/global/logo.png" alt="Float Logo" class="auth-logo-central">
+                        <img src="<?= float_asset('img/global/logo.png') ?>" alt="Float Logo" class="auth-logo-central">
                         <h1>Bem-vindo de volta</h1>
                         <p>Entre com suas credenciais para acessar sua biblioteca e os dados do seu perfil.</p>
                     </header>
 
-                    <form action="../../api/auth/dologin.php" method="POST" class="auth-form" novalidate>
+                    <form action="<?= float_api('auth/dologin.php') ?>" method="POST" class="auth-form" novalidate>
                         <div class="input-group">
                             <label for="email">E-mail</label>
                             <div class="input-field">
@@ -76,7 +80,7 @@
                         <div class="auth-divider"><span>ou</span></div>
 
                         <p class="auth-switch">
-                            Não tem uma conta? <a href="cadastro.php">Crie uma agora!</a>
+                            Não tem uma conta? <a href="<?= float_url('pages/cadastro.php') ?>">Crie uma agora!</a>
                         </p>
                     </form>
 
@@ -105,7 +109,7 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="../assets/js/pages/login.js"></script>
+    <script src="<?= float_asset('js/pages/login.js') ?>"></script>
 
 </body>
 

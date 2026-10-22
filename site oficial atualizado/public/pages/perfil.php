@@ -4,7 +4,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../../api/config/conexao.php';
+require_once __DIR__ . '/../../config/app.php';
+require_once __DIR__ . '/../../api/config/conexao.php';
 
 $sessaoId  = $_SESSION['id'] ?? null;
 $alvoId    = isset($_GET['id']) ? (int) $_GET['id'] : $sessaoId;
@@ -112,18 +113,18 @@ if ($diffConta->y > 0) {
 }
 
 
-$avatarDefault = '/float/public/assets/img/user/avatars/avatar.png';
+$avatarDefault = float_asset('img/user/avatars/avatar.png');
 $bannerDefault = '';
 $avatarSrc     = $usuario['avatar_path']
-                    ? '/float/public/assets/img/user/avatars/' . htmlspecialchars($usuario['avatar_path'])
+                    ? float_asset('img/user/avatars/') . htmlspecialchars($usuario['avatar_path'])
                     : $avatarDefault;
 $bannerSrc     = $usuario['banner_path']
-                    ? '/float/public/assets/img/user/banners/' . htmlspecialchars($usuario['banner_path'])
+                    ? float_asset('img/user/banners/') . htmlspecialchars($usuario['banner_path'])
                     : '';
 
 $navbarAvatar = $sessaoId && $usuario['avatar_path']
-    ? '/float/public/assets/img/user/avatars/' . htmlspecialchars($usuario['avatar_path'])
-    : '/float/public/assets/img/user/avatars/avatar.png';
+    ? float_asset('img/user/avatars/') . htmlspecialchars($usuario['avatar_path'])
+    : float_asset('img/user/avatars/avatar.png');
 
 $nomeSanitizado = htmlspecialchars($usuario['nome']);
 $bioSanitizada  = htmlspecialchars($usuario['bio'] ?? '');
@@ -153,9 +154,9 @@ $activePage = 'perfil';
     <meta name="description" content="Perfil de <?= $nomeSanitizado ?> na Float.">
     <title>Float | <?= $nomeSanitizado ?></title>
 
-    <link rel="stylesheet" href="/float/public/assets/css/global/global.css" />
-    <link rel="stylesheet" href="/float/public/assets/css/pages/perfil.css" />
-    <link rel="icon" href="/float/public/assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>" />
+    <link rel="stylesheet" href="<?= float_asset('css/pages/perfil.css') ?>" />
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -333,7 +334,7 @@ $activePage = 'perfil';
                 Jogos
             </button>
             <a class="tab-btn tab-btn--link"
-               href="estatisticas.php?id=<?= $alvoId ?>"
+               href="<?= float_url('pages/estatisticas.php') ?>?id=<?= $alvoId ?>"
                id="tab-stats">
                 <i class="fa-solid fa-chart-bar" aria-hidden="true"></i>
                 Estatísticas
@@ -356,7 +357,7 @@ $activePage = 'perfil';
                     : 'Este usuário ainda não publicou jogos.' ?>
             </p>
             <?php if ($ehDono): ?>
-            <a href="projetos.php?acao=novo" class="btn-destaque">
+            <a href="<?= float_url('pages/projetos.php') ?>?acao=novo" class="btn-destaque">
                 <i class="fa-solid fa-plus" aria-hidden="true"></i>
                 Publicar jogo
             </a>
@@ -366,12 +367,12 @@ $activePage = 'perfil';
         <div class="jogos-grid">
             <?php foreach ($jogos as $jogo):
                 $thumbSrc = $jogo['thumbnail']
-                    ? '/float/public/assets/img/jogos/' . $jogo['id'] . '/' . htmlspecialchars($jogo['thumbnail'])
-                    : '/float/public/assets/img/pages/index/cards/card_undertale.png';
+                    ? float_asset('img/jogos/') . $jogo['id'] . '/' . htmlspecialchars($jogo['thumbnail'])
+                    : float_asset('img/pages/index/cards/card_undertale.png');
                 $estrelas = round($jogo['media_nota']);
                 $jogoSlug = $jogo['slug'] ?? $jogo['id'];
             ?>
-            <a href="/float/public/jogos/<?= htmlspecialchars($jogoSlug) ?>/" class="jogo-card" data-id="<?= $jogo['id'] ?>">
+            <a href="<?= float_game_url($jogoSlug) ?>" class="jogo-card" data-id="<?= $jogo['id'] ?>">
                 <div class="jogo-card-thumb">
                     <img src="<?= $thumbSrc ?>"
                          alt="Capa de <?= htmlspecialchars($jogo['titulo']) ?>"
@@ -690,7 +691,7 @@ $activePage = 'perfil';
     <?php require_once '../includes/footer.php'; ?>
 
 
-<script src="/float/public/assets/js/global/global.js"></script>
+<script src="<?= float_asset('js/global/global.js') ?>"></script>
 <?php if ($ehDono): ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
 <?php endif; ?>
@@ -702,7 +703,7 @@ $activePage = 'perfil';
         sessaoId:<?= $sessaoId ?? 'null' ?>
     };
 </script>
-<script src="/float/public/assets/js/pages/perfil.js"></script>
+<script src="<?= float_asset('js/pages/perfil.js') ?>"></script>
 
 </body>
 </html>

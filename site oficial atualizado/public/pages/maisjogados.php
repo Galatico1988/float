@@ -3,7 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../../api/config/conexao.php';
+require_once __DIR__ . '/../../config/app.php';
+require_once __DIR__ . '/../../api/config/conexao.php';
 
 $basePath   = '../';
 $activePage = 'maisjogados';
@@ -113,12 +114,12 @@ function renderRanking(array $lista, string $campo, string $unidade, int $max): 
         $pos    = $i + 1;
         $larg   = $max > 0 ? round($val / $max * 100, 1) : 0;
         $thumb  = $j['thumbnail']
-            ? '/float/public/assets/img/jogos/' . $j['id'] . '/' . htmlspecialchars($j['thumbnail'])
-            : '/float/public/assets/img/pages/index/cards/card_undertale.png';
+            ? float_asset('img/jogos/') . $j['id'] . '/' . htmlspecialchars($j['thumbnail'])
+            : float_asset('img/pages/index/cards/card_undertale.png');
 
         echo '<li class="mjp-item' . ($pos <= 3 ? ' mjp-top mjp-top-' . $pos : '') . '">';
         echo '  <span class="mjp-pos">' . $pos . '</span>';
-        echo '  <a class="mjp-game" href="/float/public/jogos/' . htmlspecialchars($j['slug']) . '/">';
+        echo '  <a class="mjp-game" href="' . float_game_url($j['slug']) . '">';
         echo '      <img src="' . $thumb . '" alt="" loading="lazy">';
         echo '      <span class="mjp-game-info">';
         echo '          <strong>' . htmlspecialchars($j['titulo']) . '</strong>';
@@ -144,9 +145,9 @@ function renderRanking(array $lista, string $campo, string $unidade, int $max): 
     <meta name="description" content="Os jogos mais jogados da Float: hoje, semana, mês e sempre.">
     <title>Float | Mais Jogados</title>
 
-    <link rel="stylesheet" href="/float/public/assets/css/global/global.css" />
-    <link rel="stylesheet" href="/float/public/assets/css/pages/maisjogados.css" />
-    <link rel="icon" href="/float/public/assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>" />
+    <link rel="stylesheet" href="<?= float_asset('css/pages/maisjogados.css') ?>" />
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
@@ -232,8 +233,8 @@ function renderRanking(array $lista, string $campo, string $unidade, int $max): 
 
     <?php require_once '../includes/footer.php'; ?>
 
-    <script src="/float/public/assets/js/global/global.js"></script>
-    <script src="/float/public/assets/js/pages/maisjogados.js"></script>
+    <script src="<?= float_asset('js/global/global.js') ?>"></script>
+    <script src="<?= float_asset('js/pages/maisjogados.js') ?>"></script>
 
 </body>
 

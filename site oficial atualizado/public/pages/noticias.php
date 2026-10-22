@@ -15,11 +15,11 @@ $activePage = 'noticias';
     <meta name="description" content="Float - Últimas notícias do mundo dos jogos indie e da plataforma.">
     <title>Float | Notícias</title>
 
-    <link rel="stylesheet" href="../assets/css/global/global.css" />
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>" />
 
-    <link rel="stylesheet" href="../assets/css/pages/noticias.css" />
+    <link rel="stylesheet" href="<?= float_asset('css/pages/noticias.css') ?>" />
 
-    <link rel="icon" href="../assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     
@@ -35,7 +35,7 @@ $activePage = 'noticias';
         
         <header class="noticias-page-header">
             <div class="noticias-page-header-inner">
-                <a href="../index.php" class="back-home">
+                <a href="<?= float_url('index.php') ?>" class="back-home">
                     <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Voltar à Página Inicial
                 </a>
                 <div class="noticias-page-title-block">
@@ -62,7 +62,7 @@ $activePage = 'noticias';
 
                 <article class="noticias-card noticias-card--hero" data-category="atualização">
                     <div class="noticias-card-cover">
-                        <img src="../assets/img/pages/index/slides/slide_02.png" alt="Celeste recebe atualização surpresa" loading="lazy">
+                        <img src="<?= float_asset('img/pages/index/slides/slide_02.png') ?>" alt="Celeste recebe atualização surpresa" loading="lazy">
                         <span class="noticias-badge">Atualização</span>
                     </div>
                     <div class="noticias-card-body">
@@ -75,7 +75,7 @@ $activePage = 'noticias';
 
                 <article class="noticias-card" data-category="lançamento">
                     <div class="noticias-card-cover">
-                        <img src="../assets/img/pages/index/cards/card_undertale.png" alt="Arte ilustrativa de Endacopia" loading="lazy">
+                        <img src="<?= float_asset('img/pages/index/cards/card_undertale.png') ?>" alt="Arte ilustrativa de Endacopia" loading="lazy">
                         <span class="noticias-badge">Lançamento</span>
                     </div>
                     <div class="noticias-card-body">
@@ -88,7 +88,7 @@ $activePage = 'noticias';
 
                 <article class="noticias-card" data-category="comunidade">
                     <div class="noticias-card-cover">
-                        <img src="../assets/img/pages/index/slides/slide_06.png" alt="Game Jam Float 2026" loading="lazy">
+                        <img src="<?= float_asset('img/pages/index/slides/slide_06.png') ?>" alt="Game Jam Float 2026" loading="lazy">
                         <span class="noticias-badge">Comunidade</span>
                     </div>
                     <div class="noticias-card-body">
@@ -101,7 +101,7 @@ $activePage = 'noticias';
 
                 <article class="noticias-card" data-category="lançamento">
                     <div class="noticias-card-cover">
-                        <img src="../assets/img/pages/index/cards/card_deltarune.png" alt="Deltarune capítulo 3" loading="lazy">
+                        <img src="<?= float_asset('img/pages/index/cards/card_deltarune.png') ?>" alt="Deltarune capítulo 3" loading="lazy">
                         <span class="noticias-badge">Lançamento</span>
                     </div>
                     <div class="noticias-card-body">
@@ -114,7 +114,7 @@ $activePage = 'noticias';
 
                 <article class="noticias-card" data-category="atualização">
                     <div class="noticias-card-cover">
-                        <img src="../assets/img/pages/index/cards/card_hadesII.png" alt="Hades II atualização" loading="lazy">
+                        <img src="<?= float_asset('img/pages/index/cards/card_hadesII.png') ?>" alt="Hades II atualização" loading="lazy">
                         <span class="noticias-badge">Atualização</span>
                     </div>
                     <div class="noticias-card-body">
@@ -127,7 +127,7 @@ $activePage = 'noticias';
 
                 <article class="noticias-card" data-category="review">
                     <div class="noticias-card-cover">
-                        <img src="../assets/img/pages/index/cards/card_hadesII.png" alt="Hades II" loading="lazy">
+                        <img src="<?= float_asset('img/pages/index/cards/card_hadesII.png') ?>" alt="Hades II" loading="lazy">
                         <span class="noticias-badge">Reviews de Jogos</span>
                     </div>
                     <div class="noticias-card-body">
@@ -140,7 +140,7 @@ $activePage = 'noticias';
 
                 <article class="noticias-card" data-category="lançamento">
                     <div class="noticias-card-cover">
-                        <img src="../assets/img/pages/index/cards/card_silksong.png" alt="Hollow Knight Silksong" loading="lazy">
+                        <img src="<?= float_asset('img/pages/index/cards/card_silksong.png') ?>" alt="Hollow Knight Silksong" loading="lazy">
                         <span class="noticias-badge">Lançamento</span>
                     </div>
                     <div class="noticias-card-body">
@@ -164,8 +164,8 @@ $activePage = 'noticias';
 
     <?php require_once '../includes/footer.php'; ?>
 
-    <script src="../assets/js/global/global.js"></script>
-    <script src="../assets/js/pages/noticias.js"></script>
+    <script src="<?= float_asset('js/global/global.js') ?>"></script>
+    <script src="<?= float_asset('js/pages/noticias.js') ?>"></script>
 
 </body>
 </html>

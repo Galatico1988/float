@@ -48,7 +48,7 @@ function iniciarHeroSlider() {
 function atualizarPlayBtn(slug) {
     const btn = document.getElementById('heroPlayBtn');
     if (!btn || !slug) return;
-    btn.href = '/float/public/jogos/' + slug + '/';
+    btn.href = window.FLOAT.gameUrl(slug);
 }
 
 function comecarAutoPlay(sideItems, mainImg, heroContent, heroDots) {
@@ -186,14 +186,14 @@ async function tratarWishlist(btn) {
     btn.disabled = true;
 
     try {
-        const resp = await fetch('/float/api/user/salvar_jogo.php', {
+        const resp = await fetch(window.FLOAT.apiUrl('user/salvar_jogo.php'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'jogo_id=' + encodeURIComponent(jogoId)
         });
 
         if (resp.status === 401) {
-            window.location.href = '/float/public/pages/login.php';
+            window.location.href = window.FLOAT.url('pages/login.php');
             return;
         }
 

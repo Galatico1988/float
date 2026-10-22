@@ -3,7 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../../api/config/conexao.php';
+require_once __DIR__ . '/../../config/app.php';
+require_once __DIR__ . '/../../api/config/conexao.php';
 
 $basePath   = '../';
 $activePage = 'recempostados';
@@ -59,9 +60,9 @@ unset($jogo);
     <meta name="description" content="Descubra os jogos recém postados na Float.">
     <title>Float | Recém Postados</title>
 
-    <link rel="stylesheet" href="/float/public/assets/css/global/global.css" />
-    <link rel="stylesheet" href="/float/public/assets/css/pages/recempostados.css" />
-    <link rel="icon" href="/float/public/assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>" />
+    <link rel="stylesheet" href="<?= float_asset('css/pages/recempostados.css') ?>" />
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
@@ -110,12 +111,12 @@ unset($jogo);
         <div class="rp-grid" id="rpGrid">
             <?php foreach ($jogos as $jogo):
                 $thumbSrc = $jogo['thumbnail']
-                    ? '/float/public/assets/img/jogos/' . $jogo['id'] . '/' . htmlspecialchars($jogo['thumbnail'])
-                    : '/float/public/assets/img/pages/index/cards/card_undertale.png';
+                    ? float_asset('img/jogos/') . $jogo['id'] . '/' . htmlspecialchars($jogo['thumbnail'])
+                    : float_asset('img/pages/index/cards/card_undertale.png');
                 $estrelas = round($jogo['media_nota']);
                 $jogoSlug = $jogo['slug'] ?? $jogo['id'];
             ?>
-            <a href="/float/public/jogos/<?= htmlspecialchars($jogoSlug) ?>/"
+            <a href="<?= float_game_url($jogoSlug) ?>"
                class="rp-card"
                data-cats="<?= htmlspecialchars(implode(' ', $jogo['cats'])) ?>">
                 <div class="rp-card-thumb">
@@ -158,8 +159,8 @@ unset($jogo);
 
     <?php require_once '../includes/footer.php'; ?>
 
-    <script src="/float/public/assets/js/global/global.js"></script>
-    <script src="/float/public/assets/js/pages/recempostados.js"></script>
+    <script src="<?= float_asset('js/global/global.js') ?>"></script>
+    <script src="<?= float_asset('js/pages/recempostados.js') ?>"></script>
 
 </body>
 

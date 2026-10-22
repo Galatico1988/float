@@ -44,10 +44,10 @@ if (!isset($jogoSalvo)) {
     <meta name="description" content="<?= htmlspecialchars($jogo['titulo']) ?> - Baixe agora na Float." />
     <title>Float | <?= htmlspecialchars($jogo['titulo']) ?></title>
 
-    <link rel="stylesheet" href="/float/public/assets/css/global/global.css" />
-    <link rel="stylesheet" href="/float/public/assets/css/pages/jogotemplate.css">
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>" />
+    <link rel="stylesheet" href="<?= float_asset('css/pages/jogotemplate.css') ?>">
 
-    <link rel="icon" href="/float/public/assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
@@ -285,7 +285,7 @@ if (!isset($jogoSalvo)) {
             <div class="coverflow-track-wrapper">
                 <div class="coverflow-track cf-static">
                     <?php foreach ($relacionados as $rel): ?>
-                        <a href="/float/public/jogos/<?= htmlspecialchars($rel['slug']) ?>/" class="cf-card cf-active">
+                        <a href="<?= float_game_url($rel['slug']) ?>" class="cf-card cf-active">
                             <div class="cf-card-cover">
                                 <img src="<?= $rel['img'] ?>" alt="<?= htmlspecialchars($rel['titulo']) ?>" loading="lazy">
                                 <div class="cf-card-overlay"><i class="fa-solid fa-play"></i></div>
@@ -305,8 +305,8 @@ if (!isset($jogoSalvo)) {
 
     <?php require_once __DIR__ . '/../includes/footer.php'; ?>
 
-    <script src="/float/public/assets/js/global/global.js"></script>
-    <script src="/float/public/assets/js/pages/jogotemplate.js"></script>
+    <script src="<?= float_asset('js/global/global.js') ?>"></script>
+    <script src="<?= float_asset('js/pages/jogotemplate.js') ?>"></script>
 
 </body>
 </html>

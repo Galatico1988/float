@@ -8,6 +8,7 @@ if (!isset($basePath)) {
 }
 $activePage = 'biblioteca';
 
+require_once __DIR__ . '/../../config/app.php';
 require_once __DIR__ . '/../../api/config/conexao.php';
 
 $usuarioId = $_SESSION['id'] ?? null;
@@ -40,9 +41,9 @@ if ($usuarioId) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Float | Meus Jogos</title>
 
-    <link rel="stylesheet" href="/float/public/assets/css/global/global.css" />
-    <link rel="stylesheet" href="/float/public/assets/css/pages/meusjogos.css" />
-    <link rel="icon" href="/float/public/assets/img/favicon/icone.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>" />
+    <link rel="stylesheet" href="<?= float_asset('css/pages/meusjogos.css') ?>" />
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
@@ -98,19 +99,19 @@ if ($usuarioId) {
                     </div>
                     <h2>Nenhum jogo baixado</h2>
                     <p>Quando você publicar ou baixar jogos, eles aparecerão aqui.</p>
-                    <a href="/float/public/index.php" class="mj-btn-explore">
+                    <a href="<?= float_url('index.php') ?>" class="mj-btn-explore">
                         <i class="fa-solid fa-compass"></i> Explorar Jogos
                     </a>
                 </div>
             <?php else: ?>
                 <div class="mj-games-grid">
                     <?php foreach ($jogosBaixados as $jogo): ?>
-                        <a href="/float/public/jogos/<?= htmlspecialchars($jogo['slug']) ?>/" class="mj-game-card">
+                        <a href="<?= float_game_url($jogo['slug']) ?>" class="mj-game-card">
                             <div class="mj-game-cover">
                                 <?php if ($jogo['thumbnail']): ?>
-                                    <img src="/float/public/assets/img/jogos/<?= $jogo['id'] ?>/<?= htmlspecialchars($jogo['thumbnail']) ?>" alt="<?= htmlspecialchars($jogo['titulo']) ?>" loading="lazy">
+                                    <img src="<?= float_game_image($jogo['id'], $jogo['thumbnail']) ?>" alt="<?= htmlspecialchars($jogo['titulo']) ?>" loading="lazy">
                                 <?php else: ?>
-                                    <img src="/float/public/assets/img/pages/index/cards/card_undertale.png" alt="<?= htmlspecialchars($jogo['titulo']) ?>" loading="lazy">
+                                    <img src="<?= float_asset('img/pages/index/cards/card_undertale.png') ?>" alt="<?= htmlspecialchars($jogo['titulo']) ?>" loading="lazy">
                                 <?php endif; ?>
                                 <div class="mj-game-overlay">
                                     <i class="fa-solid fa-play"></i>
@@ -140,7 +141,7 @@ if ($usuarioId) {
                     </div>
                     <h2>Nenhum jogo salvo</h2>
                     <p>Adicione jogos à sua lista de desejos para acessá-los facilmente depois.</p>
-                    <a href="/float/public/index.php" class="mj-btn-explore">
+                    <a href="<?= float_url('index.php') ?>" class="mj-btn-explore">
                         <i class="fa-solid fa-compass"></i> Explorar Jogos
                     </a>
                 </div>
@@ -148,12 +149,12 @@ if ($usuarioId) {
                 <div class="mj-games-grid" id="savedGrid">
                     <?php foreach ($jogosSalvos as $jogo): ?>
                         <div class="mj-game-card-wrap">
-                            <a href="/float/public/jogos/<?= htmlspecialchars($jogo['slug']) ?>/" class="mj-game-card">
+                            <a href="<?= float_game_url($jogo['slug']) ?>" class="mj-game-card">
                                 <div class="mj-game-cover">
                                     <?php if ($jogo['thumbnail']): ?>
-                                        <img src="/float/public/assets/img/jogos/<?= $jogo['id'] ?>/<?= htmlspecialchars($jogo['thumbnail']) ?>" alt="<?= htmlspecialchars($jogo['titulo']) ?>" loading="lazy">
+                                        <img src="<?= float_game_image($jogo['id'], $jogo['thumbnail']) ?>" alt="<?= htmlspecialchars($jogo['titulo']) ?>" loading="lazy">
                                     <?php else: ?>
-                                        <img src="/float/public/assets/img/pages/index/cards/card_undertale.png" alt="<?= htmlspecialchars($jogo['titulo']) ?>" loading="lazy">
+                                        <img src="<?= float_asset('img/pages/index/cards/card_undertale.png') ?>" alt="<?= htmlspecialchars($jogo['titulo']) ?>" loading="lazy">
                                     <?php endif; ?>
                                     <div class="mj-game-overlay">
                                         <i class="fa-solid fa-play"></i>
@@ -184,7 +185,7 @@ if ($usuarioId) {
                     </div>
                     <h2>Nenhum jogo salvo</h2>
                     <p>Adicione jogos à sua lista de desejos para acessá-los facilmente depois.</p>
-                    <a href="/float/public/index.php" class="mj-btn-explore">
+                    <a href="<?= float_url('index.php') ?>" class="mj-btn-explore">
                         <i class="fa-solid fa-compass"></i> Explorar Jogos
                     </a>
                 </div>
@@ -195,8 +196,8 @@ if ($usuarioId) {
 
     <?php require_once __DIR__ . '/../includes/footer.php'; ?>
 
-    <script src="/float/public/assets/js/global/global.js"></script>
-    <script src="/float/public/assets/js/pages/meusjogos.js"></script>
+    <script src="<?= float_asset('js/global/global.js') ?>"></script>
+    <script src="<?= float_asset('js/pages/meusjogos.js') ?>"></script>
 
 </body>
 

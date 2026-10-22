@@ -1,3 +1,41 @@
+/**
+ * URLs da aplicacao (injetadas pelo PHP em config/app.php -> float_js_config()).
+ * Permite trocar a pasta do projeto / usar VirtualHost sem alterar o JS.
+ */
+window.FLOAT = window.FLOAT || {};
+window.FLOAT.base = window.FLOAT.base || '';
+window.FLOAT.api = window.FLOAT.api || '';
+window.FLOAT.root = window.FLOAT.root || '';
+
+/** URL de uma pagina dentro de public/ */
+window.FLOAT.url = function (path) {
+    return window.FLOAT.base + '/' + String(path || '').replace(/^\/+/, '');
+};
+
+/** URL de um arquivo estatico dentro de public/assets */
+window.FLOAT.asset = function (path) {
+    return window.FLOAT.url('assets/' + String(path || '').replace(/^\/+/, ''));
+};
+
+/** URL de um endpoint da API */
+window.FLOAT.apiUrl = function (path) {
+    return window.FLOAT.api + '/' + String(path || '').replace(/^\/+/, '');
+};
+
+/** URL amigavel de um jogo: /jogos/{slug}/ */
+window.FLOAT.gameUrl = function (slug) {
+    return window.FLOAT.url('jogos/' + encodeURIComponent(slug) + '/');
+};
+
+/** URL da capa de um jogo */
+window.FLOAT.gameImage = function (jogoId, arquivo) {
+    if (!arquivo) {
+        return window.FLOAT.asset('img/pages/index/cards/card_undertale.png');
+    }
+    var nome = String(arquivo).split(/[\\/]/).pop();
+    return window.FLOAT.asset('img/jogos/' + encodeURIComponent(jogoId) + '/' + encodeURIComponent(nome));
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initMegaDropdowns();

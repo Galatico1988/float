@@ -151,7 +151,7 @@ function initSeguir() {
         const fd = new FormData();
         fd.append('alvo_id', alvoId);
 
-        const data = await postForm('../../api/user/seguir.php', fd);
+        const data = await postForm(window.FLOAT.apiUrl('user/seguir.php'), fd);
 
         if (data.ok) {
             const seguindo = data.acao === 'seguindo';
@@ -218,7 +218,7 @@ function initReportar() {
         fd.append('alvo_id', alvoRep);
         fd.append('motivo', detalhe ? `${motivo} — ${detalhe}` : motivo);
 
-        const data = await postForm('../../api/user/reportar.php', fd);
+        const data = await postForm(window.FLOAT.apiUrl('user/reportar.php'), fd);
 
         showToast(data.mensagem ?? (data.ok ? 'Denúncia enviada.' : 'Erro.'), data.ok ? 'success' : 'error');
         closeModal('modalReport');
@@ -267,7 +267,7 @@ function initEdicaoTexto() {
             fd.append('campo', 'nome');
             fd.append('valor', novoNome);
 
-            const data = await postForm('../../api/user/atualizacao.php', fd);
+            const data = await postForm(window.FLOAT.apiUrl('user/atualizacao.php'), fd);
 
             if (data.ok) {
                 spanNome.textContent = novoNome;
@@ -319,7 +319,7 @@ function initEdicaoTexto() {
             fd.append('campo', 'bio');
             fd.append('valor', novaBio);
 
-            const data = await postForm('../../api/user/atualizacao.php', fd);
+            const data = await postForm(window.FLOAT.apiUrl('user/atualizacao.php'), fd);
 
             if (data.ok) {
                 spanBio.innerHTML = novaBio
@@ -637,7 +637,7 @@ async function enviarImagem(file) {
     fd.append('tipo', cropTipo);
     fd.append('imagem', file);
 
-    const data = await postForm('../../api/user/upload_imagem.php', fd);
+    const data = await postForm(window.FLOAT.apiUrl('user/upload_imagem.php'), fd);
 
     if (data.ok) {
         if (cropTipo === 'avatar') {
@@ -696,7 +696,7 @@ function initDeletarJogo() {
         const fd = new FormData();
         fd.append('jogo_id', jogoId);
 
-        const data = await postForm('../../api/jogos/deletar.php', fd);
+        const data = await postForm(window.FLOAT.apiUrl('jogos/deletar.php'), fd);
 
         if (data.ok) {
             const card = btn.closest('.jogo-card');

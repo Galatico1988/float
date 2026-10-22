@@ -128,7 +128,7 @@ async function carregarFeed(filtro) {
         </div>
     `;
 
-    const data = await getJson('../../api/comunidade/feed.php?filtro=' + encodeURIComponent(filtro));
+    const data = await getJson(window.FLOAT.apiUrl('comunidade/feed.php') + '?filtro=' + encodeURIComponent(filtro));
 
     if (!data.ok) {
         feed.innerHTML = '<div class="feed-vazio"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><p>' + escapeHtml(data.mensagem ?? 'Erro ao carregar.') + '</p></div>';
@@ -156,7 +156,7 @@ async function carregarFeed(filtro) {
 // ─── Criação de card ─────────────────────────────────────────────────────────
 
 function criarCardPost(post) {
-    const avatarBase = '../assets/img/user/avatars/';
+    const avatarBase = window.FLOAT.asset('img/user/avatars/');
     const avatarSrc  = post.avatar_path
         ? avatarBase + escapeHtml(post.avatar_path)
         : avatarBase + 'avatar.png';
@@ -170,7 +170,7 @@ function criarCardPost(post) {
     article.dataset.usuarioId = post.usuario_id;
 
     const pfpHtml = eDoUsuario
-        ? '<a href="perfil.php?id=' + escapeHtml(String(post.usuario_id)) + '" class="com-card-author"><img src="' + avatarSrc + '" alt="Avatar de ' + escapeHtml(post.nome) + '" class="com-card-avatar" loading="lazy"><div><span class="com-card-name">' + escapeHtml(post.nome) + '</span><time class="com-card-time" datetime="' + escapeHtml(post.data_criacao) + '">' + tempo + '</time></div></a>'
+        ? '<a href="' + window.FLOAT.url('pages/perfil.php') + '?id=' + escapeHtml(String(post.usuario_id)) + '" class="com-card-author"><img src="' + avatarSrc + '" alt="Avatar de ' + escapeHtml(post.nome) + '" class="com-card-avatar" loading="lazy"><div><span class="com-card-name">' + escapeHtml(post.nome) + '</span><time class="com-card-time" datetime="' + escapeHtml(post.data_criacao) + '">' + tempo + '</time></div></a>'
         : '<button class="com-card-author com-card-author--btn" data-alvo-id="' + escapeHtml(String(post.usuario_id)) + '" aria-label="Ver perfil de ' + escapeHtml(post.nome) + '"><img src="' + avatarSrc + '" alt="Avatar de ' + escapeHtml(post.nome) + '" class="com-card-avatar" loading="lazy"><div><span class="com-card-name">' + escapeHtml(post.nome) + '</span><time class="com-card-time" datetime="' + escapeHtml(post.data_criacao) + '">' + tempo + '</time></div></button>';
 
     const reportBtn = (sessaoId && !eDoUsuario)
@@ -282,7 +282,7 @@ function initCriarPost() {
             fd.append('legenda', legenda);
             fd.append('imagem_url', imagemUrl);
 
-            const data = await postForm('../../api/comunidade/post.php', fd);
+            const data = await postForm(window.FLOAT.apiUrl('comunidade/post.php'), fd);
 
             if (data.ok && data.post) {
                 closeModal('modalPost');
@@ -338,7 +338,7 @@ function bindLikeButton(btn) {
         btn.disabled = true;
         const fd = new FormData();
         fd.append('post_id', postId);
-        const data = await postForm('../../api/user/like.php', fd);
+        const data = await postForm(window.FLOAT.apiUrl('user/like.php'), fd);
 
         if (data.ok) {
             if (likeCount && data.total_curtidas !== undefined) {
@@ -365,7 +365,7 @@ function bindSeguirButton(btn) {
 
         const fd = new FormData();
         fd.append('alvo_id', btn.dataset.alvo);
-        const data = await postForm('../../api/user/seguir.php', fd);
+        const data = await postForm(window.FLOAT.apiUrl('user/seguir.php'), fd);
 
         if (data.ok) {
             atualizarBotoesSeguir(btn.dataset.alvo, data.acao === 'seguindo');
@@ -439,7 +439,7 @@ async function abrirModalSeguir(alvoId) {
 
     openModal('modalSeguir');
 
-    const data = await getJson('../../api/user/status_seguir.php?alvo_id=' + alvoId);
+    const data = await getJson(window.FLOAT.apiUrl('user/status_seguir.php') + '?alvo_id=' + alvoId);
 
     if (!data.ok) {
         showToast(data.mensagem ?? 'Erro ao carregar perfil.', 'error');
@@ -449,8 +449,8 @@ async function abrirModalSeguir(alvoId) {
 
     const u         = data.usuario;
     const avatarSrc = u.avatar_path
-        ? '../assets/img/user/avatars/' + u.avatar_path
-        : '../assets/img/user/avatars/avatar.png';
+        ? window.FLOAT.asset('img/user/avatars/') + u.avatar_path
+        : window.FLOAT.asset('img/user/avatars/avatar.png');
 
     if (modalAvatar)  { modalAvatar.src = avatarSrc; modalAvatar.alt = 'Avatar de ' + u.nome; }
     if (modalNome)    modalNome.textContent = u.nome;
@@ -478,7 +478,7 @@ function initModalSeguir() {
 
         const fd = new FormData();
         fd.append('alvo_id', alvoId);
-        const data = await postForm('../../api/user/seguir.php', fd);
+        const data = await postForm(window.FLOAT.apiUrl('user/seguir.php'), fd);
 
         if (data.ok) {
             atualizarBotoesSeguir(alvoId, data.acao === 'seguindo');
@@ -518,7 +518,7 @@ function initReportarPost() {
         const fd = new FormData();
         fd.append('post_id', postId);
         fd.append('motivo', detalhe ? motivo + ' — ' + detalhe : motivo);
-        const data = await postForm('../../api/comunidade/reportar_post.php', fd);
+        const data = await postForm(window.FLOAT.apiUrl('comunidade/reportar_post.php'), fd);
 
         showToast(data.mensagem ?? (data.ok ? 'Denúncia enviada.' : 'Erro.'), data.ok ? 'success' : 'error');
         closeModal('modalReportPost');
