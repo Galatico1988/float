@@ -1,6 +1,6 @@
 <?php
-
 declare(strict_types=1);
+require_once __DIR__ . '/../../config/app.php';
 
 require_once __DIR__ . '/../config/conexao.php';
 
@@ -88,7 +88,7 @@ if (!move_uploaded_file($arquivo['tmp_name'], $caminhoFinal)) {
 }
 
 /* Inserir no banco */
-$urlPublica = '/float/public/assets/videos/jogos/' . $jogoId . '/' . $nomeArquivo;
+$urlPublica = float_asset('videos/jogos/') . $jogoId . '/' . $nomeArquivo;
 $stmt = $pdo->prepare('INSERT INTO jogo_videos (jogo_id, tipo, url, titulo, ordem) VALUES (?, ?, ?, ?, ?)');
 $stmt->execute([$jogoId, 'arquivo', $urlPublica, $titulo !== '' ? $titulo : null, $ordem]);
 

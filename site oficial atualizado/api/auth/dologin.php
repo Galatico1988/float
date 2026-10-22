@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../config/app.php';
 
 require_once __DIR__ . '/../config/conexao.php';
 
@@ -24,7 +25,7 @@ if (empty($senha)) {
 
 if (!empty($erros)) {
     $query = http_build_query(['erro' => implode(' | ', $erros)]);
-    header('Location: ../../public/pages/login.php?' . $query);
+    float_redirect(float_url('pages/login.php') . '?' . $query);
     exit;
 }
 
@@ -35,7 +36,7 @@ $usuario = $stmt->fetch();
 
 if (!$usuario || !password_verify($senha, $usuario['senha'])) {
     $query = http_build_query(['erro' => 'E-mail ou senha incorretos.']);
-    header('Location: ../../public/pages/login.php?' . $query);
+    float_redirect(float_url('pages/login.php') . '?' . $query);
     exit;
 }
 
@@ -47,5 +48,5 @@ $_SESSION['nome']        = $usuario['nome'];
 $_SESSION['avatar_path'] = $usuario['avatar_path'];
 
 
-header('Location: ../../public/index.php?login=sucesso');
+float_redirect(float_url('index.php') . '?login=sucesso');
 exit;

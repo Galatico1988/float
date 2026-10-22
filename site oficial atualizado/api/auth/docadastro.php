@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../config/app.php';
 
 require_once __DIR__ . '/../config/conexao.php';
 
@@ -31,7 +32,7 @@ if (mb_strlen($senha) < 8) {
 
 if (!empty($erros)) {
     $query = http_build_query(['erro' => implode(' | ', $erros)]);
-    header('Location: ../../public/pages/cadastro.php?' . $query);
+    float_redirect(float_url('pages/cadastro.php') . '?' . $query);
     exit;
 }
 
@@ -41,7 +42,7 @@ $stmt->execute([$email]);
 
 if ($stmt->fetch()) {
     $query = http_build_query(['erro' => 'Este e-mail já está cadastrado.']);
-    header('Location: ../../public/pages/cadastro.php?' . $query);
+    float_redirect(float_url('pages/cadastro.php') . '?' . $query);
     exit;
 }
 
@@ -53,5 +54,5 @@ $stmt->execute([$nome, $email, $hash]);
 $_SESSION['usuario_id'] = (int) $pdo->lastInsertId();
 $_SESSION['usuario_nome'] = $nome;
 
-header('Location: ../../public/pages/login.php?cadastro=sucesso');
+float_redirect(float_url('pages/login.php') . '?cadastro=sucesso');
 exit;

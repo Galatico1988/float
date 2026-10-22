@@ -1,6 +1,6 @@
 <?php
-
 declare(strict_types=1);
+require_once __DIR__ . '/../../config/app.php';
 
 require_once __DIR__ . '/../config/conexao.php';
 
@@ -316,7 +316,7 @@ try {
         'mensagem' => 'Jogo publicado com sucesso!',
         'jogo_id'  => $jogoId,
         'slug'     => $slug,
-        'url'      => '/jogos/' . $slug . '/',
+        'url'      => float_game_url($slug),
     ]);
 
 } catch (PDOException $e) {

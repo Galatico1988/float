@@ -1,6 +1,6 @@
 <?php
-
 declare(strict_types=1);
+require_once __DIR__ . '/../../config/app.php';
 
 require_once __DIR__ . '/../config/conexao.php';
 
@@ -93,7 +93,7 @@ $stmt->execute([$jogoId, $nomeArquivo, $ordem]);
 
 $screenshotId = (int) $pdo->lastInsertId();
 
-$urlPublica = '/float/public/assets/img/jogos/' . $jogoId . '/' . $nomeArquivo;
+$urlPublica = float_asset('img/jogos/') . $jogoId . '/' . $nomeArquivo;
 
 echo json_encode([
     'ok'       => true,

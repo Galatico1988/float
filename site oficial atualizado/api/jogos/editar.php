@@ -1,6 +1,6 @@
 <?php
-
 declare(strict_types=1);
+require_once __DIR__ . '/../../config/app.php';
 
 require_once __DIR__ . '/../config/conexao.php';
 
@@ -209,7 +209,7 @@ try {
         'mensagem' => 'Jogo atualizado com sucesso!',
         'jogo_id'  => $jogoId,
         'slug'     => $jogoAtual['slug'] ?? '',
-        'url'      => '/jogos/' . ($jogoAtual['slug'] ?? '') . '/',
+        'url'      => float_game_url($jogoAtual['slug'] ?? ''),
     ]);
 
 } catch (PDOException $e) {
