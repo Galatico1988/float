@@ -61,7 +61,6 @@ REVISAR RECURSOS PARA IDENTIFICAR POSSÍVEIS AJUSTES
 - olhar a página de denúncias
 - acessar a página de aquisição de um jogo
 - testar a comunidade
-- a aparência da página inicial
 - perfil do usuário
 
 
@@ -73,12 +72,6 @@ E NÃO ESQUECER: terminar de colocar esses recursos no site, e depois colocar no
 
 
 +-AINDAMAISCOISAS-+
-Atualizar a logo
-Colocar a nova logo em cima do slider + o slogan "Conectando ideias, elevando o jogo."
-
-PÁGINA INICIAL
-programar o slider de jogos para que ele sempre exiba jogos novos a cada vez que o site é aberto
-"Descubra Algo Novo" também pode ter mais opções aleatórias
 
 PÁGINA DE AQUISIÇÃO DO JOGO
 Arrumar as fotos de cada jogo
@@ -99,20 +92,12 @@ Os outros dois só levam pra página inicial
 PROJETOS
 Cada um dos menus leva pra página inicial. Criar páginas próprias para cada um
 
-LOGIN
-Aumentar o tamanho dos elementos, do texto "Conecte-se ao universo indie" e do texto "Voltar para a página inicial" (trocar o texto atual para esse)
-Integrar possibilidade de entrar com as contas dos botões abaixo - Google
-Deveria ser apenas "vincular" conta do Discord e da Steam, não "fazer login com essas contas"
-
 
 
 ÚLTIMAS NOTÍCIAS
 Colocar mais matérias novas
-- Lançamento de Endacopia
 Arrumar o tamanho da matéria de Celeste para que a foto tenha o mesmo tamanho das outras matérias
-Colocar a categoria de reviews de jogos
 Fazer páginas para cada notícia
 
 FOOTER
-- Trocar "Plataforma Float" para "Float Games"
 Criar páginas para os links: Sobre a Float, Explorar Jogos, Categorias, Desenvolvedores, Central de Ajuda, Diretrizes, Contato, Termos de Uso, Privacidade
