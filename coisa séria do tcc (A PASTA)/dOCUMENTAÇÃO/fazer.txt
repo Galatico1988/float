@@ -1,3 +1,17 @@
+TAREFAS TEMPORÁRIAS:
+perguntar pro copilot:
+- que tipos de manuais daria pra colocar
+- como formatar os requisitos funcionais, detalhamento e plano de teste
+- o que diferencia o diagrama de caso de uso do APP pro do SITE (usar os anexos devidos)
+- se tem algo que sequer mencione transação em dinheiro na documentação
+- se já dá pra colocar os gráficos de gantt e de pert (primeiro, se não falta mais nada)
+- como fazer os mapas "fluxograma front/back-end"
+- como fazer o dicionário de dados front-end
+
+trocar a foto do plano de negócios
+trocar as fotos dos "mapas" - eles estarão em PARA FAZER
+
+
 desenvolvimento = colocar o código inteiro de cada coisa que fizemos. Mas pra esse tópico precisa do site e app 100% PRONTOS
 horas trabalhadas = "e se cada um fosse renumerado pelos seus serviços". O cronograma de atividades do projeto + o quê e como cada membro fez
 
@@ -5,8 +19,6 @@ O QUE TALVEZ FIQUE PRA DEPOIS
 manuais = explicar cada página de forma que um usuário comum consiga entender como usá-las. MAS PRIMEIRO precisa COMPLETAR o site e o app...
 conclusão
 
-poderia ser interessante colocar:
-os requisitos de QTS
 
 
 
@@ -33,18 +45,18 @@ verificar quais elementos faltam entre o TRABALHO DEFINITIVO e o MODELO DE FORMA
 
 
 
-;mudar as coisas que exigem pagamento para que não exijam mais
-[
-certos detalhes do site/app
-]
-
 ;colocar as figuras faltantes
 ver o estado das figuras:
 https://www.sitemaps.org/schemas/sitemap/0.9/ se precisar [mapa do site]
-- mapa front end do site
+- mapa front end do site [colocar na documentação]
 - mapa back end do site
 - mapa back end do app
 - diagrama de caso de uso do app
+- legenda do APP - FLUXO BACK-END DA TELA INCIAL: Enviar Postagens e Foruns Salvos [banco de dados para postagens e fóruns]; Enviar Noticias Postadas [banco de dados para notícias]
+- legenda do APP - FLUXO BACK-END DA PÁGINA DE JOGO: Quando o Usuario Seleciona o Jogo, O Banco de dados manda as Informações Especificas [banco de dados para página do jogo]; Banco de Dados Manda a Tabela com a Lista de Jogos [banco de dados para pesquisar e lista de jogos]
+
+Mapa Front-end: Nomear por arquivos meu do arquivo principal
+Mapa Back-end: Começa nomeando por arquivos e vai nomeando os arquivos externos que são utilizados repetindo conforme a sua aparição no sistema
 
 ;colocar quaisquer fichamentos usados na seção de anexos
 {fichamentos para colocar: }
@@ -52,6 +64,12 @@ https://www.sitemaps.org/schemas/sitemap/0.9/ se precisar [mapa do site]
 
 
 pesquisar quais manuais seria interessante colocar na seção devida
+- login de usuário
+- login de desenvolvedor
+- fazer uma denúncia
+- comentar e avaliar jogo
+- postar na comunidade
+atualizar dicionário de dados, diagrama de entidade e relacionamento, diagrama de classe
 
 
 
@@ -71,16 +89,11 @@ No ciclo de vida do software fazer um gráfico de recursos no Project junto com 
 
 IMPORTANTE DESTACAR : PARA CADA AÇÃO FEITA VOCÊ DIVIDE 1 BACKEND EM VÁRIOS MÓDULOS
 
-Mapa Front-end  do Site(ESTRUTURA DO SITE) Mapa Back-end do Site (ESTRUTURA DE ARQUIVOS[Caminho que o sistema faz para acompanhar o que o usuário quer fazer])
-
-Mapa Front-end do App:(ESTRUTURA DO APP) Mapa Back-End do app (ESTRUTURA DE ARQUIVOS [Caminho que o sistema faz para acompanhar o que o usuário quer fazer)
-
 ESTRUTURA DO SITE : ORDEM DE ARQUIVOS QUE O SOFTWARE SEGUE  + TODO O TIPO DE TECNOLOGIA UTILIZADA DENTRO DO SITE + ORDEM AO QUAL ELES SE CONECTAM
 Se for externo coloca o link de onde pegou
 Se for framework link de onde pegou
 se for biblioteca link mais arquivo
 FLUXOGRAMA : Ações feitas pelo usuário e decisões feitas pelo sistema
-Front-end: e Back-end do site e do app
 
 Fluxograma -> Diagrama de caso de uso do app ->Dicionário de dados front-end-> Diagrama de classe->Gráfico de grantt ->Grafico de Pert
 Separar o desenvolvimento por arquivo
