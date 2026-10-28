@@ -1,0 +1,15 @@
+Como vai funcionar o sistema de classificação indicativa?
+Essa pergunta é pertinente àqueles que, por algum motivo, se preocupam com o quê exatamente esperam encontrar na nossa plataforma.
+A página de aquisição da demo conterá, em suas informações, a faixa etária mínima para que o usuário desfrute plenamente do jogo ofertado, sem quaisquer prejuízos pessoais. Mas, obviamente, apenas uma classificação indicativa ou aviso de conteúdo não impedirá que qualquer usuário indevido baixe a demonstração com restrição de idade, então para isso teremos mais jeitos de alertar o usuário sobre o conteúdo que ele está prestes a consumir.
+E se o usuário, mesmo assim, não se sente confortável com o conteúdo de certos jogos, serviremos filtros de pesquisa e exibição que não exibem tais jogos, de modo que opções mais adequadas ao gosto do usuário sejam exibidas – um exemplo de filtro poderia ser para que apenas jogos com certas classificações indicativas fossem mostrados.
+
+E quanto aos jogos adultos? [FAZER]
+Primeiramente, gostaríamos de esclarecer que, de fato, temos jogos que não se adequam a todos os públicos – como indicado na pergunta anterior.
+Só que, para respondermos a essa pergunta, iremos considerar como “jogos adultos” todas as experiências onde uma parte significativa de sua jogabilidade se baseia em conteúdo fortemente inadequado para todas as idades – isto é, digamos, jogos “eróticos” ou de cunho lascivo.
+É claro que algumas das demos oferecidas dentro da plataforma podem apresentar conteúdo impróprio – e para identificar esses detalhes, as categorias de gênero de jogo e a classificação indicativa servirão – no entanto, no caso dos jogos adultos, esse tipo de conteúdo se torna a “marca registrada” do jogo, o que implica uma moderação mais cautelosa.
+Também destacamos que a resposta aqui engloba tanto os jogos eróticos quanto os jogos extremamente violentos, uma vez que ambos são usualmente restritos a pessoas maiores de 18 anos.
+Agora sim: e quanto aos jogos explícitos?
+Onde a resposta é: melhor não, pelo menos por enquanto. Especialmente com os jogos eróticos, nós percebemos o “fenômeno” onde estes recebem muita popularidade apenas por serem eróticos – o que nos levou a concluir que a inclusão de jogos assim desbalancearia a visibilidade que desejamos ofertar a todos os desenvolvedores. Devido a isso, nós optamos por não os incluir no nosso catálogo... Por enquanto?
+Também precisamos considerar que temos um possível ramo educativo, que entraria em conflito com a proposta
+Não é censura, definitivamente, mas também não é um desleixo com a plataforma no sentido de “permitir qualquer coisa”. Seria menos uma questão de imagem e decência, e mais uma questão de prioridade e consolidação no mercado. Um “controle de qualidade”, se preferir.
+Em suma: por mais que haja medidas como restrição de idade, os jogos adultos não são prioridade, e na verdade, dificilmente serão considerados.
