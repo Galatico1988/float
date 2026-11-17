@@ -1,3 +1,12 @@
+Aprimorar a pagina da comunidade		|
+
+Começar a projetar a página do desenvolvedor	|
+
+Tela de carregamento para o site 		|
+
+Construção do sistema de insígnias >prototipação|
+---------------------------------------------
+
 PWE
 texte
 teste2
@@ -18,6 +27,9 @@ Web_Exemplo222
 
 - A acessibilidade do Cleiton de QTS
 ;mais recursos de acessibilidade além dos pedidos, se possível
+Acessibilidade
+Estrutura SW
+Observação Direta
 
 ;daltonismo
 O daltonismo é uma dificuldade na percepção ou distinção de certas cores que afeta cerca de 5% a 8% das pessoas, exigindo cuidados específicos de acessibilidade em páginas web para evitar barreiras de navegação.
