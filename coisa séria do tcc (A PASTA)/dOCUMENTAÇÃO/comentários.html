@@ -1,0 +1,388 @@
+/* INDEX — estrutura inicial da página
+Define informações da página, como título, descrição, estilos, ícone e fontes. Também impede que o navegador restaure a
+rolagem anterior e inclui o cabeçalho compartilhado do site.
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Float - O maior repositório de jogos indie. Explore, jogue e publique seus projetos.">
+    <title>Float | Página Inicial</title>
+
+    <link rel="stylesheet" href="<?= float_asset('css/global/global.css') ?>" />
+
+    <link rel="stylesheet" href="<?= float_asset('css/pages/index.css') ?>">
+
+    <link rel="icon" href="<?= float_asset('img/favicon/icone.ico') ?>" type="image/x-icon" />
+
+    // Esses são os elementos que compõem a estrutura inicial da página, incluindo metadados, links para estilos e ícones, além de scripts para controlar o comportamento da rolagem.
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@400;600;700;900&display=swap"
+        rel="stylesheet" />
+
+        // Essas linhas definem o estilo visual da página, incluindo fontes e ícones, garantindo uma aparência consistente e atraente para os usuários.
+
+    <script>
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.addEventListener('pageshow', () => window.scrollTo(0, 0));
+
+        // O código JavaScript acima impede que o navegador restaure a posição de rolagem anterior ao navegar entre páginas, garantindo que a página seja carregada sempre do topo.
+
+    </script>
+</head>
+
+<body>
+
+    <?php require_once 'includes/header.php'; ?>
+    */
+
+
+
+    /* jogo.php — jogos relacionados
+    // Quando o jogo tem um gênero definido, busca até quatro outros jogos públicos do mesmo gênero, sem incluir o jogo atual. Em seguida, organiza os dados para exibi-los na página; sem gênero, deixa a lista vazia.
+    if (!empty($jogoRow['genero'])) {
+    $stmtRel = $pdo->prepare('
+    SELECT j.id, j.titulo, j.genero, j.preco, j.thumbnail, j.slug
+    FROM jogo j
+    WHERE j.genero = ? AND j.id != ? AND j.visibilidade = ?
+    ORDER BY RAND() LIMIT 4
+    ');
+    $stmtRel->execute([$jogoRow['genero'], $jogoId, 'publico']);
+    $relRows = $stmtRel->fetchAll();
+
+    // Organiza os dados dos jogos relacionados em um array, incluindo título, tipo, imagem e slug. Se não houver jogos relacionados, a lista permanece vazia.
+
+    $relacionados = array_map(fn($r) => [
+    'titulo' => $r['titulo'],
+    'tipo' => $r['genero'],
+    'preco' => $r['preco'] ?? 'Gratis',
+    'img' => $r['thumbnail'] ? float_asset('img/jogos/') . $r['id'] . '/' . $r['thumbnail'] :
+    float_asset('img/pages/index/cards/card_undertale.png'),
+    'slug' => $r['slug'],
+    ], $relRows);
+    } else {
+    $relacionados = [];
+    }
+    */
+
+
+
+    /* cadastro.php — campos de e-mail e senha
+    // Apresenta os campos necessários para informar e-mail e senha no cadastro. O navegador pode validar o formato do e-mail e exigir uma senha com pelo menos oito caracteres; o botão permite mostrar ou ocultar a senha.
+    <div class="input-group">
+        <label for="email">E-mail</label>
+        <div class="input-field">
+            <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email">
+        </div>
+    </div>
+
+    // Campo para senha
+
+    <div class="input-group">
+        <label for="password">Senha</label>
+        <div class="input-field input-password-wrapper">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres" minlength="8"
+                required autocomplete="new-password">
+            <button type="button" class="btn-toggle-password" aria-label="Mostrar/ocultar senha" data-target="password">
+                <i class="fa-regular fa-eye"></i>
+            </button>
+        </div>
+    </div>
+    */
+
+
+
+    /* comunidade.php — cabeçalho e filtros da comunidade
+    // Exibe o caminho de volta, o título da área e os botões para escolher entre todas as postagens, as postagens de quem o usuário segue ou as que estão em alta. Este trecho monta os controles visuais do filtro.
+    <div class="comunidade-page-header">
+        <div class="comunidade-page-header-inner">
+            <a href="<?= float_url('index.php') ?>" class="back-home">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                Voltar ao início
+            </a>
+            <span class="comunidade-eyebrow">
+                <i class="fa-solid fa-users" aria-hidden="true"></i>
+                Comunidade
+            </span>
+
+            // Este é o cabeçalho da seção de comunidade, com um link para voltar à página inicial, um título e uma descrição. Abaixo, há botões que permitem filtrar as postagens exibidas, mostrando todas, apenas as de quem o usuário segue ou as que estão em alta.
+
+            <h1 class="comunidade-page-title">O que está rolando</h1>
+            <p class="comunidade-page-subtitle">Postagens reais de criadores e jogadores. Siga, curta e participe.</p>
+            <div class="comunidade-tabs" role="tablist" aria-label="Filtros do feed">
+                <button class="comunidade-tab active" data-tab="todos" role="tab" aria-selected="true">
+                    <i class="fa-solid fa-globe" aria-hidden="true"></i> Todos
+                </button>
+                <button class="comunidade-tab" data-tab="seguindo" role="tab" aria-selected="false">
+                    <i class="fa-solid fa-user-check" aria-hidden="true"></i> Seguindo
+                </button>
+                <button class="comunidade-tab" data-tab="alta" role="tab" aria-selected="false">
+                    <i class="fa-solid fa-fire" aria-hidden="true"></i> Em alta
+                </button>
+            </div>
+        </div>
+        */
+
+
+
+        /* estatisticas.php — tabela de desempenho dos jogos
+        // Inicia uma tabela com indicadores de desempenho e percorre a lista de jogos do perfil. Para cada jogo, prepara a imagem de capa e o identificador usado para montar seu link.
+        <section class="est-ranking">
+            <h2><i class="fa-solid fa-ranking-star"></i> Desempenho por jogo</h2>
+            <div class="est-table-wrap">
+                <table class="est-table">
+                    <thead>
+                        <tr>
+
+                            // Exemplos de filtros de estatísticas que podem ser aplicados à tabela de desempenho dos jogos, permitindo que o desenvolvedor visualize informações específicas sobre cada título.
+
+                            <th>#</th>
+                            <th>Jogo</th>
+                            <th>Gênero</th>
+                            <th class="num">Instalações</th>
+                            <th class="num">Pico de ativos</th>
+                            <th class="num">Média de ativos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($jogos as $i => $j):
+                            $thumbSrc = $j['thumbnail']
+                                ? float_asset('img/jogos/') . $j['id'] . '/' . htmlspecialchars($j['thumbnail'])
+                                : float_asset('img/pages/index/cards/card_undertale.png');
+                            $jogoSlug = $j['slug'] ?? $j['id'];
+                        ?>
+                        */
+
+
+
+                        /* jogotemplate.php — valores padrão da página do jogo
+                        // Se os dados do jogo não tiverem sido preparados antes de incluir o template, cria valores básicos para evitar informações ausentes. Também define listas vazias para jogos relacionados e considera que o jogo ainda não foi salvo.
+                        if (!isset($jogo)) {
+                        $jogo = [
+                        'id' => 0,
+
+                        // Define valores padrão para a página do jogo, garantindo que informações essenciais estejam presentes mesmo que o jogo não seja encontrado. Isso inclui título, slug, desenvolvedor, descrição, imagens e requisitos mínimos e recomendados.
+
+                        'titulo' => 'Jogo não encontrado', 'slug' => '', 'desenvolvedor' => '',
+                        'tagline' => '', 'descricao' => '', 'capa' => '', 'backdrop' => '',
+                        'preco' => 'Gratis', 'gratis' => true, 'versao' => '', 'tamanho' => '',
+                        'atualizado' => '', 'idiomas' => '', 'classificacao' => 'Livre',
+                        'tags' => [], 'plataformas' => [], 'download_url' => '#',
+                        'destaques' => [], 'screenshots' => [], 'videos' => [],
+                        'requisitos' => [
+                        'minimo' =>
+                        ['os'=>'','processador'=>'','memoria'=>'','video'=>'','armazenamento'=>'','directx'=>'','carga_cpu'=>0,'carga_gpu'=>0,'carga_ram'=>0],
+                        'recomendado' =>
+                        ['os'=>'','processador'=>'','memoria'=>'','video'=>'','armazenamento'=>'','directx'=>'','carga_cpu'=>0,'carga_gpu'=>0,'carga_ram'=>0],
+                        ],
+                        ];
+                        }
+                        if (!isset($relacionados)) {
+                        $relacionados = [];
+                        }
+                        if (!isset($jogoSalvo)) {
+                        $jogoSalvo = false;
+                        }
+                        */
+
+
+
+                        /* maisjogados.php — ordenação dos rankings
+                        // Organiza os jogos em ordem decrescente pelo indicador escolhido e usa outro indicador para desempatar. Depois, cria as listas de cada período e encontra o maior valor, usado para dimensionar as barras do ranking.
+                        function ordenarRanking(array $dados, string $campo, string $desempate): array
+                        {
+                        $arr = array_values($dados);
+                        usort($arr, function ($a, $b) use ($campo, $desempate) {
+                        if ($b[$campo] === $a[$campo]) {
+                        return $b[$desempate] <=> $a[$desempate];
+                            }
+                            return $b[$campo] <=> $a[$campo];
+                                });
+                                return $arr;
+                                }
+
+                                // Esta é a função que determina as posições dos jogos no ranking, ordenando-os com base em um campo principal e um campo de desempate. Ela retorna uma lista organizada de jogos, permitindo que a página exiba os títulos mais jogados de forma clara e justa.
+
+                                $listaHoje = ordenarRanking($dados, 'hoje', 'semana');
+                                $listaSemana = ordenarRanking($dados, 'semana', 'mes');
+                                $listaMes = ordenarRanking($dados, 'mes', 'semana');
+                                $listaSempre = ordenarRanking($dados, 'top3', 'mes');
+
+                                function maxCampo(array $lista, string $campo): int
+                                {
+                                $max = 0;
+                                foreach ($lista as $item) {
+                                if ($item[$campo] > $max) {
+                                $max = $item[$campo];
+                                }
+                                }
+                                return $max;
+                                }
+                                */
+
+
+
+                                /* meusjogos.php — título e abas da biblioteca
+                                // Apresenta o título da página e duas abas para alternar entre a lista de jogos baixados e a lista de jogos salvos pelo usuário.
+                                <section class="mj-page-header">
+                                    <div class="mj-header-content">
+                                        <div class="mj-header-icon">
+                                            <i class="fa-solid fa-gamepad"></i>
+                                        </div>
+                                        <div class="mj-header-text">
+                                            <h1>Meus Jogos</h1>
+                                            <p>Acesse sua lista completa de títulos salvos e baixados.</p>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                // As duas subseções da biblioteca
+                                
+                                <div class="mj-tabs-container">
+                                    <div class="mj-tabs">
+                                        <button class="mj-tab active" data-tab="baixados">
+                                            <i class="fa-solid fa-download"></i> Jogos Baixados
+                                        </button>
+                                        <button class="mj-tab" data-tab="salvos">
+                                            <i class="fa-regular fa-bookmark"></i> Jogos Salvos
+                                        </button>
+                                    </div>
+                                </div>
+                                */
+
+
+
+                                /* noticias.php — cabeçalho e filtros de notícias
+                                // Mostra o link para voltar, o título e a descrição da seção. Os botões permitem escolher uma categoria de notícias; a aplicação do filtro é feita por outro trecho da página.
+                                <header class="noticias-page-header">
+                                    <div class="noticias-page-header-inner">
+                                        <a href="<?= float_url('index.php') ?>" class="back-home">
+                                            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Voltar à Página
+                                            Inicial
+                                        </a>
+                                        <div class="noticias-page-title-block">
+                                            <span class="noticias-page-eyebrow"><i class="fa-solid fa-newspaper"></i>
+                                                Float
+                                                News</span>
+                                            <h1 class="noticias-page-title">Notícias &amp; Atualizações</h1>
+                                            <p class="noticias-page-subtitle">As últimas novidades do universo indie e
+                                                da plataforma
+                                                Float.</p>
+                                        </div>
+
+                                        // Subseções para filtrar a exibição de certas notícias
+
+                                        <div class="noticias-filters" role="group"
+                                            aria-label="Filtrar notícias por categoria">
+                                            <button class="noticias-filter-btn active" data-filter="all">Todas</button>
+                                            <button class="noticias-filter-btn"
+                                                data-filter="atualização">Atualização</button>
+                                            <button class="noticias-filter-btn"
+                                                data-filter="lançamento">Lançamento</button>
+                                            <button class="noticias-filter-btn"
+                                                data-filter="comunidade">Comunidade</button>
+                                            <button class="noticias-filter-btn"
+                                                data-filter="plataforma">Plataforma</button>
+                                            <button class="noticias-filter-btn" data-filter="review">Reviews</button>
+                                        </div>
+                                    </div>
+                                </header>
+                                */
+
+
+
+                                /* perfil.php — identificação e consulta do perfil
+                                // Define qual perfil será exibido, usando o identificador da URL ou o da sessão. Se não houver usuário identificado, redireciona para o login; depois consulta seus dados e exibe uma resposta de não encontrado caso o perfil não exista.
+                                $sessaoId = $_SESSION['id'] ?? null;
+                                $alvoId = isset($_GET['id']) ? (int) $_GET['id'] : $sessaoId;
+
+                                if (!$alvoId) {
+                                header('Location: login.php');
+                                exit;
+                                }
+
+                                $ehDono = ($sessaoId === $alvoId);
+
+                                $stmtUsuario = $pdo->prepare('
+                                SELECT id, nome, bio, avatar_path, banner_path, criado_em
+                                FROM usuario
+                                WHERE id = ?
+                                LIMIT 1
+                                ');
+                                $stmtUsuario->execute([$alvoId]);
+                                $usuario = $stmtUsuario->fetch();
+
+                                // A mensagem de erro
+
+                                if (!$usuario) {
+                                http_response_code(404);
+                                echo '<p>Usuário não encontrado.</p>';
+                                exit;
+                                }
+                                */
+
+
+
+                                /* projetos.php — etapas de publicação de um jogo
+                                // Apresenta as cinco etapas do formulário de publicação, desde os dados básicos até a personalização da página do jogo. A etapa atual recebe uma indicação visual.
+                                <div class="pub-steps" id="pubSteps">
+                                    <div class="pub-step active" data-step="1">
+                                        <span class="step-num">1</span>
+                                        <span class="step-label">Dados Básicos</span>
+                                    </div>
+                                    <div class="pub-step" data-step="2">
+                                        <span class="step-num">2</span>
+                                        <span class="step-label">Imagens & Vídeos</span>
+                                    </div>
+                                    <div class="pub-step" data-step="3">
+                                        <span class="step-num">3</span>
+                                        <span class="step-label">Tags & Plataformas</span>
+                                    </div>
+                                    <div class="pub-step" data-step="4">
+                                        <span class="step-num">4</span>
+                                        <span class="step-label">Requisitos</span>
+                                    </div>
+                                    <div class="pub-step" data-step="5">
+                                        <span class="step-num">5</span>
+                                        <span class="step-label">Customizar Página</span>
+                                    </div>
+                                </div>
+                                */
+
+
+
+                                /* recempostados.php — categorias e consulta de jogos recentes
+                                // Define categorias e os gêneros associados a cada uma. Em seguida, consulta os jogos públicos, incluindo informações de avaliação, e os ordena dos mais recentes para os mais antigos.
+                                $categorias = [
+                                'geral' => ['nome' => 'Geral', 'icone' => 'fa-solid fa-border-all', 'generos' => []],
+                                'terror' => ['nome' => 'Terror', 'icone' => 'fa-solid fa-ghost', 'generos' => ['Terror',
+                                'Suspense']],
+                                'aventura' => ['nome' => 'Aventura', 'icone' => 'fa-solid fa-compass', 'generos' =>
+                                ['Aventura',
+                                'RPG', 'Visual Novel']],
+                                'quebra' => ['nome' => 'Quebra-cabeça', 'icone' => 'fa-solid fa-puzzle-piece', 'generos'
+                                =>
+                                ['Puzzle', 'Quebra-cabeça']],
+                                'acao' => ['nome' => 'Ação', 'icone' => 'fa-solid fa-crosshairs', 'generos' => ['Ação',
+                                'Run & Gun',
+                                'Roguelite', 'Roguelike', 'Luta']],
+                                ];
+
+                                // Consulta SQL para buscar jogos recentes, incluindo informações de avaliação e contagem de avaliações. A consulta retorna os jogos públicos, agrupados por ID e ordenados pela data de criação em ordem decrescente.
+
+                                $stmtJogos = $pdo->prepare('
+                                SELECT j.id, j.titulo, j.slug, j.descricao, j.thumbnail, j.genero,
+                                j.preco, j.eh_gratis, j.criado_em,
+                                COALESCE(AVG(a.nota), 0) AS media_nota,
+                                COUNT(a.id) AS total_aval
+                                FROM jogo j
+                                LEFT JOIN avaliacao a ON a.jogo_id = j.id
+                                WHERE j.visibilidade = \'publico\'
+                                GROUP BY j.id
+                                ORDER BY j.criado_em DESC
+                                ');
+                                */
